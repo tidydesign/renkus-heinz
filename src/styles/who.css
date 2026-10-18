@@ -1,0 +1,72 @@
+/* Who we are — Figma: 501:193001 Desktop, 527:212104 Laptop, 527:212719 Tablet, 527:213142 Mobile */
+
+.who {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--space-gutter);
+  row-gap: var(--space-padding-xl);
+  padding: var(--space-padding-xl) var(--space-margin);
+  overflow-x: clip;
+  color: var(--color-content-default);
+}
+
+.who__content {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  gap: var(--space-element-padding-l);
+  padding-block: var(--space-padding-xl);
+}
+
+.who__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: "opsz" var(--font-opsz-display);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+}
+
+.who__text {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-p-l);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-p-l);
+  text-wrap: pretty;
+}
+
+/* Photo strip: fixed-size photos, centered, bleeding past both edges */
+.who__gallery {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  gap: var(--who-gallery-gap);
+}
+
+.who__photo {
+  flex-shrink: 0;
+  width: var(--who-photo-width);
+  height: var(--who-photo-height);
+  overflow: hidden;
+  background-color: var(--color-neutral-default);
+}
+
+.who__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Laptop: text in columns 3–10 of 12 */
+@media (min-width: 1200px) {
+  .who__content {
+    grid-column: 3 / span 8;
+  }
+}
+
+/* Desktop: text in columns 5–12 of 16 */
+@media (min-width: 1600px) {
+  .who__content {
+    grid-column: 5 / span 8;
+  }
+}

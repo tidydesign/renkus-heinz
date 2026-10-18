@@ -12,6 +12,7 @@
   --color-brand-01: #0054a6; /* Fixed Colors/brand-color-01 */
   --color-neutral-default: #0d122e; /* Fixed Colors/neutral-default */
   --color-on-background: #fff; /* Content Colors/on-background */
+  --color-content-default: #181d39; /* Content Colors/default */
   --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
   --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
 
@@ -36,6 +37,9 @@
   --font-size-h1-db: 2rem; /* Typography/Titles/H1 DB — 32px */
   --line-height-h1-db: 2.25rem; /* Typography/Titles/H1 DB LH — 36px */
   --letter-spacing-h1-db: -0.02em; /* Titles/H1 Display Big: -2% */
+  --font-size-h2: 1.5rem; /* Typography/Titles/H2 — 24px */
+  --line-height-h2: 1.75rem; /* Typography/Titles/H2 LH — 28px */
+  --letter-spacing-h2: -0.02em; /* Titles/H2: -2% */
 
   /* Grid */
   --grid-columns: 4;
@@ -46,7 +50,9 @@
   --space-padding-xxs: 12px; /* Grids/Padding XXS */
   --space-padding-s: 32px; /* Grids/Padding S */
   --space-padding-l: 64px; /* Grids/Padding L */
+  --space-padding-xl: 48px; /* Grids/Padding XL */
   --space-element-padding-s: 12px; /* Element Sizes/Basic/Paddings/padding-s */
+  --space-element-padding-l: 16px; /* Element Sizes/Basic/Paddings/padding-l */
 
   /* Elements */
   --button-small-height: 36px; /* Element Sizes/Button/Small/Button Small - Height */
@@ -65,6 +71,11 @@
   /* Hero */
   --hero-text-max-width: 740px;
 
+  /* Who we are — photo strip (fixed sizes in Figma) */
+  --who-photo-width: 640px;
+  --who-photo-height: 480px;
+  --who-gallery-gap: 24px;
+
   /* Layers */
   --z-header: 100;
 
@@ -81,10 +92,13 @@
     --line-height-h1-ds: 2rem; /* 32px */
     --font-size-h1-db: 3rem; /* 48px */
     --line-height-h1-db: 3.5rem; /* 56px */
+    --font-size-h2: 2.5rem; /* 40px */
+    --line-height-h2: 3rem; /* 48px */
 
     --grid-columns: 8;
     --space-margin: 24px;
     --space-gutter: 16px;
+    --space-padding-xl: 64px;
   }
 }
 
@@ -95,10 +109,14 @@
     --line-height-h1-ds: 2.25rem; /* 36px */
     --font-size-h1-db: 6rem; /* 96px */
     --line-height-h1-db: 6rem; /* 96px */
+    --font-size-h2: 3rem; /* 48px */
+    --line-height-h2: 3.5rem; /* 56px */
 
     --grid-columns: 12;
     --space-margin: 48px;
     --space-gutter: 24px;
+    --space-padding-xl: 128px;
+    --space-element-padding-l: 24px;
 
     --header-padding-inline: 48px;
   }
