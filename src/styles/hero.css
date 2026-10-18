@@ -1,0 +1,82 @@
+/* Hero — Figma: Hero (501:192993 Desktop, 527:212096 Laptop, 527:212711 Tablet, 527:213134 Mobile) */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--header-height));
+  overflow: hidden;
+  color: var(--color-on-background);
+  background-color: var(--color-neutral-default);
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  flex: 1 0 auto;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--space-gutter);
+  align-items: center;
+  padding: var(--space-margin);
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: var(--space-element-padding-s);
+  text-align: center;
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: "opsz" var(--font-opsz-display);
+  color: var(--color-white);
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.hero__title-lead {
+  font-size: var(--font-size-h1-ds);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-h1-ds);
+  letter-spacing: var(--letter-spacing-h1-ds);
+}
+
+.hero__title-main {
+  font-size: var(--font-size-h1-db);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-h1-db);
+  letter-spacing: var(--letter-spacing-h1-db);
+}
+
+.hero__text {
+  width: 100%;
+  max-width: var(--hero-text-max-width);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-p-l);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-p-l);
+  text-wrap: pretty;
+}
+
+/* Desktop: content spans columns 3–14 of 16 */
+@media (min-width: 1600px) {
+  .hero__content {
+    grid-column: 3 / span 12;
+  }
+}

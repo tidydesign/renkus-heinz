@@ -1,5 +1,5 @@
 /*
- * Design tokens from Figma Variables (RH - UI Design).
+ * Design tokens from Figma Variables (RH - UI Design, page "Company — About Us").
  * Figma variable names are noted next to each token.
  * Breakpoints (device ranges): Mobile <640, Tablet 640–1199,
  * Laptop 1200–1599, Desktop ≥1600. Figma frames 360/768/1440/1920
@@ -11,20 +11,42 @@
   --color-white: #fff; /* Fixed Colors/white, Background Colors/Static/Main/white */
   --color-brand-01: #0054a6; /* Fixed Colors/brand-color-01 */
   --color-neutral-default: #0d122e; /* Fixed Colors/neutral-default */
+  --color-on-background: #fff; /* Content Colors/on-background */
   --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
   --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
 
-  /* Typography */
+  /* Typography — families and weights */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-display: "DM Sans", "Inter", system-ui, sans-serif;
+  --font-weight-regular: 400;
   --font-weight-semibold: 600;
+  --font-weight-black: 1000;
+  --font-opsz-display: 14; /* DM Sans optical size, fixed in Figma */
+
+  /* Typography — paragraphs */
   --font-size-p-xs: 0.625rem; /* Typography/Paragraph/P XS — 10px */
   --line-height-p-xs: 0.75rem; /* Typography/Paragraph/P XS LH — 12px */
+  --font-size-p-l: 1rem; /* Typography/Paragraph/P L — 16px */
+  --line-height-p-l: 1.5rem; /* Typography/Paragraph/P L LH — 24px */
 
-  /* Spacing (Grids) */
+  /* Typography — titles */
+  --font-size-h1-ds: 1.25rem; /* Typography/Titles/H1 DS — 20px */
+  --line-height-h1-ds: 1.5rem; /* Typography/Titles/H1 DS LH — 24px */
+  --letter-spacing-h1-ds: -0.01em; /* Titles/H1 Display Small: -1% */
+  --font-size-h1-db: 2rem; /* Typography/Titles/H1 DB — 32px */
+  --line-height-h1-db: 2.25rem; /* Typography/Titles/H1 DB LH — 36px */
+  --letter-spacing-h1-db: -0.02em; /* Titles/H1 Display Big: -2% */
+
+  /* Grid */
+  --grid-columns: 4;
   --space-margin: 16px; /* Grids/Margin */
-  --space-padding-xxs: 8px; /* Grids/Padding XXS */
+  --space-gutter: 12px; /* Grids/Gutter */
+
+  /* Spacing */
+  --space-padding-xxs: 12px; /* Grids/Padding XXS */
   --space-padding-s: 32px; /* Grids/Padding S */
   --space-padding-l: 64px; /* Grids/Padding L */
+  --space-element-padding-s: 12px; /* Element Sizes/Basic/Paddings/padding-s */
 
   /* Elements */
   --button-small-height: 36px; /* Element Sizes/Button/Small/Button Small - Height */
@@ -33,11 +55,15 @@
   --icon-size-s: 16px; /* Element Sizes/Icons/Icon Small/Size 16px */
   --radius-infinite: 999px; /* Radiuses/Radius Infinite */
 
-  /* Header (not bound to variables in Figma) */
+  /* Header — Head instance uses its own Grids/Margin mode (24 on Mobile) */
   --header-padding-block: 16px;
+  --header-padding-inline: 24px;
   --header-height: 64px;
   --logo-width: 202.787px; /* SVG viewBox width */
   --logo-height: 32px;
+
+  /* Hero */
+  --hero-text-max-width: 740px;
 
   /* Layers */
   --z-header: 100;
@@ -48,22 +74,44 @@
   --focus-ring-color: var(--color-brand-01);
 }
 
+/* Tablet */
 @media (min-width: 640px) {
   :root {
+    --font-size-h1-ds: 1.5rem; /* 24px */
+    --line-height-h1-ds: 2rem; /* 32px */
+    --font-size-h1-db: 3rem; /* 48px */
+    --line-height-h1-db: 3.5rem; /* 56px */
+
+    --grid-columns: 8;
     --space-margin: 24px;
-    --space-padding-xxs: 12px;
+    --space-gutter: 16px;
   }
 }
 
+/* Laptop */
 @media (min-width: 1200px) {
   :root {
+    --font-size-h1-ds: 2rem; /* 32px */
+    --line-height-h1-ds: 2.25rem; /* 36px */
+    --font-size-h1-db: 6rem; /* 96px */
+    --line-height-h1-db: 6rem; /* 96px */
+
+    --grid-columns: 12;
     --space-margin: 48px;
+    --space-gutter: 24px;
+
+    --header-padding-inline: 48px;
   }
 }
 
 /* Desktop: margin 24px is intentional — Laptop gets the larger page margin */
 @media (min-width: 1600px) {
   :root {
+    --grid-columns: 16;
     --space-margin: 24px;
+
+    --header-padding-inline: 24px;
+
+    --hero-text-max-width: 680px;
   }
 }

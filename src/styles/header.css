@@ -8,7 +8,7 @@
   align-items: center;
   height: var(--header-height);
   padding-block: var(--header-padding-block);
-  padding-inline: var(--space-margin);
+  padding-inline: var(--header-padding-inline);
   background-color: var(--color-white);
 }
 
