@@ -1,0 +1,69 @@
+/*
+ * Design tokens from Figma Variables (RH - UI Design).
+ * Figma variable names are noted next to each token.
+ * Breakpoints (device ranges): Mobile <640, Tablet 640–1199,
+ * Laptop 1200–1599, Desktop ≥1600. Figma frames 360/768/1440/1920
+ * show a typical screen inside each range.
+ */
+
+:root {
+  /* Colors */
+  --color-white: #fff; /* Fixed Colors/white, Background Colors/Static/Main/white */
+  --color-brand-01: #0054a6; /* Fixed Colors/brand-color-01 */
+  --color-neutral-default: #0d122e; /* Fixed Colors/neutral-default */
+  --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
+  --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
+
+  /* Typography */
+  --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-weight-semibold: 600;
+  --font-size-p-xs: 0.625rem; /* Typography/Paragraph/P XS — 10px */
+  --line-height-p-xs: 0.75rem; /* Typography/Paragraph/P XS LH — 12px */
+
+  /* Spacing (Grids) */
+  --space-margin: 16px; /* Grids/Margin */
+  --space-padding-xxs: 8px; /* Grids/Padding XXS */
+  --space-padding-s: 32px; /* Grids/Padding S */
+  --space-padding-l: 64px; /* Grids/Padding L */
+
+  /* Elements */
+  --button-small-height: 36px; /* Element Sizes/Button/Small/Button Small - Height */
+  --button-small-padding: 12px; /* Element Sizes/Button/Small/Button Small - Padding */
+  --button-main-gutter: 12px; /* Element Sizes/Button/Main/Button Main - Gutter */
+  --icon-size-s: 16px; /* Element Sizes/Icons/Icon Small/Size 16px */
+  --radius-infinite: 999px; /* Radiuses/Radius Infinite */
+
+  /* Header (not bound to variables in Figma) */
+  --header-padding-block: 16px;
+  --header-height: 64px;
+  --logo-width: 202.787px; /* SVG viewBox width */
+  --logo-height: 32px;
+
+  /* Layers */
+  --z-header: 100;
+
+  /* Focus */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--color-brand-01);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --space-margin: 24px;
+    --space-padding-xxs: 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --space-margin: 48px;
+  }
+}
+
+/* Desktop: margin 24px is intentional — Laptop gets the larger page margin */
+@media (min-width: 1600px) {
+  :root {
+    --space-margin: 24px;
+  }
+}

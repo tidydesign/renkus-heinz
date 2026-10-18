@@ -1,0 +1,82 @@
+/* Header — Figma: Head (501:192992) */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  padding-block: var(--header-padding-block);
+  padding-inline: var(--space-margin);
+  background-color: var(--color-white);
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__logo-img {
+  width: var(--logo-width);
+  height: var(--logo-height);
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-padding-xxs);
+  margin-inline-start: auto;
+}
+
+@media (min-width: 1200px) {
+  /* Gap between logo and nav (Frame 5); nav is hidden below Laptop (1200) */
+  .header {
+    gap: var(--space-padding-l);
+  }
+
+  .header__nav {
+    display: block;
+  }
+}
+
+/* Nav — text-link-small-neutral */
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-padding-s);
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--button-main-gutter);
+  font-size: var(--font-size-p-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-p-xs);
+  color: var(--color-interactive-neutral);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Icon button — icon-button-small-ghost-neutral */
+
+.icon-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-small-height);
+  height: var(--button-small-height);
+  border-radius: var(--radius-infinite);
+  background-color: var(--color-interactive-neutral-ghost);
+}
+
+.icon-button__icon {
+  width: var(--icon-size-s);
+  height: var(--icon-size-s);
+}

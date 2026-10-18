@@ -16,7 +16,9 @@
 
 ## Responsive
 - Mobile-first, media queries через min-width
-- Брейкпоинты: 768px (tablet), 1440px (desktop) — поправить под фреймы из Figma
+- Диапазоны устройств: Mobile <640px, Tablet 640–1199px, Laptop 1200–1599px, Desktop ≥1600px
+- Брейкпоинты (min-width): 640px, 1200px, 1600px
+- Фреймы Figma (360 / 768 / 1440 / 1920) — визуализация типичного экрана внутри диапазона, а не границы
 - Fluid-размеры (clamp) там, где дизайн это допускает
 
 ## Разметка

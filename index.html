@@ -4,10 +4,60 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>renkuz-heinz</title>
+    <title>Renkus-Heinz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    />
   </head>
   <body>
-    <div id="app"></div>
+    <header class="header">
+      <a class="header__logo" href="/" aria-label="Renkus-Heinz — home">
+        <img
+          class="header__logo-img"
+          src="/src/assets/logo.svg"
+          width="203"
+          height="32"
+          alt=""
+        />
+      </a>
+
+      <nav class="header__nav nav" aria-label="Main">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#">Why Us</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Get Started</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Spaces</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Products</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Technologies</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-button header__search" type="button" aria-label="Search">
+          <img
+            class="icon-button__icon"
+            src="/src/assets/icons/search.svg"
+            width="16"
+            height="16"
+            alt=""
+          />
+        </button>
+        <button class="icon-button header__menu" type="button" aria-label="Menu">
+          <img
+            class="icon-button__icon"
+            src="/src/assets/icons/burger.svg"
+            width="16"
+            height="16"
+            alt=""
+          />
+        </button>
+      </div>
+    </header>
+
+    <main class="main"></main>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
