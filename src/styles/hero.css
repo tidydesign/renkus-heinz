@@ -39,29 +39,7 @@
 }
 
 .hero__title {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-family: var(--font-family-display);
-  font-weight: var(--font-weight-regular);
-  font-variation-settings: "opsz" var(--font-opsz-display);
   color: var(--color-white);
-  text-transform: uppercase;
-  overflow-wrap: break-word;
-}
-
-.hero__title-lead {
-  font-size: var(--font-size-h1-ds);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-h1-ds);
-  letter-spacing: var(--letter-spacing-h1-ds);
-}
-
-.hero__title-main {
-  font-size: var(--font-size-h1-db);
-  font-weight: var(--font-weight-black);
-  line-height: var(--line-height-h1-db);
-  letter-spacing: var(--letter-spacing-h1-db);
 }
 
 .hero__text {

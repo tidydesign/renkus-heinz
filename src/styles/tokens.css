@@ -13,6 +13,8 @@
   --color-neutral-default: #0d122e; /* Fixed Colors/neutral-default */
   --color-on-background: #fff; /* Content Colors/on-background */
   --color-content-default: #181d39; /* Content Colors/default */
+  --color-content-medium: #5f6480; /* Content Colors/medium */
+  --color-grey-light: #fafafc; /* Background Colors/Static/Main/grey-light */
   --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
   --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
 
@@ -27,6 +29,10 @@
   /* Typography — paragraphs */
   --font-size-p-xs: 0.625rem; /* Typography/Paragraph/P XS — 10px */
   --line-height-p-xs: 0.75rem; /* Typography/Paragraph/P XS LH — 12px */
+  --font-size-p-s: 0.75rem; /* Typography/Paragraph/P S — 12px */
+  --line-height-p-s: 1rem; /* Typography/Paragraph/P S LH — 16px */
+  --font-size-p-m: 0.875rem; /* Typography/Paragraph/P M — 14px */
+  --line-height-p-m: 1.25rem; /* Typography/Paragraph/P M LH — 20px */
   --font-size-p-l: 1rem; /* Typography/Paragraph/P L — 16px */
   --line-height-p-l: 1.5rem; /* Typography/Paragraph/P L LH — 24px */
 
@@ -40,6 +46,9 @@
   --font-size-h2: 1.5rem; /* Typography/Titles/H2 — 24px */
   --line-height-h2: 1.75rem; /* Typography/Titles/H2 LH — 28px */
   --letter-spacing-h2: -0.02em; /* Titles/H2: -2% */
+  --font-size-h4: 1rem; /* Typography/Titles/H4 — 16px */
+  --line-height-h4: 1.25rem; /* Typography/Titles/H4 LH — 20px */
+  --letter-spacing-h4: -0.01em; /* Titles/H4: -1% */
 
   /* Grid */
   --grid-columns: 4;
@@ -51,6 +60,8 @@
   --space-padding-s: 32px; /* Grids/Padding S */
   --space-padding-l: 64px; /* Grids/Padding L */
   --space-padding-xl: 48px; /* Grids/Padding XL */
+  --space-padding-xxl: 64px; /* Grids/Padding XXL */
+  --space-element-padding-xxs: 4px; /* Element Sizes/Basic/Paddings/padding-xxs */
   --space-element-padding-s: 12px; /* Element Sizes/Basic/Paddings/padding-s */
   --space-element-padding-l: 16px; /* Element Sizes/Basic/Paddings/padding-l */
 
@@ -59,6 +70,8 @@
   --button-small-padding: 12px; /* Element Sizes/Button/Small/Button Small - Padding */
   --button-main-gutter: 12px; /* Element Sizes/Button/Main/Button Main - Gutter */
   --icon-size-s: 16px; /* Element Sizes/Icons/Icon Small/Size 16px */
+  --radius-xxs: 2px; /* Radiuses/Radius XXS */
+  --radius-xs: 4px; /* Radiuses/Radius XS */
   --radius-infinite: 999px; /* Radiuses/Radius Infinite */
 
   /* Header — Head instance uses its own Grids/Margin mode (24 on Mobile) */
@@ -75,6 +88,10 @@
   --who-photo-width: 640px;
   --who-photo-height: 480px;
   --who-gallery-gap: 24px;
+
+  /* Team — staggered grid: each row is one screen tall, gap fixed in Figma */
+  --team-gap: 10px;
+  --team-row-height: 100svh;
 
   /* Layers */
   --z-header: 100;
@@ -94,11 +111,14 @@
     --line-height-h1-db: 3.5rem; /* 56px */
     --font-size-h2: 2.5rem; /* 40px */
     --line-height-h2: 3rem; /* 48px */
+    --font-size-h4: 1.25rem; /* 20px */
+    --line-height-h4: 1.5rem; /* 24px */
 
     --grid-columns: 8;
     --space-margin: 24px;
     --space-gutter: 16px;
     --space-padding-xl: 64px;
+    --space-padding-xxl: 96px;
   }
 }
 
@@ -111,11 +131,14 @@
     --line-height-h1-db: 6rem; /* 96px */
     --font-size-h2: 3rem; /* 48px */
     --line-height-h2: 3.5rem; /* 56px */
+    --font-size-h4: 1.5rem; /* 24px */
+    --line-height-h4: 1.75rem; /* 28px */
 
     --grid-columns: 12;
     --space-margin: 48px;
     --space-gutter: 24px;
     --space-padding-xl: 128px;
+    --space-padding-xxl: 160px;
     --space-element-padding-l: 24px;
 
     --header-padding-inline: 48px;

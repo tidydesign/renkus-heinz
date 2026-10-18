@@ -1,5 +1,8 @@
 import './styles/tokens.css'
 import './styles/base.css'
+import './styles/display-title.css'
 import './styles/header.css'
 import './styles/hero.css'
 import './styles/who.css'
+import './styles/people.css'
+import './styles/team.css'

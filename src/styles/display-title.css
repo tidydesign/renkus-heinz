@@ -1,0 +1,28 @@
+/* Display title — two-line uppercase title: H1 Display Small + H1 Display Big.
+   Used in Hero and "The people behind the sound". */
+
+.display-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: "opsz" var(--font-opsz-display);
+  text-align: center;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.display-title__lead {
+  font-size: var(--font-size-h1-ds);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-h1-ds);
+  letter-spacing: var(--letter-spacing-h1-ds);
+}
+
+.display-title__main {
+  font-size: var(--font-size-h1-db);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-h1-db);
+  letter-spacing: var(--letter-spacing-h1-db);
+}
