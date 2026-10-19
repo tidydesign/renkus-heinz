@@ -5,11 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Renkus-Heinz</title>
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,1000&family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..1000&family=Inter:wght@400;600&display=swap"
     />
   </head>
   <body>
@@ -134,103 +137,106 @@
         </ul>
       </section>
 
-      <section class="people" aria-labelledby="people-title">
-        <h2 class="people__title display-title" id="people-title">
-          <span class="display-title__lead">The people </span>
-          <span class="display-title__main">behind the sound</span>
-        </h2>
-      </section>
+      <!-- People title stays pinned (sticky) while the Team cards scroll over it -->
+      <div class="people-team">
+        <section class="people" aria-labelledby="people-title">
+          <h2 class="people__title display-title" id="people-title">
+            <span class="display-title__lead">The people </span>
+            <span class="display-title__main">behind the sound</span>
+          </h2>
+        </section>
 
-      <section class="team" aria-label="Leadership team">
-        <article class="team__member team__member--harro member">
-          <div class="member__photo">
-            <img
-              class="member__photo-img"
-              src="/src/assets/team/harro-heinz.jpg"
-              width="716"
-              height="960"
-              alt="Portrait of Harro Heinz"
-              loading="lazy"
-            />
-          </div>
-          <div class="member__body">
-            <div class="member__heading">
-              <h3 class="member__name">Harro Heinz</h3>
-              <p class="member__role">Founder &amp; Chairman</p>
+        <section class="team" aria-label="Leadership team">
+          <article class="team__member team__member--harro member">
+            <div class="member__photo">
+              <img
+                class="member__photo-img"
+                src="/src/assets/team/harro-heinz.jpg"
+                width="716"
+                height="960"
+                alt="Portrait of Harro Heinz"
+                loading="lazy"
+              />
             </div>
-            <p class="member__bio">
-              Co-founded Renkus-Heinz in 1979 and still helps guide the company that carries
-              his name.
-            </p>
-          </div>
-        </article>
+            <div class="member__body">
+              <div class="member__heading">
+                <h3 class="member__name">Harro Heinz</h3>
+                <p class="member__role">Founder &amp; Chairman</p>
+              </div>
+              <p class="member__bio">
+                Co-founded Renkus-Heinz in 1979 and still helps guide the company that carries
+                his name.
+              </p>
+            </div>
+          </article>
 
-        <article class="team__member team__member--ralph member">
-          <div class="member__photo">
-            <img
-              class="member__photo-img member__photo-img--bottom"
-              src="/src/assets/team/ralph-heinz.jpg"
-              width="717"
-              height="960"
-              alt="Portrait of Ralph Heinz"
-              loading="lazy"
-            />
-          </div>
-          <div class="member__body">
-            <div class="member__heading">
-              <h3 class="member__name">Ralph Heinz</h3>
-              <p class="member__role">Chief Technology Officer</p>
+          <article class="team__member team__member--ralph member">
+            <div class="member__photo">
+              <img
+                class="member__photo-img member__photo-img--bottom"
+                src="/src/assets/team/ralph-heinz.jpg"
+                width="717"
+                height="960"
+                alt="Portrait of Ralph Heinz"
+                loading="lazy"
+              />
             </div>
-            <p class="member__bio">
-              Principal loudspeaker designer since the early nineties, and the engineer behind
-              several of the company's core technologies.
-            </p>
-          </div>
-        </article>
+            <div class="member__body">
+              <div class="member__heading">
+                <h3 class="member__name">Ralph Heinz</h3>
+                <p class="member__role">Chief Technology Officer</p>
+              </div>
+              <p class="member__bio">
+                Principal loudspeaker designer since the early nineties, and the engineer behind
+                several of the company's core technologies.
+              </p>
+            </div>
+          </article>
 
-        <article class="team__member team__member--jonathan member">
-          <div class="member__photo">
-            <img
-              class="member__photo-img"
-              src="/src/assets/team/jonathan-phillips.jpg"
-              width="716"
-              height="960"
-              alt="Portrait of Jonathan Phillips"
-              loading="lazy"
-            />
-          </div>
-          <div class="member__body">
-            <div class="member__heading">
-              <h3 class="member__name">Jonathan Phillips</h3>
-              <p class="member__role">Chief Revenue Officer</p>
+          <article class="team__member team__member--jonathan member">
+            <div class="member__photo">
+              <img
+                class="member__photo-img"
+                src="/src/assets/team/jonathan-phillips.jpg"
+                width="716"
+                height="960"
+                alt="Portrait of Jonathan Phillips"
+                loading="lazy"
+              />
             </div>
-            <p class="member__bio">
-              Leads global growth and partnerships, guiding the company's next commercial
-              chapter.
-            </p>
-          </div>
-        </article>
+            <div class="member__body">
+              <div class="member__heading">
+                <h3 class="member__name">Jonathan Phillips</h3>
+                <p class="member__role">Chief Revenue Officer</p>
+              </div>
+              <p class="member__bio">
+                Leads global growth and partnerships, guiding the company's next commercial
+                chapter.
+              </p>
+            </div>
+          </article>
 
-        <article class="team__member team__member--monika member">
-          <div class="member__photo">
-            <img
-              class="member__photo-img"
-              src="/src/assets/team/monika-smetona.jpg"
-              width="716"
-              height="960"
-              alt="Portrait of Monika Smetona"
-              loading="lazy"
-            />
-          </div>
-          <div class="member__body">
-            <div class="member__heading">
-              <h3 class="member__name">Monika Smetona</h3>
-              <p class="member__role">President</p>
+          <article class="team__member team__member--monika member">
+            <div class="member__photo">
+              <img
+                class="member__photo-img"
+                src="/src/assets/team/monika-smetona.jpg"
+                width="716"
+                height="960"
+                alt="Portrait of Monika Smetona"
+                loading="lazy"
+              />
             </div>
-            <p class="member__bio">With Renkus-Heinz since 1999, she leads the company today.</p>
-          </div>
-        </article>
-      </section>
+            <div class="member__body">
+              <div class="member__heading">
+                <h3 class="member__name">Monika Smetona</h3>
+                <p class="member__role">President</p>
+              </div>
+              <p class="member__bio">With Renkus-Heinz since 1999, she leads the company today.</p>
+            </div>
+          </article>
+        </section>
+      </div>
     </main>
 
     <script type="module" src="/src/main.js"></script>

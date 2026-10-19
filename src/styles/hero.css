@@ -52,6 +52,16 @@
   text-wrap: pretty;
 }
 
+/* Intro animation: hidden until JS plays it (see src/animations/hero.js) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero__photo,
+  .js .hero__title .display-title__lead,
+  .js .hero__title .display-title__main,
+  .js .hero__text {
+    opacity: 0;
+  }
+}
+
 /* Desktop: content spans columns 3–14 of 16 */
 @media (min-width: 1600px) {
   .hero__content {

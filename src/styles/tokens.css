@@ -15,6 +15,7 @@
   --color-content-default: #181d39; /* Content Colors/default */
   --color-content-medium: #5f6480; /* Content Colors/medium */
   --color-grey-light: #fafafc; /* Background Colors/Static/Main/grey-light */
+  --color-text-reveal-base: #d7dbe0; /* Scroll text reveal: unfilled text (not in Figma) */
   --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
   --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
 

@@ -1,6 +1,14 @@
 /* The people behind the sound — Figma: 501:193018 Desktop, 527:212140 Laptop, 527:212755 Tablet, 527:213178 Mobile */
 
+/* People + Team: the People title stays pinned while the Team cards scroll over it */
+.people-team {
+  position: relative;
+}
+
 .people {
+  position: sticky;
+  /* Section is one screen minus the header tall; this offset keeps the title at the viewport centre */
+  top: calc(var(--header-height) / 2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,4 +19,9 @@
 
 .people__title {
   color: var(--color-content-default);
+}
+
+.people-team .team {
+  position: relative;
+  z-index: 1;
 }

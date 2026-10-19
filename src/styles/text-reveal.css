@@ -1,0 +1,23 @@
+/* Scroll text reveal — classes are added by src/animations/text-reveal.js */
+
+.text-reveal {
+  color: var(--color-text-reveal-base);
+}
+
+.text-reveal__line {
+  position: relative;
+  width: fit-content;
+}
+
+.text-reveal__fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--text-reveal-fill);
+  pointer-events: none;
+}
+
+.text-reveal__fill-inner {
+  display: block;
+  white-space: nowrap;
+}

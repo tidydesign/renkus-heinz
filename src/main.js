@@ -6,3 +6,14 @@ import './styles/hero.css'
 import './styles/who.css'
 import './styles/people.css'
 import './styles/team.css'
+import './styles/text-reveal.css'
+
+import { initHeader } from './animations/header.js'
+import { initHeroIntro } from './animations/hero.js'
+import { initPeopleTitle } from './animations/people.js'
+import { initTextReveal } from './animations/text-reveal.js'
+
+initHeader()
+initHeroIntro()
+initTextReveal(document.querySelector('.who__content'), '.who__title, .who__text')
+initPeopleTitle()
