@@ -7,10 +7,6 @@ gsap.registerPlugin(CustomEase)
 
 // Default easing: cubic-bezier(.16, 1, .3, 1)
 export const EASE_OUT = CustomEase.create('ease-out-expo', '0.16, 1, 0.3, 1')
-// Softer ease-out (easeOutCubic) for long moves that must stay visible to the end
-export const EASE_OUT_SOFT = CustomEase.create('ease-out-cubic', '0.33, 1, 0.68, 1')
-// CSS keyword equivalent: ease-in-out
-export const EASE_IN_OUT = CustomEase.create('ease-in-out', '0.42, 0, 0.58, 1')
 
 export const DURATION = {
   fast: 0.4,
@@ -30,22 +26,23 @@ export const HEADER = {
 export const HERO_INTRO = {
   photo: {
     fromScale: 1.2,
-    duration: DURATION.slow,
-    ease: EASE_IN_OUT,
+    duration: 1,
+    ease: CustomEase.create('hero-photo', '0.26, 1, 0.48, 1'),
   },
-  // Text block scales as a whole (so the gaps between lines scale too),
-  // while the lines fade in one after another
+  // Three text layers start together. Each scales around the centre of the text block,
+  // so the gaps between the layers scale too
   text: {
-    fromScale: 1.5,
-    // Fade-in of each line
-    duration: 0.6,
-    // Delay between lines
-    stagger: 0.2,
-    ease: EASE_OUT,
-    // Block scale runs through all lines, so it uses a softer curve
-    scaleEase: EASE_OUT_SOFT,
+    fromScale: 2,
+    scaleEase: CustomEase.create('hero-text-scale', '0.84, 0, 0.16, 1'),
+    opacityEase: CustomEase.create('hero-text-opacity', '0.76, 0, 0.64, 1'),
+    // Duration (s) per layer
+    durations: {
+      lead: 0.66,
+      main: 0.83,
+      text: 1,
+    },
     // Delay after the photo starts
-    delay: 0.15,
+    delay: 0.02,
   },
   // Max wait (s) for the photo and fonts before the intro starts anyway
   maxWait: 2,
