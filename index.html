@@ -61,25 +61,29 @@
 
     <main class="main">
       <section class="hero" aria-labelledby="hero-title">
-        <picture class="hero__media parallax">
-          <source
-            media="(min-width: 1200px)"
-            srcset="/src/assets/backgrounds/hero-desktop-1920.jpg 1920w, /src/assets/backgrounds/hero-desktop-2880.jpg 2880w"
-            sizes="100vw"
-            width="1920"
-            height="1440"
-          />
-          <img
-            class="parallax__img hero__photo"
-            src="/src/assets/backgrounds/hero-mobile-960.jpg"
-            srcset="/src/assets/backgrounds/hero-mobile-960.jpg 960w, /src/assets/backgrounds/hero-mobile-1440.jpg 1440w"
-            sizes="100vw"
-            width="960"
-            height="1280"
-            alt=""
-            fetchpriority="high"
-          />
-        </picture>
+        <div class="hero__media parallax">
+          <picture class="parallax__picture">
+            <source
+              media="(min-width: 1200px)"
+              srcset="/src/assets/backgrounds/hero-desktop-1920.jpg 1920w, /src/assets/backgrounds/hero-desktop-2880.jpg 2880w"
+              sizes="100vw"
+              width="1920"
+              height="1440"
+            />
+            <img
+              class="parallax__img hero__photo"
+              src="/src/assets/backgrounds/hero-mobile-960.jpg"
+              srcset="/src/assets/backgrounds/hero-mobile-960.jpg 960w, /src/assets/backgrounds/hero-mobile-1440.jpg 1440w"
+              sizes="100vw"
+              width="960"
+              height="1280"
+              alt=""
+              fetchpriority="high"
+            />
+          </picture>
+          <!-- Water ripple on load (src/animations/ripple.js) -->
+          <canvas class="hero__ripple" aria-hidden="true"></canvas>
+        </div>
         <div class="hero__inner">
           <div class="hero__content">
             <h1 class="hero__title display-title" id="hero-title">

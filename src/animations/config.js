@@ -48,6 +48,28 @@ export const HERO_INTRO = {
   maxWait: 2,
 }
 
+// Hero water ripple (WebGL): a few rings spread from the photo centre once, after the intro starts.
+// Distances are in units of the shorter side of the photo layer, so it looks the same on any screen.
+export const RIPPLE = {
+  // Delay (s) after the intro starts
+  delay: 0.4,
+  rings: 1,
+  // Time (s) between rings
+  ringInterval: 0.2,
+  // Lifetime (s) of each ring
+  ringLife: 1.15,
+  // Ring growth per second
+  speed: 1.1,
+  // Max displacement of the photo
+  amplitude: 0.007,
+  // Ring thickness: each ring is a single crest and trough
+  width: 0.06,
+  // Light and dark banding along the waves (0 = none)
+  shading: 0.35,
+  // Canvas resolution cap
+  maxPixelRatio: 2,
+}
+
 // Pinned title screens ("What we stand for", "The people behind the sound"): once the title
 // reaches the viewport centre, the second line grows from the first line's size and weight to its own
 export const TITLE_GROW = {

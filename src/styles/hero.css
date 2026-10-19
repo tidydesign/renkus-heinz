@@ -10,6 +10,16 @@
   background-color: var(--color-black);
 }
 
+/* Water ripple canvas: covers the photo only while the ripple plays */
+.hero__ripple {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 .hero__inner {
   position: relative;
   display: grid;
@@ -45,7 +55,7 @@
 
 /* Intro animation: hidden until JS plays it (see src/animations/hero.js) */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero__photo,
+  .js .hero__media,
   .js .hero__title .display-title__lead,
   .js .hero__title .display-title__main,
   .js .hero__text {

@@ -8,6 +8,11 @@
   display: block;
 }
 
+/* Optional <picture> inside a layer: lets the image size against the layer itself */
+.parallax__picture {
+  display: contents;
+}
+
 .parallax__img {
   width: 100%;
   height: 100%;
