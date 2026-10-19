@@ -209,26 +209,30 @@
         </section>
       </div>
 
-      <section class="mission" aria-label="Our mission">
-        <picture class="mission__media parallax">
-          <source
-            media="(min-width: 1200px)"
-            srcset="/src/assets/backgrounds/mission-desktop-1920.jpg 1920w, /src/assets/backgrounds/mission-desktop-2880.jpg 2880w"
-            sizes="100vw"
-            width="1920"
-            height="1440"
-          />
-          <img
-            class="parallax__img"
-            src="/src/assets/backgrounds/mission-mobile-960.jpg"
-            srcset="/src/assets/backgrounds/mission-mobile-960.jpg 960w, /src/assets/backgrounds/mission-mobile-1440.jpg 1440w"
-            sizes="100vw"
-            width="960"
-            height="1280"
-            alt=""
-            loading="lazy"
-          />
-        </picture>
+      <section class="mission" aria-label="Our mission" data-expand>
+        <div class="expand-mask">
+          <div class="expand-mask__inner">
+            <picture class="mission__media parallax">
+              <source
+                media="(min-width: 1200px)"
+                srcset="/src/assets/backgrounds/mission-desktop-1920.jpg 1920w, /src/assets/backgrounds/mission-desktop-2880.jpg 2880w"
+                sizes="100vw"
+                width="1920"
+                height="1440"
+              />
+              <img
+                class="parallax__img"
+                src="/src/assets/backgrounds/mission-mobile-960.jpg"
+                srcset="/src/assets/backgrounds/mission-mobile-960.jpg 960w, /src/assets/backgrounds/mission-mobile-1440.jpg 1440w"
+                sizes="100vw"
+                width="960"
+                height="1280"
+                alt=""
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
         <p class="mission__text">
           To raise the benchmark for audio performance and build the best loudspeakers we can —
           and to keep leading with the technology, and the support, to match.
@@ -336,27 +340,31 @@
         </section>
       </div>
 
-      <section class="identity" aria-labelledby="identity-title">
-        <picture class="identity__media parallax">
-          <source
-            media="(min-width: 1200px)"
-            srcset="/src/assets/backgrounds/sustainability-desktop-1920.jpg 1920w, /src/assets/backgrounds/sustainability-desktop-2880.jpg 2880w"
-            sizes="100vw"
-            width="1920"
-            height="1440"
-          />
-          <img
-            class="parallax__img"
-            src="/src/assets/backgrounds/sustainability-mobile-960.jpg"
-            srcset="/src/assets/backgrounds/sustainability-mobile-960.jpg 960w, /src/assets/backgrounds/sustainability-mobile-1440.jpg 1440w"
-            sizes="100vw"
-            width="960"
-            height="1280"
-            alt="Two technicians assembling a loudspeaker in the Renkus-Heinz workshop"
-            loading="lazy"
-          />
-        </picture>
-        <div class="identity__card">
+      <section class="identity" aria-labelledby="identity-title" data-expand>
+        <div class="expand-mask">
+          <div class="expand-mask__inner">
+            <picture class="identity__media parallax">
+              <source
+                media="(min-width: 1200px)"
+                srcset="/src/assets/backgrounds/sustainability-desktop-1920.jpg 1920w, /src/assets/backgrounds/sustainability-desktop-2880.jpg 2880w"
+                sizes="100vw"
+                width="1920"
+                height="1440"
+              />
+              <img
+                class="parallax__img"
+                src="/src/assets/backgrounds/sustainability-mobile-960.jpg"
+                srcset="/src/assets/backgrounds/sustainability-mobile-960.jpg 960w, /src/assets/backgrounds/sustainability-mobile-1440.jpg 1440w"
+                sizes="100vw"
+                width="960"
+                height="1280"
+                alt="Two technicians assembling a loudspeaker in the Renkus-Heinz workshop"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+        </div>
+        <div class="identity__card" data-expand-shift>
           <div class="identity__body">
             <h2 class="identity__title" id="identity-title">A California Identity</h2>
             <p class="identity__text">

@@ -58,6 +58,15 @@ export const TITLE_GROW = {
   ease: EASE_OUT,
 }
 
+// Mission and A California Identity (Laptop and up): the photo mask expands from 12 columns
+// to the full width once the section is centred — same timing and curve as the title grow
+export const SECTION_EXPAND = {
+  columns: 12,
+  duration: TITLE_GROW.duration,
+  ease: TITLE_GROW.ease,
+  media: '(min-width: 1200px)',
+}
+
 // Parallax backgrounds (Hero, A California Identity, Mission). The travel distance comes from
 // the CSS token --parallax-offset (the extra photo height above and below the section).
 export const PARALLAX = {

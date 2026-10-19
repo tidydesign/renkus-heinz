@@ -7,7 +7,7 @@
   min-height: calc(100svh - var(--header-height));
   overflow: hidden;
   color: var(--color-on-background);
-  background-color: var(--color-neutral-default);
+  background-color: var(--color-black);
 }
 
 .hero__inner {

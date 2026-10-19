@@ -9,7 +9,7 @@
   min-height: calc(100svh - var(--header-height));
   padding: var(--space-gutter) var(--space-margin);
   overflow: hidden;
-  background-color: var(--color-neutral-default);
+  /* Dark background lives on .expand-mask, so the page shows beside it while it is narrow */
 }
 
 .identity__card {

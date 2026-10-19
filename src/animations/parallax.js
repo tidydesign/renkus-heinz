@@ -22,7 +22,7 @@ const cssLength = (el, name) => parseFloat(getComputedStyle(el).getPropertyValue
 
 function initBackgrounds() {
   document.querySelectorAll('.parallax').forEach((layer) => {
-    const section = layer.parentElement
+    const section = layer.closest('section') || layer.parentElement
     // "20%" → 0.2 of the section height
     const offset = () => (cssLength(layer, '--parallax-offset') / 100) * section.offsetHeight
 

@@ -1,0 +1,15 @@
+/* Expand mask — the dark photo area of a section. From Laptop up it starts 12 columns wide
+   and expands to the full width (src/animations/expand.js). The inner layer is counter-scaled,
+   so the photo is revealed, not stretched. Used in Mission and A California Identity. */
+
+.expand-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--color-black);
+}
+
+.expand-mask__inner {
+  position: absolute;
+  inset: 0;
+}
