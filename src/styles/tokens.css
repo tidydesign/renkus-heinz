@@ -139,6 +139,8 @@
 
   /* Parallax backgrounds: extra photo height above and below the section */
   --parallax-offset: 20%;
+  /* Element parallax (cards, text): travel for speed 1, from +amplitude to -amplitude */
+  --parallax-amplitude: 32px;
 
   /* Layers */
   --z-header: 100;
@@ -176,6 +178,8 @@
     --footer-row-gap: 96px;
 
     --who-photo-height: 320px;
+
+    --parallax-amplitude: 48px;
   }
 }
 
@@ -208,6 +212,8 @@
     --footer-row-gap: 128px;
 
     --who-photo-height: 420px;
+
+    --parallax-amplitude: 80px;
 
     /* Laptop frame uses a 48px column gap in this section (not Grids/Gutter) */
     --identity-column-gap: 48px;
