@@ -139,8 +139,9 @@
 
   /* Parallax backgrounds: extra photo height above and below the section */
   --parallax-offset: 20%;
-  /* Element parallax (cards, text): travel for speed 1, from +amplitude to -amplitude */
-  --parallax-amplitude: 32px;
+  /* Element parallax (cards, text): share of the scroll distance an element with speed 1
+     travels against the page while it passes through the viewport */
+  --parallax-strength: 0.24;
 
   /* Layers */
   --z-header: 100;
@@ -179,7 +180,7 @@
 
     --who-photo-height: 320px;
 
-    --parallax-amplitude: 48px;
+    --parallax-strength: 0.42;
   }
 }
 
@@ -213,7 +214,7 @@
 
     --who-photo-height: 420px;
 
-    --parallax-amplitude: 80px;
+    --parallax-strength: 0.66;
 
     /* Laptop frame uses a 48px column gap in this section (not Grids/Gutter) */
     --identity-column-gap: 48px;

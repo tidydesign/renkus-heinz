@@ -6,10 +6,11 @@
 //    and below (see parallax.css), so its edges never show.
 //
 // 2. Elements ([data-parallax-speed]): cards and text drift against the page while they pass
-//    through the viewport. Travel = speed × --parallax-amplitude. Different speeds on neighbouring
-//    cards make them move slightly relative to each other.
-//    data-parallax-mode="lift" starts from 0 and only moves up (by twice the travel) — used where
-//    another scroll animation measures the element's position, so the measurement is not shifted.
+//    through the viewport. Total travel = speed × --parallax-strength × scroll distance of the
+//    pass (viewport height + element height), so the effect reads the same on any screen.
+//    Different speeds on neighbouring cards make them move relative to each other.
+//    An optional --parallax-scale on the element softens or boosts it per breakpoint.
+//    The shift is 0 when the element is centred in the viewport, so centred layouts stay centred.
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -44,27 +45,36 @@ function initBackgrounds() {
 }
 
 function initElements() {
-  document.querySelectorAll('[data-parallax-speed]').forEach((el) => {
-    const speed = parseFloat(el.dataset.parallaxSpeed) || 0
-    const lift = el.dataset.parallaxMode === 'lift'
-    // Amplitude is responsive (CSS token), so it is re-read on every refresh
-    const travel = () => speed * cssLength(el, '--parallax-amplitude')
+  const elements = [...document.querySelectorAll('[data-parallax-speed]')]
+  if (!elements.length) return
 
-    gsap.fromTo(
-      el,
-      { y: () => (lift ? 0 : travel()) },
-      {
-        y: () => (lift ? -2 * travel() : -travel()),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: PARALLAX.scrub,
-          invalidateOnRefresh: true,
-        },
+  // ScrollTrigger measures positions on refresh. Reset the parallax shift first, so every
+  // trigger (this one and others, e.g. the text fill) is measured from the real layout.
+  ScrollTrigger.addEventListener('refreshInit', () => gsap.set(elements, { y: 0 }))
+
+  elements.forEach((el) => {
+    const speed = parseFloat(el.dataset.parallaxSpeed) || 0
+    const setY = gsap.quickSetter(el, 'y', 'px')
+    let travel = 0
+
+    // Shift is 0 when the element is centred in the viewport: below its place before, above after
+    const render = (self) => setY(travel * (0.5 - self.progress))
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top bottom',
+      end: 'bottom top',
+      onRefresh: (self) => {
+        // Strength is responsive (CSS token) and sizes change, so travel is re-read here
+        travel =
+          speed *
+          cssLength(el, '--parallax-strength') *
+          (cssLength(el, '--parallax-scale') || 1) *
+          (window.innerHeight + el.offsetHeight)
+        render(self)
       },
-    )
+      onUpdate: render,
+    })
   })
 }
 

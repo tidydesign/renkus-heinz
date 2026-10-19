@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-element-padding-l);
+  /* Mobile: cards are stacked in one column with a small gap, so their parallax is softened
+     to keep a faster card from catching up with the one above it */
+  --parallax-scale: 0.4;
 }
 
 .value-card__photo {
@@ -51,6 +54,10 @@
 /* Tablet and up: two cards stacked on the left, the third one on the right,
    vertically centred against the left stack */
 @media (min-width: 640px) {
+  .value-card {
+    --parallax-scale: 1;
+  }
+
   .values {
     display: grid;
     grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
