@@ -22,6 +22,14 @@
   --color-interactive-white: #fff; /* Background Colors/Interactive/White/filled-default */
   --color-black-a12: rgb(0 0 0 / 0.12); /* Fixed Colors/black-A12 */
 
+  /* Colors on dark backgrounds (footer) — the dark mode of the same Figma variables */
+  --color-content-default-inverse: #fff; /* Content Colors/default (dark) */
+  --color-content-medium-inverse: #b1b6d2; /* Content Colors/medium (dark) */
+  --color-interactive-primary-inverse: #eef7ff; /* Background Colors/Interactive/Primary/filled-pure-default (dark) */
+  --color-input-background-inverse: rgb(243 244 255 / 0.08); /* Input Colors/Background/Neutral/default (dark) */
+  --color-input-placeholder-inverse: #737894; /* Input Colors/Content/light (dark) */
+  --color-outline-neutral-inverse: #222743; /* Outline Colors/Neutral/filled-light (dark) */
+
   /* Typography — families and weights */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-family-display: "DM Sans", "Inter", system-ui, sans-serif;
@@ -56,6 +64,9 @@
   --font-size-h4: 1rem; /* Typography/Titles/H4 — 16px */
   --line-height-h4: 1.25rem; /* Typography/Titles/H4 LH — 20px */
   --letter-spacing-h4: -0.01em; /* Titles/H4: -1% */
+  --font-size-h5: 0.875rem; /* Typography/Titles/H5 — 14px */
+  --line-height-h5: 1.25rem; /* Typography/Titles/H5 LH — 20px */
+  --letter-spacing-h5: -0.01em; /* Titles/H5: -1% */
 
   /* Grid */
   --grid-columns: 4;
@@ -65,12 +76,15 @@
   /* Spacing */
   --space-padding-xxs: 12px; /* Grids/Padding XXS */
   --space-padding-s: 32px; /* Grids/Padding S */
-  --space-padding-l: 64px; /* Grids/Padding L */
+  --space-padding-l: 40px; /* Grids/Padding L */
   --space-padding-xl: 48px; /* Grids/Padding XL */
   --space-padding-xxl: 64px; /* Grids/Padding XXL */
   --space-element-padding-xxs: 4px; /* Element Sizes/Basic/Paddings/padding-xxs */
+  --space-element-padding-xs: 8px; /* Element Sizes/Basic/Paddings/padding-xs */
   --space-element-padding-s: 12px; /* Element Sizes/Basic/Paddings/padding-s */
+  --space-element-padding-m: 12px; /* Element Sizes/Basic/Paddings/padding-m */
   --space-element-padding-l: 16px; /* Element Sizes/Basic/Paddings/padding-l */
+  --space-element-padding-xxl: 48px; /* Element Sizes/Basic/Paddings/padding-xxl */
 
   /* Elements */
   --button-small-height: 36px; /* Element Sizes/Button/Small/Button Small - Height */
@@ -81,8 +95,13 @@
   --button-main-min-width: 80px; /* Element Sizes/Button/Main/Button Main - Min Width */
   --button-icon-area-size: 32px; /* button-main "Icon Area" (fixed in Figma) */
   --icon-size-s: 16px; /* Element Sizes/Icons/Icon Small/Size 16px */
+  --icon-size-m: 24px; /* icon slot in icon-button-main */
+  --input-height: 44px; /* Field is 48 in Figma but clipped by its 44px container */
+  --input-padding: 12px; /* Element Sizes/Input Field/Input - Padding */
+  --input-gutter: 6px; /* Element Sizes/Input Field/Input - Gutter */
   --radius-xxs: 2px; /* Radiuses/Radius XXS */
   --radius-xs: 4px; /* Radiuses/Radius XS */
+  --radius-s: 6px; /* Radiuses/Radius S */
   --radius-infinite: 999px; /* Radiuses/Radius Infinite */
 
   /* Header — Head instance uses its own Grids/Margin mode (24 on Mobile) */
@@ -110,6 +129,13 @@
   /* Visible part of the tall photo, as cropped in Figma */
   --identity-photo-position: 50% 33%;
 
+  /* Take the next step — Tablet shows a horizontal row of fixed-width cards */
+  --next-step-card-width: 444px;
+
+  /* Footer */
+  --footer-row-gap: 48px;
+  --footer-copyright-width: 450px;
+
   /* Layers */
   --z-header: 100;
 
@@ -132,12 +158,18 @@
     --line-height-h3: 2.25rem; /* 36px */
     --font-size-h4: 1.25rem; /* 20px */
     --line-height-h4: 1.5rem; /* 24px */
+    --font-size-h5: 1rem; /* 16px */
+    --line-height-h5: 1.25rem; /* 20px */
 
     --grid-columns: 8;
     --space-margin: 24px;
     --space-gutter: 16px;
+    --space-padding-l: 48px;
     --space-padding-xl: 64px;
     --space-padding-xxl: 96px;
+    --space-element-padding-m: 16px;
+
+    --footer-row-gap: 96px;
   }
 }
 
@@ -154,15 +186,20 @@
     --line-height-h3: 2.5rem; /* 40px */
     --font-size-h4: 1.5rem; /* 24px */
     --line-height-h4: 1.75rem; /* 28px */
+    --font-size-h5: 1.125rem; /* 18px */
+    --line-height-h5: 1.5rem; /* 24px */
 
     --grid-columns: 12;
     --space-margin: 48px;
     --space-gutter: 24px;
+    --space-padding-l: 64px;
     --space-padding-xl: 128px;
     --space-padding-xxl: 160px;
     --space-element-padding-l: 24px;
 
     --header-padding-inline: 48px;
+
+    --footer-row-gap: 128px;
 
     /* Laptop frame uses a 48px column gap in this section (not Grids/Gutter) */
     --identity-column-gap: 48px;
