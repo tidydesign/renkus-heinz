@@ -1,0 +1,18 @@
+/* Pin stack — a title screen that stays pinned while the next section scrolls over it.
+   Used for "What we stand for" + Cards and "The people behind the sound" + Team. */
+
+.pin-stack {
+  position: relative;
+}
+
+/* Layout comes from .title-screen */
+.pin-stack__title {
+  position: sticky;
+  /* The section is one screen minus the header tall; this offset keeps the title at the viewport centre */
+  top: calc(var(--header-height) / 2);
+}
+
+.pin-stack__content {
+  position: relative;
+  z-index: 1;
+}

@@ -51,9 +51,9 @@ export const HERO_INTRO = {
   maxWait: 2,
 }
 
-// "The people behind the sound": once the title reaches the viewport centre,
-// the second line grows from the first line's size and weight to its own
-export const PEOPLE_TITLE = {
+// Pinned title screens ("What we stand for", "The people behind the sound"): once the title
+// reaches the viewport centre, the second line grows from the first line's size and weight to its own
+export const TITLE_GROW = {
   duration: DURATION.slow,
   ease: EASE_OUT,
 }

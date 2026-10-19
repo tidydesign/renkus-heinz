@@ -7,7 +7,7 @@ import './styles/who.css'
 import './styles/title-screen.css'
 import './styles/values.css'
 import './styles/mission.css'
-import './styles/people.css'
+import './styles/pin-stack.css'
 import './styles/team.css'
 import './styles/button.css'
 import './styles/identity.css'
@@ -17,12 +17,12 @@ import './styles/text-reveal.css'
 
 import { initHeader } from './animations/header.js'
 import { initHeroIntro } from './animations/hero.js'
-import { initPeopleTitle } from './animations/people.js'
+import { initTitleGrow } from './animations/title-grow.js'
 import { initTextReveal } from './animations/text-reveal.js'
 import { initFooterAccordion } from './components/footer-accordion.js'
 
 initHeader()
 initHeroIntro()
 initTextReveal(document.querySelector('.who__content'), '.who__title, .who__text')
-initPeopleTitle()
+initTitleGrow()
 initFooterAccordion()

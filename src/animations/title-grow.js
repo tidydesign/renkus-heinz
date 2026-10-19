@@ -1,6 +1,7 @@
-// "The people behind the sound": the whole title starts at the size and weight of the first
-// line. When the title reaches the viewport centre (the section is sticky there), the second
-// line grows to its full size and weight. Scrolling back up reverses it.
+// Pinned title screens ("What we stand for", "The people behind the sound"): the whole title
+// starts at the size and weight of the first line. When the title reaches the viewport centre
+// (the section is sticky there), the second line grows to its full size and weight.
+// Scrolling back up reverses it.
 //
 // The first line must not move while the second one grows. So the final layout stays as in
 // the static design, the second line scales from its top edge (it only grows downwards), and
@@ -10,17 +11,15 @@
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { PEOPLE_TITLE, REDUCED_MOTION_QUERY } from './config.js'
+import { REDUCED_MOTION_QUERY, TITLE_GROW } from './config.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function initPeopleTitle() {
-  const section = document.querySelector('.people')
-  if (!section || window.matchMedia(REDUCED_MOTION_QUERY).matches) return
-
-  const title = section.querySelector('.people__title')
-  const lead = title.querySelector('.display-title__lead')
-  const main = title.querySelector('.display-title__main')
+function initSection(section) {
+  const title = section.querySelector('.display-title')
+  const lead = title?.querySelector('.display-title__lead')
+  const main = title?.querySelector('.display-title__main')
+  if (!lead || !main) return
 
   // Final weight comes from CSS, read before GSAP sets inline styles
   const finalWeight = getComputedStyle(main).fontWeight
@@ -40,8 +39,8 @@ export function initPeopleTitle() {
     {
       scale: 1,
       fontWeight: finalWeight,
-      duration: PEOPLE_TITLE.duration,
-      ease: PEOPLE_TITLE.ease,
+      duration: TITLE_GROW.duration,
+      ease: TITLE_GROW.ease,
       paused: true,
     },
   )
@@ -55,4 +54,9 @@ export function initPeopleTitle() {
     invalidateOnRefresh: true,
     onRefresh: () => gsap.set(title, { y: centreOffset() }),
   })
+}
+
+export function initTitleGrow() {
+  if (window.matchMedia(REDUCED_MOTION_QUERY).matches) return
+  document.querySelectorAll('.pin-stack__title').forEach(initSection)
 }

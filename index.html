@@ -137,63 +137,66 @@
         </ul>
       </section>
 
-      <section class="stand-for title-screen" aria-labelledby="stand-for-title">
-        <h2 class="title-screen__title display-title" id="stand-for-title">
-          <span class="display-title__lead">What </span>
-          <span class="display-title__main">we stand for</span>
-        </h2>
-      </section>
+      <!-- Title stays pinned (sticky) while the Cards scroll over it -->
+      <div class="pin-stack">
+        <section class="stand-for title-screen pin-stack__title" aria-labelledby="stand-for-title">
+          <h2 class="title-screen__title display-title" id="stand-for-title">
+            <span class="display-title__lead">What </span>
+            <span class="display-title__main">we stand for</span>
+          </h2>
+        </section>
 
-      <section class="values" aria-label="Our values">
-          <article class="values__card values__card--customer value-card">
-            <img
-              class="value-card__photo"
-              src="/src/assets/values/customer-first.jpg"
-              width="960"
-              height="960"
-              alt="Audience watching a performer on a stage lit by laser beams"
-              loading="lazy"
-            />
-            <div class="value-card__body">
-              <h3 class="value-card__title">Customer first</h3>
-              <p class="value-card__text">
-                The most important person in the room is always the audience. We build for the moment someone hears it.
-              </p>
-            </div>
-          </article>
-          <article class="values__card values__card--integrity value-card">
-            <img
-              class="value-card__photo"
-              src="/src/assets/values/integrity.jpg"
-              width="960"
-              height="960"
-              alt="Engineer tuning loudspeakers on a laptop"
-              loading="lazy"
-            />
-            <div class="value-card__body">
-              <h3 class="value-card__title">Integrity &amp; accountability</h3>
-              <p class="value-card__text">
-                What we say we&#39;ll do, we do — and we own the result.
-              </p>
-            </div>
-          </article>
-          <article class="values__card values__card--room value-card">
-            <img
-              class="value-card__photo"
-              src="/src/assets/values/room-next-door.jpg"
-              width="448"
-              height="448"
-              alt="Audio control software and a hardware control panel"
-              loading="lazy"
-            />
-            <div class="value-card__body">
-              <h3 class="value-card__title">The room next door stays quiet</h3>
-              <p class="value-card__text">
-                Sound reaches the people it was meant for and leaves the rest of the building alone — a concourse that stays calm, a neighbouring gallery that stays quiet, a service that never carries into the street.
-              </p>
-            </div>
-          </article>
-      </section>
+        <section class="values pin-stack__content" aria-label="Our values">
+            <article class="values__card values__card--customer value-card">
+              <img
+                class="value-card__photo"
+                src="/src/assets/values/customer-first.jpg"
+                width="960"
+                height="960"
+                alt="Audience watching a performer on a stage lit by laser beams"
+                loading="lazy"
+              />
+              <div class="value-card__body">
+                <h3 class="value-card__title">Customer first</h3>
+                <p class="value-card__text">
+                  The most important person in the room is always the audience. We build for the moment someone hears it.
+                </p>
+              </div>
+            </article>
+            <article class="values__card values__card--integrity value-card">
+              <img
+                class="value-card__photo"
+                src="/src/assets/values/integrity.jpg"
+                width="960"
+                height="960"
+                alt="Engineer tuning loudspeakers on a laptop"
+                loading="lazy"
+              />
+              <div class="value-card__body">
+                <h3 class="value-card__title">Integrity &amp; accountability</h3>
+                <p class="value-card__text">
+                  What we say we&#39;ll do, we do — and we own the result.
+                </p>
+              </div>
+            </article>
+            <article class="values__card values__card--room value-card">
+              <img
+                class="value-card__photo"
+                src="/src/assets/values/room-next-door.jpg"
+                width="448"
+                height="448"
+                alt="Audio control software and a hardware control panel"
+                loading="lazy"
+              />
+              <div class="value-card__body">
+                <h3 class="value-card__title">The room next door stays quiet</h3>
+                <p class="value-card__text">
+                  Sound reaches the people it was meant for and leaves the rest of the building alone — a concourse that stays calm, a neighbouring gallery that stays quiet, a service that never carries into the street.
+                </p>
+              </div>
+            </article>
+        </section>
+      </div>
 
       <section class="mission" aria-label="Our mission">
         <picture class="mission__picture">
@@ -218,16 +221,16 @@
         </p>
       </section>
 
-      <!-- People title stays pinned (sticky) while the Team cards scroll over it -->
-      <div class="people-team">
-        <section class="people title-screen" aria-labelledby="people-title">
+      <!-- Title stays pinned (sticky) while the Team cards scroll over it -->
+      <div class="pin-stack">
+        <section class="people title-screen pin-stack__title" aria-labelledby="people-title">
           <h2 class="people__title title-screen__title display-title" id="people-title">
             <span class="display-title__lead">The people </span>
             <span class="display-title__main">behind the sound</span>
           </h2>
         </section>
 
-        <section class="team" aria-label="Leadership team">
+        <section class="team pin-stack__content" aria-label="Leadership team">
           <article class="team__member team__member--harro member">
             <div class="member__photo">
               <img
