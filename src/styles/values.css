@@ -1,0 +1,91 @@
+/* Cards (values) — Figma: 518:193464 Desktop, 527:212117 Laptop, 527:212732 Tablet, 527:213155 Mobile */
+
+/* Mobile: cards stacked */
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-padding-xxl);
+  padding: var(--space-padding-xxl) var(--space-margin);
+}
+
+/* Value card */
+
+.value-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-element-padding-l);
+}
+
+.value-card__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--color-neutral-default);
+}
+
+.value-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-element-padding-s);
+  overflow-wrap: break-word;
+}
+
+.value-card__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: "opsz" var(--font-opsz-display);
+  line-height: var(--line-height-h4);
+  letter-spacing: var(--letter-spacing-h4);
+  color: var(--color-content-default);
+}
+
+.value-card__text {
+  font-size: var(--font-size-p-l);
+  line-height: var(--line-height-p-l);
+  color: var(--color-content-medium);
+  text-wrap: pretty;
+}
+
+/* Tablet and up: two cards stacked on the left, the third one on the right,
+   vertically centred against the left stack */
+@media (min-width: 640px) {
+  .values {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+    column-gap: var(--values-gap);
+    row-gap: var(--values-stack-gap);
+    align-items: start;
+  }
+
+  .values__card--customer {
+    grid-area: 1 / 1 / auto / span 4;
+  }
+
+  .values__card--room {
+    grid-area: 2 / 1 / auto / span 4;
+  }
+
+  .values__card--integrity {
+    grid-area: 1 / 5 / span 2 / span 4;
+    align-self: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .values__card--integrity {
+    grid-column: 9 / span 4;
+  }
+}
+
+@media (min-width: 1600px) {
+  .values__card--customer,
+  .values__card--room {
+    grid-column: 3 / span 4;
+  }
+
+  .values__card--integrity {
+    grid-column: 11 / span 4;
+  }
+}

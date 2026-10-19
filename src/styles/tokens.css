@@ -129,6 +129,10 @@
   /* Visible part of the tall photo, as cropped in Figma */
   --identity-photo-position: 50% 33%;
 
+  /* Cards (values) — fixed in Figma: column gap and the gap between the two stacked cards */
+  --values-gap: 10px;
+  --values-stack-gap: 420px;
+
   /* Take the next step — Tablet shows a horizontal row of fixed-width cards */
   --next-step-card-width: 444px;
 
