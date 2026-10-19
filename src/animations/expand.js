@@ -1,5 +1,5 @@
 // Mission and A California Identity, Laptop and up: the photo mask starts as wide as 12 columns
-// of the page grid and expands to the full width once the section reaches the viewport centre.
+// of the page grid and expands to the full width once 75% of the section is on screen.
 // Scrolling back up reverses it. Same timing and curve as the title grow.
 //
 // Transforms only: the mask is scaled horizontally and its inner layer gets the inverse scale on
@@ -55,7 +55,7 @@ function initSection(section) {
 
   ScrollTrigger.create({
     trigger: section,
-    start: 'center center',
+    start: SECTION_EXPAND.start,
     animation: expand,
     toggleActions: 'play none none reverse',
     invalidateOnRefresh: true,

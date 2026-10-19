@@ -1,4 +1,5 @@
-// Footer link groups: an accordion on Mobile, always-expanded columns from Tablet up.
+// Footer link groups: an accordion on Mobile (all groups collapsed by default),
+// always-expanded columns from Tablet up.
 // Markup ships every group open, so without JS all links stay reachable.
 
 const TABLET_UP = '(min-width: 640px)'
@@ -10,9 +11,8 @@ export function initFooterAccordion() {
   const tabletUp = window.matchMedia(TABLET_UP)
 
   const sync = () => {
-    groups.forEach((group, index) => {
-      // Mobile: only the first group starts expanded, as in the design
-      group.open = tabletUp.matches || index === 0
+    groups.forEach((group) => {
+      group.open = tabletUp.matches
       const summary = group.querySelector('summary')
       if (tabletUp.matches) summary.setAttribute('tabindex', '-1')
       else summary.removeAttribute('tabindex')

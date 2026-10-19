@@ -59,9 +59,11 @@ export const TITLE_GROW = {
 }
 
 // Mission and A California Identity (Laptop and up): the photo mask expands from 12 columns
-// to the full width once the section is centred — same timing and curve as the title grow
+// to the full width once 75% of the section is on screen — same timing and curve as the title grow
 export const SECTION_EXPAND = {
   columns: 12,
+  // ScrollTrigger start: the point 75% down the section reaches the viewport bottom
+  start: '75% bottom',
   duration: TITLE_GROW.duration,
   ease: TITLE_GROW.ease,
   media: '(min-width: 1200px)',

@@ -62,10 +62,10 @@
   --font-size-h3: 1.25rem; /* Typography/Titles/H3 — 20px */
   --line-height-h3: 1.5rem; /* Typography/Titles/H3 LH — 24px */
   --letter-spacing-h3: -0.02em; /* Titles/H3: -2% */
-  --font-size-h4: 1rem; /* Typography/Titles/H4 — 16px */
-  --line-height-h4: 1.25rem; /* Typography/Titles/H4 LH — 20px */
+  --font-size-h4: 1.25rem; /* Typography/Titles/H4 — 20px */
+  --line-height-h4: 1.5rem; /* Typography/Titles/H4 LH — 24px */
   --letter-spacing-h4: -0.01em; /* Titles/H4: -1% */
-  --font-size-h5: 0.875rem; /* Typography/Titles/H5 — 14px */
+  --font-size-h5: 1rem; /* Typography/Titles/H5 — 16px */
   --line-height-h5: 1.25rem; /* Typography/Titles/H5 LH — 20px */
   --letter-spacing-h5: -0.01em; /* Titles/H5: -1% */
 
@@ -82,7 +82,7 @@
   --space-padding-xxl: 64px; /* Grids/Padding XXL */
   --space-element-padding-xxs: 4px; /* Element Sizes/Basic/Paddings/padding-xxs */
   --space-element-padding-xs: 8px; /* Element Sizes/Basic/Paddings/padding-xs */
-  --space-element-padding-s: 12px; /* Element Sizes/Basic/Paddings/padding-s */
+  --space-element-padding-s: 8px; /* Element Sizes/Basic/Paddings/padding-s */
   --space-element-padding-m: 12px; /* Element Sizes/Basic/Paddings/padding-m */
   --space-element-padding-l: 16px; /* Element Sizes/Basic/Paddings/padding-l */
   --space-element-padding-xxl: 48px; /* Element Sizes/Basic/Paddings/padding-xxl */
@@ -164,10 +164,6 @@
     --line-height-h2: 3rem; /* 48px */
     --font-size-h3: 2rem; /* 32px */
     --line-height-h3: 2.25rem; /* 36px */
-    --font-size-h4: 1.25rem; /* 20px */
-    --line-height-h4: 1.5rem; /* 24px */
-    --font-size-h5: 1rem; /* 16px */
-    --line-height-h5: 1.25rem; /* 20px */
 
     --grid-columns: 8;
     --space-margin: 24px;
@@ -175,6 +171,7 @@
     --space-padding-l: 48px;
     --space-padding-xl: 64px;
     --space-padding-xxl: 96px;
+    --space-element-padding-s: 12px;
     --space-element-padding-m: 16px;
 
     --footer-row-gap: 96px;
