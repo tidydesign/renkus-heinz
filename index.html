@@ -61,14 +61,25 @@
 
     <main class="main">
       <section class="hero" aria-labelledby="hero-title">
-        <img
-          class="hero__photo"
-          src="/src/assets/hero/hero.jpg"
-          width="2163"
-          height="1341"
-          alt=""
-          fetchpriority="high"
-        />
+        <picture class="hero__media parallax">
+          <source
+            media="(min-width: 1200px)"
+            srcset="/src/assets/backgrounds/hero-desktop-1920.jpg 1920w, /src/assets/backgrounds/hero-desktop-2880.jpg 2880w"
+            sizes="100vw"
+            width="1920"
+            height="1440"
+          />
+          <img
+            class="parallax__img hero__photo"
+            src="/src/assets/backgrounds/hero-mobile-960.jpg"
+            srcset="/src/assets/backgrounds/hero-mobile-960.jpg 960w, /src/assets/backgrounds/hero-mobile-1440.jpg 1440w"
+            sizes="100vw"
+            width="960"
+            height="1280"
+            alt=""
+            fetchpriority="high"
+          />
+        </picture>
         <div class="hero__inner">
           <div class="hero__content">
             <h1 class="hero__title display-title" id="hero-title">
@@ -199,18 +210,21 @@
       </div>
 
       <section class="mission" aria-label="Our mission">
-        <picture class="mission__picture">
+        <picture class="mission__media parallax">
           <source
             media="(min-width: 1200px)"
-            srcset="/src/assets/mission/mission-landscape.jpg"
+            srcset="/src/assets/backgrounds/mission-desktop-1920.jpg 1920w, /src/assets/backgrounds/mission-desktop-2880.jpg 2880w"
+            sizes="100vw"
             width="1920"
             height="1440"
           />
           <img
-            class="mission__photo"
-            src="/src/assets/mission/mission-portrait.jpg"
-            width="1200"
-            height="1600"
+            class="parallax__img"
+            src="/src/assets/backgrounds/mission-mobile-960.jpg"
+            srcset="/src/assets/backgrounds/mission-mobile-960.jpg 960w, /src/assets/backgrounds/mission-mobile-1440.jpg 1440w"
+            sizes="100vw"
+            width="960"
+            height="1280"
             alt=""
             loading="lazy"
           />
@@ -323,16 +337,25 @@
       </div>
 
       <section class="identity" aria-labelledby="identity-title">
-        <img
-          class="identity__photo"
-          src="/src/assets/identity/workshop-1920.jpg"
-          srcset="/src/assets/identity/workshop-960.jpg 960w, /src/assets/identity/workshop-1920.jpg 1920w"
-          sizes="100vw"
-          width="1920"
-          height="2571"
-          alt="Two technicians assembling a loudspeaker in the Renkus-Heinz workshop"
-          loading="lazy"
-        />
+        <picture class="identity__media parallax">
+          <source
+            media="(min-width: 1200px)"
+            srcset="/src/assets/backgrounds/sustainability-desktop-1920.jpg 1920w, /src/assets/backgrounds/sustainability-desktop-2880.jpg 2880w"
+            sizes="100vw"
+            width="1920"
+            height="1440"
+          />
+          <img
+            class="parallax__img"
+            src="/src/assets/backgrounds/sustainability-mobile-960.jpg"
+            srcset="/src/assets/backgrounds/sustainability-mobile-960.jpg 960w, /src/assets/backgrounds/sustainability-mobile-1440.jpg 1440w"
+            sizes="100vw"
+            width="960"
+            height="1280"
+            alt="Two technicians assembling a loudspeaker in the Renkus-Heinz workshop"
+            loading="lazy"
+          />
+        </picture>
         <div class="identity__card">
           <div class="identity__body">
             <h2 class="identity__title" id="identity-title">A California Identity</h2>
@@ -342,11 +365,11 @@
               of building we take further than most; the thinking behind it is worth its own look.
             </p>
           </div>
-          <a class="button button--primary" href="#">
+          <a class="button button--reverse" href="#">
             <span class="button__icon-area">
               <img
                 class="button__icon"
-                src="/src/assets/icons/chevron-right.svg"
+                src="/src/assets/icons/chevron-right-white.svg"
                 width="16"
                 height="16"
                 alt=""

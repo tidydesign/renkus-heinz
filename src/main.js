@@ -14,17 +14,20 @@ import './styles/identity.css'
 import './styles/next-step.css'
 import './styles/footer.css'
 import './styles/text-reveal.css'
+import './styles/parallax.css'
 
 import { initHeader } from './animations/header.js'
 import { initHeroIntro } from './animations/hero.js'
 import { initTitleGrow } from './animations/title-grow.js'
 import { initTextReveal } from './animations/text-reveal.js'
 import { initMarquee } from './animations/marquee.js'
+import { initParallax } from './animations/parallax.js'
 import { initFooterAccordion } from './components/footer-accordion.js'
 
 initHeader()
 initHeroIntro()
 initTextReveal(document.querySelector('.who__content'), '.who__title, .who__text')
+initParallax()
 initMarquee(document.querySelector('.who__gallery'))
 initTitleGrow()
 initFooterAccordion()

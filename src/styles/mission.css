@@ -1,5 +1,5 @@
 /* Mission — Figma: 501:193007 Desktop, 527:212137 Laptop, 527:212752 Tablet, 527:213175 Mobile.
-   Photo: portrait crop up to Tablet, landscape from Laptop (art direction via <picture>). */
+   Background photo: .parallax (Desktop crop from Laptop up, Mobile crop below). */
 
 .mission {
   position: relative;
@@ -11,17 +11,6 @@
   padding: var(--space-gutter) var(--space-margin);
   overflow: hidden;
   background-color: var(--color-neutral-default);
-}
-
-.mission__picture {
-  position: absolute;
-  inset: 0;
-}
-
-.mission__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .mission__text {

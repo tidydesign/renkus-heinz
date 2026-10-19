@@ -58,6 +58,13 @@ export const TITLE_GROW = {
   ease: EASE_OUT,
 }
 
+// Parallax backgrounds (Hero, A California Identity, Mission). The travel distance comes from
+// the CSS token --parallax-offset (the extra photo height above and below the section).
+export const PARALLAX = {
+  // true = locked to the scroll position, a number = smoothing in seconds
+  scrub: true,
+}
+
 // "Who we are" photo strip: endless right-to-left marquee
 export const MARQUEE = {
   // Time for the strip to move by one photo plus its gap, on every device

@@ -1,0 +1,22 @@
+/* Parallax background — the photo layer is taller than its section by --parallax-offset
+   above and below (hidden by the section's overflow), so it can shift while scrolling.
+   Motion: src/animations/parallax.js. Used in Hero, A California Identity and Mission. */
+
+.parallax {
+  position: absolute;
+  inset: calc(var(--parallax-offset) * -1) 0;
+  display: block;
+}
+
+.parallax__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* No motion: the photo simply fills the section */
+@media (prefers-reduced-motion: reduce) {
+  .parallax {
+    inset: 0;
+  }
+}

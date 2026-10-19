@@ -125,8 +125,6 @@
   /* A California Identity */
   --identity-card-blur: 24px; /* Figma background blur 48 = CSS blur 24px */
   --identity-column-gap: var(--space-gutter);
-  /* Visible part of the tall photo, as cropped in Figma */
-  --identity-photo-position: 50% 33%;
 
   /* Cards (values) — fixed in Figma: column gap and the gap between the two stacked cards */
   --values-gap: 10px;
@@ -138,6 +136,9 @@
   /* Footer */
   --footer-row-gap: 48px;
   --footer-copyright-width: 450px;
+
+  /* Parallax backgrounds: extra photo height above and below the section */
+  --parallax-offset: 20%;
 
   /* Layers */
   --z-header: 100;
