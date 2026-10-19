@@ -114,9 +114,8 @@
   /* Hero */
   --hero-text-max-width: 740px;
 
-  /* Who we are — photo strip (fixed sizes in Figma) */
-  --who-photo-width: 640px;
-  --who-photo-height: 480px;
+  /* Who we are — photo strip: 4:3 photos, fixed height per device in Figma */
+  --who-photo-height: 240px;
   --who-gallery-gap: 24px;
 
   /* Team — staggered grid: each row is one screen tall, gap fixed in Figma */
@@ -174,6 +173,8 @@
     --space-element-padding-m: 16px;
 
     --footer-row-gap: 96px;
+
+    --who-photo-height: 320px;
   }
 }
 
@@ -205,6 +206,8 @@
 
     --footer-row-gap: 128px;
 
+    --who-photo-height: 420px;
+
     /* Laptop frame uses a 48px column gap in this section (not Grids/Gutter) */
     --identity-column-gap: 48px;
   }
@@ -215,6 +218,8 @@
   :root {
     --grid-columns: 16;
     --space-margin: 24px;
+
+    --who-photo-height: 480px;
 
     --header-padding-inline: 24px;
 

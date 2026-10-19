@@ -45,8 +45,8 @@
 
 .who__photo {
   flex-shrink: 0;
-  width: var(--who-photo-width);
   height: var(--who-photo-height);
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background-color: var(--color-neutral-default);
 }
