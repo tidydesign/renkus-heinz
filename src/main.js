@@ -6,6 +6,8 @@ import './styles/hero.css'
 import './styles/who.css'
 import './styles/people.css'
 import './styles/team.css'
+import './styles/button.css'
+import './styles/identity.css'
 import './styles/text-reveal.css'
 
 import { initHeader } from './animations/header.js'

@@ -1,0 +1,41 @@
+/* Button — Figma component button-main-primary */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--button-main-min-width);
+  height: var(--button-main-height);
+  padding-inline: var(--button-main-padding);
+  overflow: hidden;
+  border-radius: var(--radius-xxs);
+}
+
+.button--primary {
+  color: var(--color-interactive-white);
+  background-color: var(--color-interactive-primary);
+}
+
+.button__icon-area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-icon-area-size);
+  height: var(--button-icon-area-size);
+  border-radius: var(--radius-infinite);
+  background-color: var(--color-interactive-white);
+}
+
+.button__icon {
+  width: var(--icon-size-s);
+  height: var(--icon-size-s);
+}
+
+.button__label {
+  padding-inline: var(--button-main-gutter);
+  font-size: var(--font-size-p-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-p-xs);
+  text-transform: uppercase;
+  white-space: nowrap;
+}

@@ -18,6 +18,9 @@
   --color-text-reveal-base: #d7dbe0; /* Scroll text reveal: unfilled text (not in Figma) */
   --color-interactive-neutral: #3b405c; /* Background Colors/Interactive/Neutral/filled-pure-default */
   --color-interactive-neutral-ghost: rgb(59 64 92 / 0); /* Background Colors/Interactive/Neutral/ghost-default */
+  --color-interactive-primary: #0054a6; /* Background Colors/Interactive/Primary/filled-pure-default */
+  --color-interactive-white: #fff; /* Background Colors/Interactive/White/filled-default */
+  --color-black-a12: rgb(0 0 0 / 0.12); /* Fixed Colors/black-A12 */
 
   /* Typography — families and weights */
   --font-family-base: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -47,6 +50,9 @@
   --font-size-h2: 1.5rem; /* Typography/Titles/H2 — 24px */
   --line-height-h2: 1.75rem; /* Typography/Titles/H2 LH — 28px */
   --letter-spacing-h2: -0.02em; /* Titles/H2: -2% */
+  --font-size-h3: 1.25rem; /* Typography/Titles/H3 — 20px */
+  --line-height-h3: 1.5rem; /* Typography/Titles/H3 LH — 24px */
+  --letter-spacing-h3: -0.02em; /* Titles/H3: -2% */
   --font-size-h4: 1rem; /* Typography/Titles/H4 — 16px */
   --line-height-h4: 1.25rem; /* Typography/Titles/H4 LH — 20px */
   --letter-spacing-h4: -0.01em; /* Titles/H4: -1% */
@@ -70,6 +76,10 @@
   --button-small-height: 36px; /* Element Sizes/Button/Small/Button Small - Height */
   --button-small-padding: 12px; /* Element Sizes/Button/Small/Button Small - Padding */
   --button-main-gutter: 12px; /* Element Sizes/Button/Main/Button Main - Gutter */
+  --button-main-height: 44px; /* Element Sizes/Button/Main/Button Main - Height */
+  --button-main-padding: 6px; /* Element Sizes/Button/Main/Button Main - Padding */
+  --button-main-min-width: 80px; /* Element Sizes/Button/Main/Button Main - Min Width */
+  --button-icon-area-size: 32px; /* button-main "Icon Area" (fixed in Figma) */
   --icon-size-s: 16px; /* Element Sizes/Icons/Icon Small/Size 16px */
   --radius-xxs: 2px; /* Radiuses/Radius XXS */
   --radius-xs: 4px; /* Radiuses/Radius XS */
@@ -94,6 +104,12 @@
   --team-gap: 10px;
   --team-row-height: 100svh;
 
+  /* A California Identity */
+  --identity-card-blur: 24px; /* Figma background blur 48 = CSS blur 24px */
+  --identity-column-gap: var(--space-gutter);
+  /* Visible part of the tall photo, as cropped in Figma */
+  --identity-photo-position: 50% 33%;
+
   /* Layers */
   --z-header: 100;
 
@@ -112,6 +128,8 @@
     --line-height-h1-db: 3.5rem; /* 56px */
     --font-size-h2: 2.5rem; /* 40px */
     --line-height-h2: 3rem; /* 48px */
+    --font-size-h3: 2rem; /* 32px */
+    --line-height-h3: 2.25rem; /* 36px */
     --font-size-h4: 1.25rem; /* 20px */
     --line-height-h4: 1.5rem; /* 24px */
 
@@ -132,6 +150,8 @@
     --line-height-h1-db: 6rem; /* 96px */
     --font-size-h2: 3rem; /* 48px */
     --line-height-h2: 3.5rem; /* 56px */
+    --font-size-h3: 2.25rem; /* 36px */
+    --line-height-h3: 2.5rem; /* 40px */
     --font-size-h4: 1.5rem; /* 24px */
     --line-height-h4: 1.75rem; /* 28px */
 
@@ -143,6 +163,9 @@
     --space-element-padding-l: 24px;
 
     --header-padding-inline: 48px;
+
+    /* Laptop frame uses a 48px column gap in this section (not Grids/Gutter) */
+    --identity-column-gap: 48px;
   }
 }
 
@@ -153,6 +176,8 @@
     --space-margin: 24px;
 
     --header-padding-inline: 24px;
+
+    --identity-column-gap: var(--space-gutter);
 
     --hero-text-max-width: 680px;
   }

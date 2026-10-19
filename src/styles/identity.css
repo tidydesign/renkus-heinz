@@ -1,0 +1,67 @@
+/* A California Identity — Figma: 501:193043 Desktop, 527:212173 Laptop, 527:212788 Tablet, 527:213211 Mobile */
+
+.identity {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--identity-column-gap);
+  align-items: end;
+  min-height: calc(100svh - var(--header-height));
+  padding: var(--space-gutter) var(--space-margin);
+  overflow: hidden;
+  background-color: var(--color-neutral-default);
+}
+
+.identity__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--identity-photo-position);
+}
+
+.identity__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  align-items: flex-start;
+  gap: var(--space-element-padding-l);
+  padding: var(--space-element-padding-l);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-black-a12);
+  backdrop-filter: blur(var(--identity-card-blur));
+  -webkit-backdrop-filter: blur(var(--identity-card-blur));
+}
+
+.identity__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-element-padding-s);
+  padding-block: var(--space-element-padding-s);
+  color: var(--color-on-background);
+  overflow-wrap: break-word;
+}
+
+.identity__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: "opsz" var(--font-opsz-display);
+  line-height: var(--line-height-h3);
+  letter-spacing: var(--letter-spacing-h3);
+}
+
+.identity__text {
+  font-size: var(--font-size-p-m);
+  line-height: var(--line-height-p-m);
+  text-wrap: balance;
+}
+
+/* Laptop and Desktop: card spans 6 columns */
+@media (min-width: 1200px) {
+  .identity__card {
+    grid-column: 1 / span 6;
+  }
+}
