@@ -19,10 +19,12 @@ import { initHeader } from './animations/header.js'
 import { initHeroIntro } from './animations/hero.js'
 import { initTitleGrow } from './animations/title-grow.js'
 import { initTextReveal } from './animations/text-reveal.js'
+import { initMarquee } from './animations/marquee.js'
 import { initFooterAccordion } from './components/footer-accordion.js'
 
 initHeader()
 initHeroIntro()
 initTextReveal(document.querySelector('.who__content'), '.who__title, .who__text')
+initMarquee(document.querySelector('.who__gallery'))
 initTitleGrow()
 initFooterAccordion()

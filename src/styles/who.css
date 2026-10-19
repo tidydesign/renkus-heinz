@@ -43,6 +43,12 @@
   gap: var(--who-gallery-gap);
 }
 
+/* Marquee (src/animations/marquee.js): strip starts at the left, JS positions and moves it */
+.who__gallery.is-marquee {
+  justify-content: flex-start;
+  will-change: transform;
+}
+
 .who__photo {
   flex-shrink: 0;
   height: var(--who-photo-height);

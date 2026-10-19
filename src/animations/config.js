@@ -58,6 +58,14 @@ export const TITLE_GROW = {
   ease: EASE_OUT,
 }
 
+// "Who we are" photo strip: endless right-to-left marquee
+export const MARQUEE = {
+  // Time for the strip to move by one photo plus its gap, on every device
+  secondsPerPhoto: 8,
+  // Rebuild delay after a resize (ms)
+  resizeDebounce: 200,
+}
+
 // Scroll-driven text fill: lines fill left to right, one after another
 export const TEXT_REVEAL = {
   // ScrollTrigger positions: "<element edge> <viewport edge>"
