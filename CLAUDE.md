@@ -9,6 +9,8 @@
 - index.html — разметка
 - src/main.js — инициализация и анимации
 - src/styles/ — tokens.css (переменные), base.css, секции отдельными файлами
+- about/ — архив готовой страницы About Us (свои index.html и src/, открывается по /about/). Не править без явной просьбы
+- vite.config.js — многостраничная сборка: новые страницы добавлять в build.rollupOptions.input
 
 ## Дизайн-токены
 - Цвета, шрифты и отступы берём из Figma Variables и кладём в CSS custom properties в tokens.css
