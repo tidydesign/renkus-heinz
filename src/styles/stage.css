@@ -1,0 +1,43 @@
+/* Stage: fixed layer behind the content of the first screens (src/animations/scenes.js).
+   Speaker: on the Hero 3 screen widths wide (16:9), centred horizontally, vertical centre 10% of
+   the screen height below the Hero centre; on "Where Do You Start?" scaled to the screen width,
+   centred horizontally and 10% of the screen height above the centre (SCENE_START.raise). Placed with offsets so transforms stay free: the wrapper is scaled on scroll,
+   the image rises in the Hero intro.
+   Sequence: 16:9, screen width, 10% above the centre — the same box as the speaker at screen width. */
+
+.stage {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.stage__speaker-wrap {
+  position: absolute;
+  /* Hero centre: header (64px) plus half of the rest of the screen */
+  top: calc(32px + 50vh + 10vh - 300vw * 9 / 32);
+  left: calc(50% - 150vw);
+  width: 300vw;
+  aspect-ratio: 16 / 9;
+}
+
+.stage__speaker {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.stage__sequence {
+  position: absolute;
+  top: calc(50% - 10vh - 100vw * 9 / 32);
+  left: 0;
+  width: 100vw;
+  aspect-ratio: 16 / 9;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .stage__speaker {
+    transform: translateY(100vh);
+  }
+}

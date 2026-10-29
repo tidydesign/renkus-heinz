@@ -1,0 +1,277 @@
+/* Hero — Figma: Laptop - Section 01 (3:47), Section 01 (1:99).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet). */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: calc(100svh - 64px);
+  padding: 24px;
+  overflow: clip;
+}
+
+/* Title: size follows the screen width, 80/72 at 1440 and 120/96 at 1920 */
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-block: calc(6.667vw - 56px);
+  font-family: "DM Sans", sans-serif;
+  font-size: calc(8.333vw - 40px);
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 5vw;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.hero__title-line--accent {
+  --text-gradient: linear-gradient(314deg, #0054a6 51.4%, #003d79 100%);
+}
+
+.hero__divider {
+  flex-shrink: 0;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #e2e2eb;
+  /* Figma line has zero height: keep the 24px gaps around it exact */
+  margin-bottom: -1px;
+}
+
+/* Lower part: 12 columns on Laptop, 16 on Desktop */
+
+.hero__body {
+  display: grid;
+  flex: 1 0 0;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  min-height: 0;
+  /* Above the stage (speaker) */
+  position: relative;
+  z-index: 2;
+}
+
+.hero__side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero__side--left {
+  grid-column: 1 / span 5;
+  align-items: flex-start;
+}
+
+.hero__side--right {
+  grid-column: 9 / span 4;
+  align-items: flex-end;
+}
+
+@media (min-width: 1600px) {
+  .hero__body {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+  }
+
+  .hero__side--right {
+    grid-column: 13 / span 4;
+  }
+}
+
+/* Tagline */
+
+.hero__tagline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero__tagline-dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+/* Promo card: Meet RHAON III */
+
+/* Reveal masks: the mask layer clips and slides in from the left while the layer inside slides
+   the other way, so the content stays put and shows up left to right */
+.hero__promo {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.hero__promo-mask,
+.hero__promo-media-mask,
+.hero__promo-media-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__promo-mask,
+.hero__promo-media-mask {
+  overflow: hidden;
+}
+
+.hero__promo-mask {
+  border-radius: 4px;
+}
+
+.hero__promo-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.hero__promo-media {
+  flex-shrink: 0;
+  width: 213px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hero__promo-media-inner {
+  background-color: #000;
+}
+
+.hero__promo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__promo-content {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px 24px;
+}
+
+.hero__promo-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+.hero__promo-text {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Right side */
+
+.hero__text {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* Hint and button share the row equally */
+.hero__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.hero__hint {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* Button: Find My Sound */
+
+/* Outer box clips with the left cap; the body inside is the visible pill */
+.hero__button {
+  display: block;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.hero__button-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #0054a6;
+  color: #fff;
+}
+
+.hero__button-label {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.hero__button-icon-area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: #fff;
+}
+
+.hero__button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Intro (src/animations/hero-intro.js): texts hidden until split into letters, divider collapsed */
+
+.hero__divider {
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero__title,
+  .js .hero__tagline,
+  .js .hero__text,
+  .js .hero__hint {
+    visibility: hidden;
+  }
+
+  .js .hero__button {
+    opacity: 0;
+  }
+
+  .js .hero__divider {
+    transform: scaleX(0);
+  }
+
+  .js .hero__promo-mask,
+  .js .hero__promo-media-mask {
+    transform: translateX(-100%);
+  }
+
+  .js .hero__promo-content {
+    opacity: 0;
+  }
+}

@@ -5,8 +5,203 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Renkus-Heinz</title>
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..1000&family=Inter:wght@400;500;600&display=swap"
+    />
   </head>
   <body>
-    <main></main>
+    <header class="header">
+      <a class="header__logo" href="/" aria-label="Renkus-Heinz — home">
+        <img
+          class="header__logo-img"
+          src="/src/assets/logo.svg"
+          width="203"
+          height="32"
+          alt=""
+        />
+      </a>
+
+      <nav class="header__nav nav" aria-label="Main">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#">Why Us</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Get Started</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Spaces</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Products</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Technologies</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-button header__search" type="button" aria-label="Search">
+          <img
+            class="icon-button__icon"
+            src="/src/assets/icons/search.svg"
+            width="16"
+            height="16"
+            alt=""
+          />
+        </button>
+        <button class="icon-button header__menu" type="button" aria-label="Menu">
+          <img
+            class="icon-button__icon"
+            src="/src/assets/icons/burger.svg"
+            width="16"
+            height="16"
+            alt=""
+          />
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Fixed layer shared by the first screens: the speaker and the image sequence.
+           Sits above the Hero title, below every other piece of content -->
+      <div class="stage" aria-hidden="true">
+        <canvas class="stage__sequence"></canvas>
+        <div class="stage__speaker-wrap">
+          <img
+            class="stage__speaker"
+            src="/src/assets/hero/speaker-hero.webp"
+            width="7680"
+            height="4320"
+            alt=""
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__title-line hero__title-line--accent text-gradient">All of the Sound for Everyone,</span>
+          <span class="hero__title-line">Anywhere You Choose</span>
+        </h1>
+
+        <hr class="hero__divider" />
+
+        <div class="hero__body">
+          <div class="hero__side hero__side--left">
+            <p class="hero__tagline">
+              <img class="hero__tagline-dot" src="/src/assets/hero/dot.svg" width="12" height="12" alt="" />
+              <span class="hero__tagline-text">Every space, tuned from one platform</span>
+            </p>
+
+            <!-- Link target and hover come later -->
+            <!-- Mask layers (…-mask / …-card, …-media-mask / …-media-inner) are for the intro reveal -->
+            <a class="hero__promo" href="#">
+              <span class="hero__promo-mask">
+                <span class="hero__promo-card">
+                  <span class="hero__promo-media">
+                    <span class="hero__promo-media-mask">
+                      <span class="hero__promo-media-inner">
+                        <img
+                          class="hero__promo-img"
+                          src="/src/assets/images/image-rhaon3.jpg"
+                          srcset="/src/assets/images/image-rhaon3.jpg 1x, /src/assets/images/image-rhaon3@2x.jpg 2x"
+                          width="213"
+                          height="120"
+                          alt=""
+                        />
+                      </span>
+                    </span>
+                  </span>
+                  <span class="hero__promo-content">
+                    <span class="hero__promo-title">Meet RHAON III</span>
+                    <span class="hero__promo-text">
+                      Faster commissioning, deeper Dante monitoring, and preset scheduling that keeps things
+                      ready for whatever comes next.
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+
+          <div class="hero__side hero__side--right">
+            <p class="hero__text">
+              Sound creates the moment. Since 1979 Renkus-Heinz has been placing sound exactly where a space
+              needs it – invented in California, still built here today.
+            </p>
+
+            <div class="hero__actions">
+              <p class="hero__hint">Scroll Down to Explore</p>
+              <!-- The body layer is the blue pill; it slides out from under the left cap in the intro -->
+              <button class="hero__button" type="button">
+                <span class="hero__button-body">
+                  <span class="hero__button-label">Find My Sound</span>
+                  <span class="hero__button-icon-area">
+                    <img class="hero__button-icon" src="/src/assets/icons/arrow-down.svg" width="20" height="20" alt="" />
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="start" aria-labelledby="start-title">
+        <h2 class="start__title" id="start-title">
+          <span class="start__title-accent text-gradient">Where</span>
+          <span>Do You Start?</span>
+        </h2>
+
+        <div class="start__cards">
+          <article class="start__card is-active">
+            <p class="start__card-label">
+              <span class="start__card-dot" aria-hidden="true"></span>
+              For facility owners, managers, and decision-makers
+            </p>
+            <div class="start__card-body">
+              <h3 class="start__card-title">Find a solution for your space</h3>
+              <p class="start__card-text">
+                You know the space – where the people congregate or dance, what fills it, which corners have been an
+                acoustic compromise. Start there, and create a better sounding future.
+              </p>
+            </div>
+            <!-- Shown on the active card only; target comes later -->
+            <a class="start__card-link" href="#">
+              <span class="start__card-link-icon-area">
+                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              </span>
+              <span class="start__card-link-label">Find a Solution For My Space</span>
+            </a>
+          </article>
+          <article class="start__card">
+            <p class="start__card-label">
+              <span class="start__card-dot" aria-hidden="true"></span>
+              For consultants and acoustic designers
+            </p>
+            <div class="start__card-body">
+              <h3 class="start__card-title">Specifying a system</h3>
+              <p class="start__card-text">
+                Measured data, EASE/GLL/CLF files, CAD and Revit geometry, and D-TOOLS link – everything needed to
+                put a system into a model with confidence.
+              </p>
+            </div>
+          </article>
+          <article class="start__card">
+            <p class="start__card-label">
+              <span class="start__card-dot" aria-hidden="true"></span>
+              For integrators, installers, and contractors
+            </p>
+            <div class="start__card-body">
+              <h3 class="start__card-title">Bringing a system into a venue</h3>
+              <p class="start__card-text">
+                Network documentation, control integration for Crestron, Q-SYS and Symetrix, and a regional
+                representative behind every install – built for a clean commissioning day.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

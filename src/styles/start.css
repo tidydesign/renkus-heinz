@@ -1,0 +1,154 @@
+/* Where Do You Start? — Figma: Laptop - Section 02 (17:188), Desktop - Section 02 (17:117).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet). */
+
+.start {
+  /* Above the stage (speaker and sequence) */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  padding: 96px 24px 24px;
+  overflow: clip;
+}
+
+.start__title {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.start__title-accent {
+  --text-gradient: linear-gradient(-81deg, #0054a6 0%, #57a4ef 100%);
+}
+
+/* Cards at the bottom: full width on Laptop (4 of 12 columns each),
+   the middle 12 of 16 columns on Desktop */
+
+.start__cards {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: end;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.start__card {
+  display: flex;
+  grid-column: span 4;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  overflow: clip;
+  border-radius: 4px;
+  background-color: rgb(255 255 255 / 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@media (min-width: 1600px) {
+  .start__cards {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+  }
+
+  .start__card:first-child {
+    grid-column: 3 / span 4;
+  }
+}
+
+.start__card.is-active {
+  background-color: #fff;
+}
+
+.start__card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  color: #737894;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.start__card-dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.start__card.is-active .start__card-label {
+  color: #0054a6;
+}
+
+.start__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.start__card-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+.start__card-text {
+  font-size: 12px;
+  line-height: 20px;
+  /* Figma breaks these lines with text-wrap: pretty */
+  text-wrap: pretty;
+  /* Always three lines tall, so the inactive cards keep one height at any width */
+  min-height: 60px;
+}
+
+/* Link: only on the active card */
+
+.start__card-link {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  border-radius: 999px;
+}
+
+.start__card.is-active .start__card-link {
+  display: flex;
+}
+
+.start__card-link-icon-area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: #0054a6;
+}
+
+.start__card-link-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.start__card-link-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #0054a6;
+  white-space: nowrap;
+}

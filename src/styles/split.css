@@ -1,0 +1,30 @@
+/* Text split into letters for animation (src/animations/letters.js), and gradient text that
+   keeps its gradient once split. The element sets --text-gradient. */
+
+.text-gradient {
+  color: transparent;
+  background-image: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.split-char {
+  will-change: transform, opacity;
+}
+
+/* Split: each letter paints its own slice of the line gradient (positions set in letters.js) */
+.text-gradient:has(.split-char) {
+  background-image: none;
+}
+
+.text-gradient .split-char {
+  /* Room for descenders and overhangs: background-clip: text only paints inside the box */
+  padding: 0.25em 0.1em;
+  margin: -0.25em -0.1em;
+  color: transparent;
+  background-image: var(--text-gradient);
+  background-size: var(--line-width) var(--line-height);
+  background-position: calc(var(--char-x) * -1) calc(var(--char-y) * -1);
+  background-clip: text;
+  -webkit-background-clip: text;
+}

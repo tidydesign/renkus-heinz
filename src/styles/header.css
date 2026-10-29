@@ -1,0 +1,81 @@
+/* Header — taken from the About Us page, values inlined (concept version, no tokens yet) */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding-block: 16px;
+  padding-inline: 24px;
+  background-color: #fff;
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__logo-img {
+  width: 202.787px;
+  height: 32px;
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: auto;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    gap: 64px;
+  }
+
+  .header__nav {
+    display: block;
+  }
+}
+
+/* Nav — text-link-small-neutral */
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  color: #3b405c;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Icon button — icon-button-small-ghost-neutral */
+
+.icon-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background-color: rgb(59 64 92 / 0);
+}
+
+.icon-button__icon {
+  width: 16px;
+  height: 16px;
+}
