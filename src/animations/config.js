@@ -118,6 +118,15 @@ export const START_CARDS = {
   leaveFade: 0.2,
 }
 
+// Hero RHAON III card hover (src/components/hero-promo.js), timed like the "Find My Sound" hover:
+// the title fades to brand blue, the photo grows under its mask, the shadow fades in.
+// Leaving plays it backwards
+export const HERO_PROMO_HOVER = {
+  duration: HERO_BUTTON_HOVER.duration,
+  ease: HERO_BUTTON_HOVER.ease,
+  photoScale: 1.1,
+}
+
 // Scroll from the Hero to "Where Do You Start?"
 export const SCENE_START = {
   // One wheel turn, swipe or key press glides the page to the whole next (or previous) screen
@@ -138,7 +147,10 @@ export const SCENE_START = {
   leaveBy: 0.5,
   // Image sequence (src/assets/images/scene-01-in). Its first ~third of frames are almost empty,
   // so it starts with the glide (at: 0–1 of it) and the objects show up about halfway down
-  sequence: { at: 0, duration: 2, maxPixelRatio: 2 },
+  sequence: { at: 0, duration: 2, ease: 'power1.out', maxPixelRatio: 2 },
+  // Scene switch on a card hover: the old scene's "in" sequence plays backwards while the new
+  // scene's "out" sequence plays forward, both over this long (s)
+  switch: { duration: 2, ease: 'power1.out' },
   // On this screen the speaker and the sequence sit this far above the screen centre (screen heights)
   raise: 0.1,
   // Title: the same letter rise as the Hero title

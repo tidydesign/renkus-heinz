@@ -11,6 +11,10 @@
 // speaker and the sequence sit slightly above the screen centre.
 // Going back up, these play backwards together with the glide but much faster, so the sequence is
 // gone before the Hero comes into view.
+// Scenes: card N stands for scene N (src/assets/images/scene-0N-in and -out). The arrival plays
+// the active card's scene-0N-in. Hovering another card switches the scene: the old scene's "in"
+// plays backwards while the new scene's "out" plays forward, both drawn on the same canvas.
+// Hovers during a switch or during the arrival wait, and only the last one is played after it.
 
 import { gsap } from 'gsap'
 import { Observer } from 'gsap/Observer'
@@ -19,6 +23,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { REDUCED_MOTION_QUERY, SCENE_START } from './config.js'
 import { lettersTimeline, lineHeightOf, spreadGradient } from './letters.js'
+import { createStage } from './sequences.js'
 
 gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger, SplitText)
 
@@ -33,40 +38,90 @@ export const scrollToSection = (section) => {
   return true
 }
 
-const frameUrls = Object.values(
-  import.meta.glob('../assets/images/scene-01-in/*.png', { eager: true, query: '?url', import: 'default' }),
-)
+const sceneName = (index, part) => `scene-${String(index + 1).padStart(2, '0')}-${part}`
 
-// Draws the sequence frames into the canvas; `frame` is a 0–1 progress
-const createSequence = (canvas) => {
-  const ctx = canvas.getContext('2d')
-  const frames = frameUrls.map((url) => {
-    const img = new Image()
-    img.decoding = 'async'
-    img.src = url
-    return img
-  })
-  const state = { progress: 0 }
+// Scene switching on the stage for the cards; returns the arrival tween (the active scene's "in")
+// and a hook to settle a running switch before the arrival plays backwards
+const createScenes = (stage, list, reducedMotion) => {
+  const cards = [...list.querySelectorAll('.start__card')]
+  let active = Math.max(0, cards.findIndex((card) => card.classList.contains('is-active')))
+  // The scene of the last hovered card
+  let wanted = active
+  let switching = null
 
-  const draw = () => {
-    const index = Math.round(state.progress * (frames.length - 1))
-    const img = frames[index]
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    if (img?.complete && img.naturalWidth) ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  const introState = { progress: 0 }
+  const showIntro = () => stage.show([{ name: sceneName(active, 'in'), progress: introState.progress }])
+
+  const switchTo = (index) => {
+    wanted = index
+    if (switching || index === active) return
+    // Not on the section yet: the arrival will simply play this scene
+    if (introState.progress === 0 && !intro?.isActive()) {
+      active = index
+      if (reducedMotion) showIntro()
+      return
+    }
+    // Arrival still running: its end picks up the wanted scene
+    if (intro && (intro.progress() < 1 || intro.reversed())) return
+    if (reducedMotion) {
+      active = index
+      showIntro()
+      return
+    }
+
+    const from = active
+    const state = { progress: 0 }
+    switching = gsap.to(state, {
+      progress: 1,
+      duration: SCENE_START.switch.duration,
+      ease: SCENE_START.switch.ease,
+      onUpdate: () =>
+        stage.show([
+          { name: sceneName(from, 'in'), progress: 1 - state.progress },
+          { name: sceneName(index, 'out'), progress: state.progress },
+        ]),
+      onComplete: () => {
+        active = index
+        switching = null
+        switchTo(wanted)
+      },
+    })
   }
 
-  const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, SCENE_START.sequence.maxPixelRatio)
-    canvas.width = Math.round(canvas.clientWidth * ratio)
-    canvas.height = Math.round(canvas.clientHeight * ratio)
-    draw()
-  }
-  resize()
-  window.addEventListener('resize', resize, { passive: true })
-  // Redraw once the current frame arrives, in case it was not loaded yet
-  frames.forEach((img) => img.addEventListener('load', draw, { once: true }))
+  const intro = reducedMotion
+    ? null
+    : gsap.to(introState, {
+        progress: 1,
+        duration: SCENE_START.sequence.duration,
+        ease: SCENE_START.sequence.ease,
+        paused: true,
+        onUpdate: showIntro,
+        onComplete: () => switchTo(wanted),
+      })
 
-  return { state, draw }
+  list.addEventListener('start:select', (event) => switchTo(event.detail.index))
+
+  // The active scene's arrival first, the rest once the page has loaded
+  stage.preload([sceneName(active, 'in')])
+  const preloadRest = () => stage.preload(stage.names)
+  if (document.readyState === 'complete') preloadRest()
+  else window.addEventListener('load', preloadRest, { once: true })
+
+  return {
+    intro,
+    // Reduced motion: the active scene's last frame on or off
+    showStill: (visible) => {
+      introState.progress = visible ? 1 : 0
+      showIntro()
+    },
+    // Before the arrival plays backwards: jump a running switch to the wanted scene
+    settle: () => {
+      if (!switching) return
+      switching.kill()
+      switching = null
+      active = wanted
+    },
+  }
 }
 
 // The speaker's start position comes from stage.css; this is the move to the end position
@@ -133,18 +188,16 @@ export function initScenes() {
     invalidateOnRefresh: true,
   })
 
-  const sequence = canvas && createSequence(canvas)
+  const list = start.querySelector('.start__cards')
+  const scenes = canvas && list && createScenes(createStage(canvas), list, reducedMotion)
 
   if (reducedMotion) {
-    // No arrival motion and native scrolling: the sequence shows its last frame once reached
-    if (sequence) {
+    // No arrival motion and native scrolling: the active scene shows its last frame once reached
+    if (scenes) {
       ScrollTrigger.create({
         trigger: start,
         start: 'top center',
-        onToggle: (self) => {
-          sequence.state.progress = self.isActive || self.progress > 0 ? 1 : 0
-          sequence.draw()
-        },
+        onToggle: (self) => scenes.showStill(self.isActive || self.progress > 0),
       })
     }
     return
@@ -171,21 +224,14 @@ export function initScenes() {
     )
   }
 
-  const intro =
-    sequence &&
-    gsap.to(sequence.state, {
-      progress: 1,
-      duration: SCENE_START.sequence.duration,
-      ease: 'none',
-      paused: true,
-      onUpdate: sequence.draw,
-    })
+  const intro = scenes?.intro
 
   initNavigation([
     // The Hero's screen starts at the page top, above the header
     { el: hero, top: () => 0 },
     {
       el: start,
+      beforeLeave: scenes?.settle,
       // Each starts this far through the glide down (0–1)
       arrivals: [
         { animation: intro, at: SCENE_START.sequence.at },
@@ -225,6 +271,7 @@ const initNavigation = (scenes) => {
       tl.add(glide(to))
       to.arrivals?.forEach(({ animation, at }) => tl.call(() => animation.timeScale(1).play(), null, duration * at))
     } else {
+      from.beforeLeave?.()
       // The arrivals play backwards while gliding, fast enough to be gone early in the glide
       const leaveIn = duration * SCENE_START.leaveBy
       from.arrivals?.forEach(({ animation }) => {

@@ -104,9 +104,22 @@
 /* Reveal masks: the mask layer clips and slides in from the left while the layer inside slides
    the other way, so the content stays put and shows up left to right */
 .hero__promo {
+  /* 0–1 on hover (src/components/hero-promo.js): fades in the shadow and the blue title */
+  --hover: 0;
+  position: relative;
   display: block;
   width: 100%;
   border-radius: 4px;
+}
+
+.hero__promo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 24px 64px -24px rgb(16 16 20 / 0.24);
+  opacity: var(--hover);
+  pointer-events: none;
 }
 
 .hero__promo-mask,
@@ -162,12 +175,24 @@
 }
 
 .hero__promo-title {
+  position: relative;
   font-family: "DM Sans", sans-serif;
   font-size: 24px;
   font-weight: 600;
   font-variation-settings: "opsz" 14;
   line-height: 32px;
   letter-spacing: -0.02em;
+}
+
+/* Blue copy of the title over it, so the colour change is a fade */
+.hero__promo-title::after {
+  content: attr(data-text);
+  /* Empty alt text: screen readers read the title once */
+  content: attr(data-text) / "";
+  position: absolute;
+  inset: 0;
+  color: #0054a6;
+  opacity: var(--hover);
 }
 
 .hero__promo-text {
@@ -216,7 +241,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: 0 24px 32px -24px rgb(0 84 166 / 0.8);
+  box-shadow: 0 24px 64px -24px rgb(0 84 166 / 0.8);
   opacity: var(--shadow-opacity);
   pointer-events: none;
 }
