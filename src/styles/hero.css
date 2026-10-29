@@ -201,14 +201,34 @@
 
 /* Button: Find My Sound */
 
-/* Outer box clips with the left cap; the body inside is the visible pill */
+/* The clip box cuts with the left cap; the body inside is the visible pill.
+   The shadow sits on the button outside the clip and only fades in on hover */
 .hero__button {
+  /* Animated on hover (src/components/hero-button.js) */
+  --shadow-opacity: 0;
+  position: relative;
+  display: block;
+  border-radius: 999px;
+}
+
+.hero__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 24px 32px -24px rgb(0 84 166 / 0.8);
+  opacity: var(--shadow-opacity);
+  pointer-events: none;
+}
+
+.hero__button-clip {
   display: block;
   overflow: hidden;
   border-radius: 999px;
 }
 
 .hero__button-body {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -219,7 +239,21 @@
   color: #fff;
 }
 
+/* Hover circle: centred on the icon, 220% of the button width across, grows from 0 */
+.hero__button-fill {
+  position: absolute;
+  top: 50%;
+  /* Icon centre: body right padding plus half the icon area */
+  right: 28px;
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #006cd6;
+  transform: translate(50%, -50%) scale(0);
+}
+
 .hero__button-label {
+  position: relative;
   flex: 1 0 0;
   min-width: 0;
   font-size: 14px;
@@ -229,17 +263,30 @@
 }
 
 .hero__button-icon-area {
-  display: flex;
+  position: relative;
   flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
   width: 40px;
   height: 40px;
+  overflow: hidden;
   border-radius: 999px;
   background-color: #fff;
 }
 
-.hero__button-icon {
+/* Each arrow fills the circle; the copy waits one circle height above */
+.hero__button-icon-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__button-icon-slot--next {
+  transform: translateY(-100%);
+}
+
+.hero__button-icon,
+.hero__button-icon-next {
   width: 20px;
   height: 20px;
 }

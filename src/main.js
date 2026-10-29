@@ -7,10 +7,12 @@ import './styles/start.css'
 
 import { initHeader } from './animations/header.js'
 import { initHeroButton } from './components/hero-button.js'
+import { initStartCards } from './components/start-cards.js'
 import { initHeroIntro } from './animations/hero-intro.js'
 import { initScenes } from './animations/scenes.js'
 
 initHeader()
 initHeroButton()
+initStartCards()
 initHeroIntro()
 initScenes()

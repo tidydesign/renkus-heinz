@@ -88,10 +88,34 @@ export const HERO_BUTTON = {
   ease: HERO_TITLE.ease,
 }
 
+// "Find My Sound" hover: the arrow moves down one circle height while its copy comes in from
+// above, a lighter circle grows from under the icon to 220% of the button width, the shadow fades in.
+// Leaving plays it backwards
+export const HERO_BUTTON_HOVER = {
+  duration: 0.3,
+  ease: 'power1.inOut',
+}
+
 // Hero divider: grows left to right, starts with the title, same curve
 export const HERO_DIVIDER = {
   duration: 1,
   ease: HERO_TITLE.ease,
+}
+
+// "Where Do You Start?" card switch on hover (src/components/start-cards.js).
+// The new active card grows to fit its link and turns white; the link rises from one link height
+// below, its circle fades in and grows from 0, its label fades in letter by letter.
+// The card left behind shrinks back while its link fades out
+export const START_CARDS = {
+  // The card itself: height and white fade, both ways (s)
+  cardDuration: 0.6,
+  // The link: rise, circle and label (s)
+  duration: 0.4,
+  ease: EASE_OUT,
+  // One label letter's fade (s); the letters are spread so the label finishes with the card
+  letterDuration: 0.2,
+  // Fade-out of the link on the card left behind (s)
+  leaveFade: 0.2,
 }
 
 // Scroll from the Hero to "Where Do You Start?"

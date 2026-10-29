@@ -130,12 +130,21 @@
 
             <div class="hero__actions">
               <p class="hero__hint">Scroll Down to Explore</p>
-              <!-- The body layer is the blue pill; it slides out from under the left cap in the intro -->
+              <!-- The body layer is the blue pill; it slides out from under the left cap (the clip) in the intro.
+                   On hover a lighter circle grows from under the icon and the arrow is replaced by its copy from above -->
               <button class="hero__button" type="button">
-                <span class="hero__button-body">
-                  <span class="hero__button-label">Find My Sound</span>
-                  <span class="hero__button-icon-area">
-                    <img class="hero__button-icon" src="/src/assets/icons/arrow-down.svg" width="20" height="20" alt="" />
+                <span class="hero__button-clip">
+                  <span class="hero__button-body">
+                    <span class="hero__button-fill"></span>
+                    <span class="hero__button-label">Find My Sound</span>
+                    <span class="hero__button-icon-area">
+                      <span class="hero__button-icon-slot">
+                        <img class="hero__button-icon" src="/src/assets/icons/arrow-down.svg" width="20" height="20" alt="" />
+                      </span>
+                      <span class="hero__button-icon-slot hero__button-icon-slot--next">
+                        <img class="hero__button-icon-next" src="/src/assets/icons/arrow-down.svg" width="20" height="20" alt="" />
+                      </span>
+                    </span>
                   </span>
                 </span>
               </button>
@@ -184,6 +193,12 @@
                 put a system into a model with confidence.
               </p>
             </div>
+            <a class="start__card-link" href="#">
+              <span class="start__card-link-icon-area">
+                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              </span>
+              <span class="start__card-link-label">Specify a System</span>
+            </a>
           </article>
           <article class="start__card">
             <p class="start__card-label">
@@ -197,6 +212,12 @@
                 representative behind every install – built for a clean commissioning day.
               </p>
             </div>
+            <a class="start__card-link" href="#">
+              <span class="start__card-link-icon-area">
+                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              </span>
+              <span class="start__card-link-label">Integrate and Install</span>
+            </a>
           </article>
         </div>
       </section>

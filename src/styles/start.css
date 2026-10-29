@@ -41,6 +41,9 @@
 }
 
 .start__card {
+  /* 0 inactive, 1 active: fades the white layer; animated by src/components/start-cards.js */
+  --active: 0;
+  position: relative;
   display: flex;
   grid-column: span 4;
   flex-direction: column;
@@ -64,7 +67,22 @@
 }
 
 .start__card.is-active {
+  --active: 1;
+}
+
+/* Active white: a layer over the translucent background, so the switch is a fade */
+.start__card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
   background-color: #fff;
+  opacity: var(--active);
+}
+
+/* The card's height is animated on the switch; its parts keep their size and get clipped */
+.start__card > * {
+  flex-shrink: 0;
 }
 
 .start__card-label {
@@ -125,7 +143,8 @@
   border-radius: 999px;
 }
 
-.start__card.is-active .start__card-link {
+.start__card.is-active .start__card-link,
+.start__card.is-leaving .start__card-link {
   display: flex;
 }
 
