@@ -1,4 +1,4 @@
-// "Where Do You Start?" cards: hovering a card (or focusing inside it) makes it the active one
+// "What Are You Listening For?" cards: hovering a card (or focusing inside it) makes it the active one
 // and the others inactive. Leaving it changes nothing — the last hovered card stays active.
 // The switch (START_CARDS): the new card grows to fit its link and fades to white; the link
 // rises from one link height below, its circle fades in and grows from 0, its label fades in

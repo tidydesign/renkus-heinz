@@ -102,7 +102,7 @@ export const HERO_DIVIDER = {
   ease: HERO_TITLE.ease,
 }
 
-// "Where Do You Start?" card switch on hover (src/components/start-cards.js).
+// "What Are You Listening For?" card switch on hover (src/components/start-cards.js).
 // The new active card grows to fit its link and turns white; the link rises from one link height
 // below, its circle fades in and grows from 0, its label fades in letter by letter.
 // The card left behind shrinks back while its link fades out
@@ -127,7 +127,7 @@ export const HERO_PROMO_HOVER = {
   photoScale: 1.1,
 }
 
-// Scroll from the Hero to "Where Do You Start?"
+// Scroll from the Hero to "What Are You Listening For?"
 export const SCENE_START = {
   // One wheel turn, swipe or key press glides the page to the whole next (or previous) screen
   scroll: {

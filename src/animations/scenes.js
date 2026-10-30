@@ -2,7 +2,7 @@
 // The page moves by whole screens: one wheel turn, swipe or key press glides it to the next or
 // previous section (native scrolling there is taken over). A scroll that bypasses that (the
 // scrollbar, say) settles on the nearer section once it stops.
-// Hero → "Where Do You Start?": during the glide the speaker on the fixed stage scales from
+// Hero → "What Are You Listening For?": during the glide the speaker on the fixed stage scales from
 // 3 screen widths down to 1 and moves to the vertical screen centre, while the RHAON III card,
 // the hint and the button rise faster than the page for a parallax (scrubbed to the scroll).
 // The image sequence starts with the glide (its first frames are nearly empty, so the objects show

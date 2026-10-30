@@ -4,12 +4,23 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  isolation: isolate;
   display: flex;
   align-items: center;
   height: 64px;
   padding-block: 16px;
   padding-inline: 24px;
+  /* White background: off on the Hero, on further down (src/animations/header.js) */
+  --solid: 0;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
   background-color: #fff;
+  opacity: var(--solid);
 }
 
 .header__logo {

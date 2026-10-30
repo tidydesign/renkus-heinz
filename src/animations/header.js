@@ -1,4 +1,5 @@
-// Header: hides on scroll down, shows on scroll up.
+// Header: hides on scroll down, shows on scroll up. Transparent on the Hero, with a white
+// background below it.
 
 import { gsap } from 'gsap'
 import { HEADER, REDUCED_MOTION_QUERY } from './config.js'
@@ -10,6 +11,18 @@ export function initHeader() {
   const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY)
   let lastY = window.scrollY
   let isHidden = false
+  let isSolid = false
+
+  const setSolid = (solid) => {
+    if (solid === isSolid) return
+    isSolid = solid
+    gsap.to(header, {
+      '--solid': solid ? 1 : 0,
+      duration: reducedMotion.matches ? 0 : HEADER.duration,
+      ease: HEADER.ease,
+      overwrite: 'auto',
+    })
+  }
 
   const setHidden = (hidden) => {
     if (hidden === isHidden) return
@@ -18,12 +31,13 @@ export function initHeader() {
       yPercent: hidden ? -100 : 0,
       duration: reducedMotion.matches ? 0 : HEADER.duration,
       ease: HEADER.ease,
-      overwrite: true,
+      overwrite: 'auto',
     })
   }
 
   const onScroll = () => {
     const y = Math.max(0, window.scrollY)
+    setSolid(y > header.offsetHeight)
 
     // Always visible at the top of the page
     if (y <= header.offsetHeight) {
@@ -40,6 +54,8 @@ export function initHeader() {
     lastY = y
   }
 
+  // A reload may restore a scrolled page
+  setSolid(window.scrollY > header.offsetHeight)
   window.addEventListener('scroll', onScroll, { passive: true })
   header.addEventListener('focusin', () => setHidden(false))
 }
