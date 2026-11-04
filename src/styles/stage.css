@@ -28,6 +28,23 @@
   height: 100%;
 }
 
+/* The speaker turning (src/animations/why-us.js): over the image, shown once the turn starts */
+.stage__rotate {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stage.is-rotating .stage__speaker {
+  visibility: hidden;
+}
+
+/* Turning: above the second screen (z-index 2), below Why Us */
+.stage--speaker.is-rotating {
+  z-index: 3;
+}
+
 .stage__sequence {
   position: absolute;
   top: calc(50% - 10vh - 100vw * 9 / 32);

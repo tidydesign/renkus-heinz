@@ -60,10 +60,13 @@
     </header>
 
     <main>
-      <!-- Fixed layer shared by the first screens: the speaker and the image sequence.
-           Sits above the Hero title, below every other piece of content -->
+      <!-- Fixed layers shared by the first screens: the image sequence, and the speaker over it.
+           They sit above the Hero title, below every other piece of content; while the speaker
+           turns on the way to Why Us, it comes above the second screen's cards -->
       <div class="stage" aria-hidden="true">
         <canvas class="stage__sequence"></canvas>
+      </div>
+      <div class="stage stage--speaker" aria-hidden="true">
         <div class="stage__speaker-wrap">
           <img
             class="stage__speaker"
@@ -73,6 +76,8 @@
             alt=""
             decoding="async"
           />
+          <!-- Takes over from the image on the way to Why Us: the speaker turning (light) -->
+          <canvas class="stage__rotate"></canvas>
         </div>
       </div>
 
@@ -219,6 +224,117 @@
               <span class="start__card-link-label">Integrate and Install</span>
             </a>
           </article>
+        </div>
+      </section>
+
+      <section class="why" data-sequence="why-us-01" aria-labelledby="why-01-title">
+        <canvas class="why__loop" aria-hidden="true"></canvas>
+        <!-- Fixed to the screen and clipped by the section: as the section rises over the stage it
+             reveals the dark speaker turning in step with the light one (src/animations/why-us.js) -->
+        <div class="why__intro" aria-hidden="true">
+          <div class="why__rotate-wrap">
+            <canvas class="why__rotate"></canvas>
+          </div>
+        </div>
+        <div class="why__content">
+          <div class="why__panel">
+            <div class="why__head">
+              <span class="why__icon-area">
+                <img class="why__icon why__icon--precision" src="/src/assets/why-us/precision.svg" width="64" height="64" alt="" />
+              </span>
+              <div class="why__body">
+                <h2 class="why__title" id="why-01-title">Passion for Precision</h2>
+                <p class="why__text">Full weight, full detail — the same in the front as the back. Beam steering places sound exactly where your space needs it.</p>
+              </div>
+            </div>
+            <!-- The link clips its pill: the intro opens it from a circle on the left -->
+            <a class="why__link" href="#">
+              <span class="why__link-body">
+                <span class="why__link-label">See What Precision Means</span>
+                <span class="why__link-icon-area">
+                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="why why--right" data-sequence="why-us-02" aria-labelledby="why-02-title">
+        <canvas class="why__loop" aria-hidden="true"></canvas>
+        <div class="why__content">
+          <div class="why__panel">
+            <div class="why__head">
+              <span class="why__icon-area">
+                <img class="why__icon why__icon--integrity" src="/src/assets/why-us/integrity.svg" width="27" height="48" alt="" />
+              </span>
+              <div class="why__body">
+                <h2 class="why__title" id="why-02-title">Architectural Integrity</h2>
+                <p class="why__text">Sound crafted for and blending into your room, not a system bolted onto it.</p>
+              </div>
+            </div>
+            <!-- The link clips its pill: the intro opens it from a circle on the left -->
+            <a class="why__link" href="#">
+              <span class="why__link-body">
+                <span class="why__link-label">Explore Architectural Integrity</span>
+                <span class="why__link-icon-area">
+                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="why" data-sequence="why-us-03" aria-labelledby="why-03-title">
+        <canvas class="why__loop" aria-hidden="true"></canvas>
+        <div class="why__content">
+          <div class="why__panel">
+            <div class="why__head">
+              <span class="why__icon-area">
+                <img class="why__icon why__icon--lifecycle" src="/src/assets/why-us/lifecycle.svg" width="64" height="64" alt="" />
+              </span>
+              <div class="why__body">
+                <h2 class="why__title" id="why-03-title">Lifecycle Value</h2>
+                <p class="why__text">A system that keeps earning its place for years.</p>
+              </div>
+            </div>
+            <!-- The link clips its pill: the intro opens it from a circle on the left -->
+            <a class="why__link" href="#">
+              <span class="why__link-body">
+                <span class="why__link-label">Explore Lifecycle Value</span>
+                <span class="why__link-icon-area">
+                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="why why--right why--light" data-sequence="why-us-04" aria-labelledby="why-04-title">
+        <canvas class="why__loop" aria-hidden="true"></canvas>
+        <div class="why__content">
+          <div class="why__panel">
+            <div class="why__head">
+              <span class="why__icon-area">
+                <img class="why__icon why__icon--it-integration" src="/src/assets/why-us/it-integration.svg" width="64" height="64" alt="" />
+              </span>
+              <div class="why__body">
+                <h2 class="why__title" id="why-04-title">IT Integration</h2>
+                <p class="why__text">Connecting to professional AV standards and emerging technologies.</p>
+              </div>
+            </div>
+            <!-- The link clips its pill: the intro opens it from a circle on the left -->
+            <a class="why__link" href="#">
+              <span class="why__link-body">
+                <span class="why__link-label">See How It Connects</span>
+                <span class="why__link-icon-area">
+                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
+              </span>
+            </a>
+          </div>
         </div>
       </section>
     </main>

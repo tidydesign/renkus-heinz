@@ -162,3 +162,23 @@ export const SCENE_START = {
     ease: 'power3.out',
   },
 }
+
+// Why Us 01–04 (src/animations/why-us.js). From the second screen to Why Us 01 the active scene
+// plays backwards (SCENE_START.leaveBy) while the speaker turns and grows, scrubbed to the scroll.
+// Each section's background is an image sequence looping while the section is in view.
+// Between the sections the next one covers the current one like a mask, both standing still; the
+// content blocks move with a parallax: the current one rises, the next one comes up from below.
+// Once a section is reached, its texts and link come in like the Hero's
+export const WHY_US = {
+  loop: { fps: 30 },
+  // Parallax of the content block, in section heights: it rises this far while its section
+  // leaves, and starts this far below its place while its section comes in
+  parallax: 0.1,
+  // The intro starts once the glide into the section is this far through (0–1)
+  arriveAt: 0.5,
+  // The icon circle fades in and rises like the Hero tagline's dot (s)
+  icon: { duration: HERO_TEXT.duration },
+  title: HERO_TITLE,
+  text: HERO_TEXT,
+  button: HERO_BUTTON,
+}

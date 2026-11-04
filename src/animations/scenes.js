@@ -11,6 +11,9 @@
 // speaker and the sequence sit slightly above the screen centre.
 // Going back up, these play backwards together with the glide but much faster, so the sequence is
 // gone before the Hero comes into view.
+// "What Are You Listening For?" → Why Us 01: the active scene plays backwards the same way while the
+// speaker turns (src/animations/why-us.js), grows to 3 screen widths and moves to the screen centre,
+// scrubbed to the scroll; coming back up, the scene plays forward again.
 // Scenes: card N stands for scene N (src/assets/images/scene-0N-in and -out). The arrival plays
 // the active card's scene-0N-in. Hovering another card switches the scene: the old scene's "in"
 // plays backwards while the new scene's "out" plays forward, both drawn on the same canvas.
@@ -21,9 +24,10 @@ import { Observer } from 'gsap/Observer'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
-import { REDUCED_MOTION_QUERY, SCENE_START } from './config.js'
+import { REDUCED_MOTION_QUERY, SCENE_START, WHY_US } from './config.js'
 import { lettersTimeline, lineHeightOf, spreadGradient } from './letters.js'
-import { createStage } from './sequences.js'
+import { createStage, preloadSequences, sequenceNames } from './sequences.js'
+import { initWhyUs } from './why-us.js'
 
 gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger, SplitText)
 
@@ -102,8 +106,8 @@ const createScenes = (stage, list, reducedMotion) => {
   list.addEventListener('start:select', (event) => switchTo(event.detail.index))
 
   // The active scene's arrival first, the rest once the page has loaded
-  stage.preload([sceneName(active, 'in')])
-  const preloadRest = () => stage.preload(stage.names)
+  preloadSequences([sceneName(active, 'in')])
+  const preloadRest = () => preloadSequences(sequenceNames.filter((name) => name.startsWith('scene-')))
   if (document.readyState === 'complete') preloadRest()
   else window.addEventListener('load', preloadRest, { once: true })
 
@@ -124,19 +128,11 @@ const createScenes = (stage, list, reducedMotion) => {
   }
 }
 
-// The speaker's start position comes from stage.css; this is the move to the end position
-const speakerTween = (wrap) =>
-  gsap.fromTo(
-    wrap,
-    { scale: 1, y: 0 },
-    {
-      scale: 1 / 3,
-      // From the Hero position (centre 32px + 60% of the screen) to the screen centre, raised
-      y: () => -(32 + window.innerHeight * (0.1 + SCENE_START.raise)),
-      ease: 'none',
-      immediateRender: false,
-    },
-  )
+// Speaker moves from its Hero position (stage.css: centre 32px + 60% of the screen), in px
+// To the screen centre, raised: on the second screen
+const raisedY = () => -(32 + window.innerHeight * (0.1 + SCENE_START.raise))
+// To the screen centre: on Why Us 01
+const centredY = () => -(32 + window.innerHeight * 0.1)
 
 const titleTimeline = (title) => {
   const accent = title.querySelector('.text-gradient')
@@ -162,26 +158,34 @@ export function initScenes() {
     window.scrollTo(0, 0)
   }
 
-  // Scrubbed over the scroll from the Hero to the next section: the speaker, and the parallax
-  // of the Hero's lower corners (their containers, the intro animates what is inside)
+  const why = initWhyUs(reducedMotion)
+
+  // Scrubbed over the scroll, one unit per screen. Hero to the next section: the speaker, and the
+  // parallax of the Hero's lower corners (their containers, the intro animates what is inside).
+  // On to Why Us 01: the speaker (with its dark copy there) grows and turns
   const promo = hero.querySelector('.hero__promo')
   const corners = [promo, hero.querySelector('.hero__actions')].filter(Boolean)
-  const scrub = gsap.timeline()
-  if (wrap) scrub.add(speakerTween(wrap), 0)
+  const speakers = [wrap, why?.wrap].filter(Boolean)
+  const scrub = gsap.timeline({ defaults: { duration: 1, ease: 'none', immediateRender: false } })
+  if (speakers.length) scrub.fromTo(speakers, { scale: 1, y: 0 }, { scale: 1 / 3, y: raisedY }, 0)
   if (corners.length && !reducedMotion) {
-    scrub.fromTo(
-      corners,
-      { y: 0 },
-      { y: () => -SCENE_START.parallax * (promo?.offsetHeight ?? 0), ease: 'none', immediateRender: false },
-      0,
-    )
+    scrub.fromTo(corners, { y: 0 }, { y: () => -SCENE_START.parallax * (promo?.offsetHeight ?? 0) }, 0)
+  }
+  if (why) {
+    const turn = { progress: 0 }
+    if (speakers.length) scrub.fromTo(speakers, { scale: 1 / 3, y: raisedY }, { scale: 1, y: centredY }, 1)
+    // The second screen's title and cards move down as fast as the page moves up: they stay in
+    // place on the screen while Why Us 01 rises over them
+    const still = [start.querySelector('.start__title'), start.querySelector('.start__cards')].filter(Boolean)
+    if (still.length) scrub.fromTo(still, { y: 0 }, { y: () => window.innerHeight }, 1)
+    scrub.fromTo(turn, { progress: 0 }, { progress: 1, onUpdate: () => why.turn(turn.progress) }, 1)
   }
 
   ScrollTrigger.create({
     trigger: hero,
     // The page top, not the Hero top: the header sits above the Hero in the flow
     start: 0,
-    endTrigger: start,
+    endTrigger: why?.sections[0] ?? start,
     end: 'top top',
     scrub: true,
     animation: scrub,
@@ -232,17 +236,24 @@ export function initScenes() {
     {
       el: start,
       beforeLeave: scenes?.settle,
-      // Each starts this far through the glide down (0–1)
+      // Each starts this far through the glide into the section (0–1)
       arrivals: [
         { animation: intro, at: SCENE_START.sequence.at },
         { animation: arrival, at: SCENE_START.arriveAt },
       ].filter((item) => item.animation),
+      // Going on down, the scene plays backwards while the speaker turns
+      departures: [intro].filter(Boolean),
     },
+    ...(why?.sections ?? []).map((el, i) => ({
+      el,
+      arrivals: why.intros[i] ? [{ animation: why.intros[i], at: WHY_US.arriveAt }] : [],
+    })),
   ])
 }
 
-// Whole-screen navigation between the scenes; each may have arrival animations that play on the
-// way down into it and play backwards before leaving it upwards
+// Whole-screen navigation between the scenes. A scene may have arrival animations that play on the
+// way into it (from either side; finished ones stay as they are) and play backwards when leaving
+// it upwards, and departures that play backwards when leaving it downwards
 const initNavigation = (scenes) => {
   const { duration, ease, tolerance } = SCENE_START.scroll
   const topOf = (scene) => (scene.top ? scene.top() : scene.el.getBoundingClientRect().top + window.scrollY)
@@ -267,18 +278,15 @@ const initNavigation = (scenes) => {
       },
     })
 
-    if (index > current) {
-      tl.add(glide(to))
-      to.arrivals?.forEach(({ animation, at }) => tl.call(() => animation.timeScale(1).play(), null, duration * at))
-    } else {
-      from.beforeLeave?.()
-      // The arrivals play backwards while gliding, fast enough to be gone early in the glide
-      const leaveIn = duration * SCENE_START.leaveBy
-      from.arrivals?.forEach(({ animation }) => {
-        if (animation.time() > 0) animation.timeScale(animation.time() / leaveIn).reverse()
-      })
-      tl.add(glide(to))
-    }
+    from.beforeLeave?.()
+    // What leaves plays backwards while gliding, fast enough to be gone early in the glide
+    const leaveIn = duration * SCENE_START.leaveBy
+    const leaving = index > current ? from.departures : from.arrivals?.map(({ animation }) => animation)
+    leaving?.forEach((animation) => {
+      if (animation.time() > 0) animation.timeScale(animation.time() / leaveIn).reverse()
+    })
+    tl.add(glide(to))
+    to.arrivals?.forEach(({ animation, at }) => tl.call(() => animation.timeScale(1).play(), null, duration * at))
   }
 
   navigateTo = (el) => {

@@ -1,0 +1,208 @@
+/* Why Us 01–04 — Figma: Why Us 01 (27:155), 02 (27:181), 03 (27:212), 04 (27:228); Desktop only.
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet).
+   Desktop: the panel takes columns 2–6 (01, 03) or 12–16 (02, 04) of 16; Laptop follows the same
+   idea on 12 columns: 2–6 or 8–12. Backgrounds are looping image sequences (src/animations/why-us.js).
+   Background and content are fixed to the screen and clipped by their section: scrolling only moves
+   the section edges, so the next section covers the current one like a mask while both stand still. */
+
+.why {
+  /* Above the stage (speaker and sequence, also while the speaker turns) and the second screen */
+  position: relative;
+  z-index: 4;
+  height: 100svh;
+  overflow: clip;
+  /* Clips the fixed layers to the section, so the section works as a mask */
+  clip-path: inset(0);
+  background-color: #050505;
+  color: #fff;
+}
+
+.why--light {
+  background-color: #f6f6f7;
+  color: #101014;
+}
+
+/* Background sequence: 16:9, covers the screen */
+.why__loop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 100vh * 16 / 9);
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%);
+}
+
+/* Why Us 01 only: until the section is reached, the background image and the dark speaker,
+   fixed to the screen like the stage */
+.why__intro {
+  position: fixed;
+  inset: 0;
+  background: url("../assets/images/why-us-background.webp") center / cover no-repeat;
+}
+
+.why.is-reached .why__intro {
+  visibility: hidden;
+}
+
+/* The same box as the stage speaker (src/styles/stage.css), moved and scaled along with it */
+.why__rotate-wrap {
+  position: absolute;
+  top: calc(32px + 50vh + 10vh - 300vw * 9 / 32);
+  left: calc(50% - 150vw);
+  width: 300vw;
+  aspect-ratio: 16 / 9;
+}
+
+.why__rotate {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content: the panel centred vertically on a column grid */
+
+.why__content {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 24px;
+  padding-inline: 24px;
+}
+
+.why__panel {
+  display: flex;
+  grid-column: 2 / span 5;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.why--right .why__panel {
+  grid-column: 8 / span 5;
+}
+
+@media (min-width: 1600px) {
+  .why__content {
+    grid-template-columns: repeat(16, minmax(0, 1fr));
+  }
+
+  .why--right .why__panel {
+    grid-column: 12 / span 5;
+  }
+}
+
+.why__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.why__icon-area {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  overflow: clip;
+  border-radius: 999px;
+  background-color: rgb(255 255 255 / 0.12);
+}
+
+.why--light .why__icon-area {
+  background-color: rgb(16 16 20 / 0.08);
+}
+
+.why__icon {
+  width: 64px;
+  height: 64px;
+}
+
+/* Drawn inside a 64px frame in Figma: 20px from its left edge, centred vertically */
+.why__icon--integrity {
+  position: absolute;
+  top: 24px;
+  left: 35.5px;
+  width: 26.5px;
+  height: 48px;
+}
+
+.why__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-wrap: pretty;
+}
+
+.why__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.why__text {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Link: white pill, label and blue arrow circle. The link is the clip, the body inside is the pill */
+
+.why__link {
+  display: block;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.why__link-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  border-radius: 999px;
+  background-color: #fff;
+}
+
+.why__link-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #0054a6;
+  white-space: nowrap;
+}
+
+.why__link-icon-area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: #0054a6;
+}
+
+.why__link-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Intro (src/animations/why-us.js): texts hidden until split into letters, the rest faded out */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .why__title,
+  .js .why__text {
+    visibility: hidden;
+  }
+
+  .js .why__icon-area,
+  .js .why__link {
+    opacity: 0;
+  }
+}
