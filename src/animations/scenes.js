@@ -24,9 +24,10 @@ import { Observer } from 'gsap/Observer'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
-import { REDUCED_MOTION_QUERY, SCENE_START, WHY_US } from './config.js'
+import { REDUCED_MOTION_QUERY, SCENE_START, SPACES, WHY_US } from './config.js'
 import { lettersTimeline, lineHeightOf, spreadGradient } from './letters.js'
 import { createStage, preloadSequences, sequenceNames } from './sequences.js'
+import { initSpaces } from './spaces.js'
 import { initWhyUs } from './why-us.js'
 
 gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger, SplitText)
@@ -159,6 +160,7 @@ export function initScenes() {
   }
 
   const why = initWhyUs(reducedMotion)
+  const spaces = initSpaces(reducedMotion)
 
   // Scrubbed over the scroll, one unit per screen. Hero to the next section: the speaker, and the
   // parallax of the Hero's lower corners (their containers, the intro animates what is inside).
@@ -248,18 +250,62 @@ export function initScenes() {
       el,
       arrivals: why.intros[i] ? [{ animation: why.intros[i], at: WHY_US.arriveAt }] : [],
     })),
+    // Scrolls freely once reached (see initNavigation)
+    ...(spaces
+      ? [{ el: spaces.section, free: true, arrivals: spaces.intro ? [{ animation: spaces.intro, at: SPACES.arriveAt }] : [] }]
+      : []),
   ])
 }
 
 // Whole-screen navigation between the scenes. A scene may have arrival animations that play on the
 // way into it (from either side; finished ones stay as they are) and play backwards when leaving
-// it upwards, and departures that play backwards when leaving it downwards
+// it upwards, and departures that play backwards when leaving it downwards.
+// A free scene (the last one, taller than the screen) scrolls freely once reached: each wheel turn,
+// swipe or key press eases the page on by its distance; at its top, a step up glides back to the
+// previous scene
 const initNavigation = (scenes) => {
   const { duration, ease, tolerance } = SCENE_START.scroll
   const topOf = (scene) => (scene.top ? scene.top() : scene.el.getBoundingClientRect().top + window.scrollY)
 
   let current = 0
   let busy = false
+
+  // Free scrolling: where the page is easing to, and whether the trackpad momentum of the glide in
+  // is still coming (ignored until the wheel events pause)
+  let freeTween = null
+  let freeTarget = 0
+  let settling = false
+  let lastEvent = 0
+
+  const freeBy = (scene, delta) => {
+    const max = ScrollTrigger.maxScroll(window)
+    const from = freeTween?.isActive() ? freeTarget : window.scrollY
+    freeTarget = gsap.utils.clamp(topOf(scene), max, from + delta)
+    freeTween = gsap.to(window, {
+      scrollTo: { y: freeTarget, autoKill: false },
+      duration: SPACES.scroll.duration,
+      ease: SPACES.scroll.ease,
+      overwrite: true,
+    })
+  }
+
+  // One step (dir ±1) of a wheel turn, swipe or key press; delta is its distance in px (down > 0)
+  const step = (dir, delta) => {
+    const now = performance.now()
+    const quiet = now - lastEvent > SPACES.scroll.quiet
+    lastEvent = now
+    const scene = scenes[current]
+    if (busy || !scene.free) return goTo(current + dir)
+    if (settling) {
+      if (!quiet) return
+      settling = false
+    }
+    // Inside the scene, or going on down: scroll; at its top, up glides back (once the page has
+    // eased all the way there)
+    if (dir > 0 || window.scrollY > topOf(scene) + 1 || freeTarget > topOf(scene) + 1) return freeBy(scene, delta)
+    if (freeTween?.isActive()) return
+    goTo(current + dir)
+  }
 
   const glide = (scene) =>
     gsap.to(window, { scrollTo: { y: () => topOf(scene), autoKill: false }, duration, ease })
@@ -271,10 +317,13 @@ const initNavigation = (scenes) => {
 
     const from = scenes[current]
     const to = scenes[index]
+    freeTween?.kill()
     const tl = gsap.timeline({
       onComplete: () => {
         current = index
         busy = false
+        settling = Boolean(to.free)
+        freeTarget = window.scrollY
       },
     })
 
@@ -301,26 +350,45 @@ const initNavigation = (scenes) => {
     wheelSpeed: -1,
     tolerance,
     preventDefault: true,
-    onUp: () => goTo(current + 1),
-    onDown: () => goTo(current - 1),
+    onUp: (self) => step(1, -self.deltaY),
+    onDown: (self) => step(-1, -self.deltaY),
   })
 
   const keySteps = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1 }
   window.addEventListener('keydown', (event) => {
     if (event.target.closest('input, textarea, select, [contenteditable]')) return
-    let step = keySteps[event.key]
-    if (event.key === ' ' && !event.target.closest('button, a')) step = event.shiftKey ? -1 : 1
-    if (event.key === 'Home') step = -scenes.length
-    if (event.key === 'End') step = scenes.length
-    if (!step) return
+    let dir = keySteps[event.key]
+    let distance = SPACES.scroll.pageStep
+    if (event.key === ' ' && !event.target.closest('button, a')) dir = event.shiftKey ? -1 : 1
+    if (event.key.startsWith('Arrow')) distance = SPACES.scroll.keyStep
+    if (event.key === 'Home') return event.preventDefault(), goTo(0)
+    if (event.key === 'End') {
+      event.preventDefault()
+      const last = scenes.at(-1)
+      if (current === scenes.length - 1 && last.free) freeBy(last, Infinity)
+      else goTo(scenes.length - 1)
+      return
+    }
+    if (!dir) return
     event.preventDefault()
-    goTo(current + step)
+    // Keys are never trackpad momentum
+    settling = false
+    step(dir, dir * distance * window.innerHeight)
   })
 
   // A scroll that bypassed the navigation (scrollbar, focus, find in page): settle on the nearer scene
   ScrollTrigger.addEventListener('scrollEnd', () => {
     if (busy) return
     const y = window.scrollY
+    // Inside a free scene: it stays where it is (reached by the scrollbar, say: it becomes current)
+    const inside = scenes.findIndex((scene) => scene.free && y > topOf(scene) + 1)
+    if (inside >= 0) {
+      if (inside !== current) {
+        current = inside
+        scenes[inside].arrivals?.forEach(({ animation }) => animation.timeScale(1).play())
+      }
+      return
+    }
     const distances = scenes.map((scene) => Math.abs(topOf(scene) - y))
     const nearest = distances.indexOf(Math.min(...distances))
     if (nearest !== current) goTo(nearest)

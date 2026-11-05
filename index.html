@@ -337,6 +337,188 @@
           </div>
         </div>
       </section>
+      <!-- Spaces: taller than the screen; its layers are fixed to the screen and clipped by the
+           section, so it covers Why Us like a mask and then scrolls freely (src/animations/spaces.js) -->
+      <section class="spaces" aria-labelledby="spaces-title">
+        <div class="spaces__backdrop" aria-hidden="true">
+          <div class="spaces__speaker-wrap">
+            <img
+              class="spaces__speaker"
+              src="/src/assets/hero/speaker-hero.webp"
+              width="7680"
+              height="4320"
+              alt=""
+              decoding="async"
+            />
+            <!-- The speaker turning back (light), until the section is reached -->
+            <canvas class="spaces__rotate"></canvas>
+          </div>
+        </div>
+        <div class="spaces__heading">
+          <h2 class="spaces__title" id="spaces-title">
+            <span class="spaces__title-line spaces__title-line--accent text-gradient">Every room asks something</span>
+            <span class="spaces__title-line">different of its sound</span>
+          </h2>
+        </div>
+        <div class="spaces__rail">
+          <ul class="spaces__track">
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/houses-of-worship.webp"
+                  srcset="/src/assets/images/spaces/houses-of-worship.webp 1x, /src/assets/images/spaces/houses-of-worship@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Houses of Worship</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/transportation-and-airports.webp"
+                  srcset="/src/assets/images/spaces/transportation-and-airports.webp 1x, /src/assets/images/spaces/transportation-and-airports@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Transportation &amp;&nbsp;Airports</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/mobile-and-touring.webp"
+                  srcset="/src/assets/images/spaces/mobile-and-touring.webp 1x, /src/assets/images/spaces/mobile-and-touring@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Mobile &amp; Touring</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/education.webp"
+                  srcset="/src/assets/images/spaces/education.webp 1x, /src/assets/images/spaces/education@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Education</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/performing-arts.webp"
+                  srcset="/src/assets/images/spaces/performing-arts.webp 1x, /src/assets/images/spaces/performing-arts@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Performing Arts</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/lifestyle-and-entertainment.webp"
+                  srcset="/src/assets/images/spaces/lifestyle-and-entertainment.webp 1x, /src/assets/images/spaces/lifestyle-and-entertainment@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Lifestyle &amp;&nbsp;Entertainment</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/corporate.webp"
+                  srcset="/src/assets/images/spaces/corporate.webp 1x, /src/assets/images/spaces/corporate@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Corporate</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/government.webp"
+                  srcset="/src/assets/images/spaces/government.webp 1x, /src/assets/images/spaces/government@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Government</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/sports-and-arenas.webp"
+                  srcset="/src/assets/images/spaces/sports-and-arenas.webp 1x, /src/assets/images/spaces/sports-and-arenas@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Sports &amp; Arenas</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/hospitality.webp"
+                  srcset="/src/assets/images/spaces/hospitality.webp 1x, /src/assets/images/spaces/hospitality@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Hospitality</span>
+              </a>
+            </li>
+            <li class="spaces__item">
+              <a class="spaces__card" href="#">
+                <img
+                  class="spaces__image"
+                  src="/src/assets/images/spaces/museums-and-culture.webp"
+                  srcset="/src/assets/images/spaces/museums-and-culture.webp 1x, /src/assets/images/spaces/museums-and-culture@2x.webp 2x"
+                  width="331"
+                  height="441"
+                  alt=""
+                  decoding="async"
+                />
+                <span class="spaces__name">Museums &amp; Culture</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="/src/main.js"></script>

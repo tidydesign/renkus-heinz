@@ -1,0 +1,159 @@
+/* Spaces — Figma: Spaces 01 (33:263), Spaces 02 (33:269); Desktop only.
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet).
+   The section is taller than the screen (its height is set by src/animations/spaces.js to fit the
+   scroll of the cards). Its layers are fixed to the screen and clipped by the section, so it covers
+   Why Us 04 like a mask, then stands still while the scroll moves the title and the cards.
+   Desktop: the title and the first card start at 262px (the title's 1396px centred on 1920). */
+
+.spaces {
+  /* Above Why Us */
+  position: relative;
+  z-index: 5;
+  min-height: 100svh;
+  overflow: clip;
+  clip-path: inset(0);
+  color: #101014;
+}
+
+/* Background: the Hero gradient, and the speaker as large as on the Hero */
+.spaces__backdrop {
+  position: fixed;
+  inset: 0;
+  overflow: clip;
+  background-image: linear-gradient(242deg, #f8f8fa 0%, #f0f0f5 100%);
+  pointer-events: none;
+}
+
+/* Like the Hero speaker (stage.css), centred 10% of the screen height below the screen centre.
+   It keeps that size while it turns back as the section comes in */
+.spaces__speaker-wrap {
+  position: absolute;
+  top: calc(60vh - 300vw * 9 / 32);
+  left: calc(50% - 150vw);
+  width: 300vw;
+  aspect-ratio: 16 / 9;
+}
+
+.spaces__speaker {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.spaces__rotate {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.spaces.is-rotating .spaces__speaker {
+  visibility: hidden;
+}
+
+/* Title: centred on the screen */
+
+.spaces__heading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 24px;
+  pointer-events: none;
+}
+
+.spaces__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.spaces__title-line--accent {
+  --text-gradient: linear-gradient(314deg, #0054a6 51.4%, #003d79 100%);
+}
+
+/* Cards: one row centred vertically, starting where the title would start (the title box is
+   1396px wide on Desktop), moved sideways by the scroll */
+
+.spaces__rail {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-inline: max(24px, (100vw - 1396px) / 2);
+  pointer-events: none;
+}
+
+.spaces__track {
+  flex-shrink: 0;
+  display: flex;
+  gap: 143px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spaces__item {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.spaces__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 331px;
+  height: 441px;
+  overflow: clip;
+  background-color: #101014;
+  color: #fff;
+  text-decoration: none;
+}
+
+.spaces__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Darkens the photo slightly under the name */
+.spaces__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.12);
+}
+
+.spaces__name {
+  position: relative;
+  z-index: 1;
+  width: 283px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+/* Intro (src/animations/spaces.js): the title hidden until split into letters */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .spaces__title {
+    visibility: hidden;
+  }
+}

@@ -5,6 +5,7 @@ import './styles/stage.css'
 import './styles/hero.css'
 import './styles/start.css'
 import './styles/why-us.css'
+import './styles/spaces.css'
 
 import { initHeader } from './animations/header.js'
 import { initHeroButton } from './components/hero-button.js'

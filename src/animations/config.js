@@ -182,3 +182,33 @@ export const WHY_US = {
   text: HERO_TEXT,
   button: HERO_BUTTON,
 }
+
+// Spaces (src/animations/spaces.js). From Why Us 04 the section covers the screen like a mask while
+// the speaker turns back (hero-rotate-light backwards) at three screen widths, scrubbed to the
+// scroll; its last frame is the Hero speaker image. Once reached, the title comes in like the second
+// screen's title, and from there the page scrolls freely (no snapping), smoothed. Scrolling on, the
+// title goes up with the page while the cards come in from the right and move on sideways, with
+// inertia
+export const SPACES = {
+  // The title starts once the glide into the section is this far through (0–1)
+  arriveAt: SCENE_START.arriveAt,
+  title: HERO_TITLE,
+  // Free scrolling inside the section: each wheel turn or swipe eases the page to its new place
+  scroll: {
+    duration: 1,
+    ease: 'power3.out',
+    // Wheel events closer together than this (ms) after the glide in still belong to it
+    // (trackpad momentum) and are ignored
+    quiet: 200,
+    // Arrow keys, in screen heights; Page Up/Down and Space
+    keyStep: 0.25,
+    pageStep: 0.8,
+  },
+  // Cards: each follows its place with inertia. Per frame (at 60 fps) it covers this share of
+  // the way left; a card at the far side from where the row moves gets this much less of it (0–1),
+  // so the row stretches while moving. Cards never come closer than this share of the design gap
+  inertia: { follow: 0.12, slowdown: 0.7, minGap: 0.5 },
+  // Off-screen cards come in this many times the design gap apart and close up as they come in
+  startGap: 1.5,
+}
+
