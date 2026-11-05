@@ -208,7 +208,5 @@ export const SPACES = {
   // the way left; a card at the far side from where the row moves gets this much less of it (0–1),
   // so the row stretches while moving. Cards never come closer than this share of the design gap
   inertia: { follow: 0.12, slowdown: 0.7, minGap: 0.5 },
-  // Off-screen cards come in this many times the design gap apart and close up as they come in
-  startGap: 1.5,
 }
 

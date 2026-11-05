@@ -50,8 +50,9 @@ export function initSpaces(reducedMotion) {
   }
   // Scroll distance (px) until the row is in place: the first card comes in from the right edge
   const enter = () => window.innerWidth - row.left
-  // Then on until the last card ends where the title box would end
-  const travel = () => Math.max(0, row.slot * (cards.length - 1) + row.width - (window.innerWidth - row.left * 2))
+  // Then on until the last but one card is in the middle of the screen
+  const travel = () =>
+    Math.max(0, row.left + row.slot * Math.max(0, cards.length - 2) + (row.width - window.innerWidth) / 2)
   const distance = () => enter() + travel()
 
   // Tall enough for that, on top of the screen it covers when reached
@@ -100,29 +101,19 @@ export function initSpaces(reducedMotion) {
     )
   }
 
-  // Cards: the row moves left with the scroll, from just off the right edge. Past the right edge
-  // of the content (where the title box would end) the gaps open up with the distance beyond it,
-  // so off-screen cards come in SPACES.startGap times the design's gap apart and close up as they
-  // come in. Each card follows its place with inertia; the closer to the side the row moves
-  // towards, the faster, so the row stretches while it moves and closes up once the scroll stops
+  // Cards: the row moves left with the scroll, from just off the right edge. Each card follows its
+  // place with inertia; the closer to the side the row moves towards, the faster, so the row
+  // stretches while it moves and closes up once the scroll stops
   const { follow, slowdown, minGap } = SPACES.inertia
   const placed = cards.map(() => null)
   const setters = cards.map((card) => gsap.quickSetter(card, 'x', 'px'))
-
-  const targetOf = (i, scrolled) => {
-    const shift = enter() - scrolled
-    const at = row.left + row.slot * i + shift
-    const edge = window.innerWidth - row.left
-    const gap = row.slot - row.width
-    return shift + (gap * (SPACES.startGap - 1) * Math.max(0, at - edge)) / row.slot
-  }
 
   const update = () => {
     const scrolled = gsap.utils.clamp(0, distance(), window.scrollY - section.offsetTop)
     const frames = gsap.ticker.deltaRatio(60)
     const gap = row.slot - row.width
     cards.forEach((card, i) => {
-      const target = targetOf(i, scrolled)
+      const target = enter() - scrolled
       let x = placed[i]
       // First frame (or after a layout change left nothing usable): straight to its place
       if (!Number.isFinite(x) || reducedMotion) x = target
