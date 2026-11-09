@@ -12,6 +12,7 @@ import './styles/products.css'
 import './styles/about.css'
 import './styles/cases.css'
 import './styles/contact.css'
+import './styles/footer.css'
 
 import { initHeader } from './animations/header.js'
 import { initHeroButton } from './components/hero-button.js'
@@ -25,6 +26,7 @@ import { initAbout } from './animations/about.js'
 import { initCases } from './animations/cases.js'
 import { initContact } from './animations/contact.js'
 import { initButtonHovers } from './components/button-hover.js'
+import { initFooterLinks } from './components/footer-links.js'
 import { REDUCED_MOTION_QUERY } from './animations/config.js'
 
 initHeader()
@@ -39,4 +41,5 @@ initProducts(reducedMotion)
 initAbout(reducedMotion)
 initCases(reducedMotion)
 initButtonHovers()
+initFooterLinks()
 initContact(reducedMotion)

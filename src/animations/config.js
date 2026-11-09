@@ -305,3 +305,14 @@ export const CONTACT = {
   },
   hover: { duration: SPACES_HOVER.duration, ease: SPACES_HOVER.ease },
 }
+
+// Footer link hover (src/components/footer-links.js), timed like the buttons'
+export const FOOTER_LINKS = {
+  duration: HERO_BUTTON_HOVER.duration,
+  ease: HERO_BUTTON_HOVER.ease,
+  white: '#ffffff',
+  // The other links of a group while one is hovered
+  muted: '#9093a3',
+  // The bottom line's links at rest (footer.css)
+  legal: '#c1c4d2',
+}

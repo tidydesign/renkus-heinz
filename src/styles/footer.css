@@ -1,0 +1,253 @@
+/* Footer — Figma: Footer (53:569).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet).
+   Lies under the last section: the footer starts one screen early, behind Contact (a lower
+   z-index), and its sheet sticks to the top of the screen while Contact goes up; the empty screen
+   after the sheet is the room for that. Once Contact is gone the sheet scrolls normally.
+   In a window taller than the sheet it fills the screen, with more space between its blocks. */
+
+.footer {
+  position: relative;
+  z-index: 4;
+  margin-top: -100svh;
+}
+
+.footer::after {
+  content: "";
+  display: block;
+  height: 100svh;
+}
+
+.footer__sheet {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 128px;
+  justify-content: space-between;
+  min-height: 100svh;
+  padding: 64px 24px 24px;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Top: 16 columns */
+
+.footer__top {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 64px 24px;
+}
+
+.footer__brand {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.footer__logo {
+  width: 203px;
+  height: 32px;
+}
+
+.footer__tagline {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c1c4d2;
+  text-wrap: pretty;
+}
+
+.footer__address {
+  grid-column: 9 / span 4;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-style: normal;
+}
+
+.footer__phones {
+  grid-column: 13 / span 4;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer__contact-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #c1c4d2;
+}
+
+.footer__contact-value {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-variation-settings: "opsz" 14;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.footer__hours {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c1c4d2;
+}
+
+.footer__heading {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 14;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
+
+.footer__newsletter {
+  grid-column: 1 / span 4;
+  grid-row: 2;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__newsletter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer__input {
+  flex: 1 0 0;
+  min-width: 48px;
+  height: 48px;
+  padding-inline: 18px;
+  border: 0;
+  border-radius: 6px;
+  background-color: rgb(243 244 255 / 0.08);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  appearance: none;
+}
+
+.footer__input::placeholder {
+  color: rgb(193 196 210 / 0.5);
+  opacity: 1;
+}
+
+.footer__submit,
+.footer__social-link {
+  display: block;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 999px;
+}
+
+.footer__submit-body,
+.footer__social-body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: #fff;
+}
+
+.footer__submit-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__social {
+  grid-column: 9 / span 8;
+  grid-row: 2;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__social-list {
+  display: flex;
+  gap: 12px;
+}
+
+.footer__social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Links: 4 columns */
+
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 64px 24px;
+}
+
+.footer__nav-column {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.footer__group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.footer__group-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #c1c4d2;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.footer__link {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+/* Bottom line */
+
+.footer__legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 16px;
+  color: #c1c4d2;
+}
+
+.footer__legal-links {
+  display: flex;
+  gap: 24px;
+  white-space: nowrap;
+}

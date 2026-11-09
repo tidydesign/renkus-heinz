@@ -10,6 +10,8 @@ const TARGETS = [
   { trigger: '.pill-link', body: '.pill-link__body', icon: '.pill-link__icon' },
   // The icon stays in place here and only grows
   { trigger: '.contact__social-link', body: '.contact__social-body', icon: '.contact__social-icon', stillIcon: true },
+  { trigger: '.footer__social-link', body: '.footer__social-body', icon: '.footer__social-icon', white: true, stillIcon: true },
+  { trigger: '.footer__submit', body: '.footer__submit-body', icon: '.footer__submit-icon', white: true },
   // Only the circle is a button here: it carries the shadow, not the whole link with its label
   {
     trigger: '.start__card-link',
