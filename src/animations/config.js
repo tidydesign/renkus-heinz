@@ -210,3 +210,15 @@ export const SPACES = {
   inertia: { follow: 0.12, slowdown: 0.7, minGap: 0.5 },
 }
 
+
+// Spaces card hover (src/components/spaces-cards.js): the photo grows inside the card, the name
+// moves up one line height and fades out while its copy comes in from one line height below;
+// the other cards turn black and white. Leaving plays it backwards
+export const SPACES_HOVER = {
+  duration: 0.3,
+  // CSS ease-out
+  ease: CustomEase.create('ease-out', '0, 0, 0.58, 1'),
+  photoScale: 1.1,
+  // Name offset, in line heights
+  textY: 1,
+}
