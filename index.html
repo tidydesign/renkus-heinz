@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..1000&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..1000&family=Inter:wght@400;500;600;700&display=swap"
     />
   </head>
   <body>
@@ -181,7 +181,9 @@
             <!-- Shown on the active card only; target comes later -->
             <a class="start__card-link" href="#">
               <span class="start__card-link-icon-area">
-                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                <span class="start__card-link-icon-clip">
+                  <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
               </span>
               <span class="start__card-link-label">Find a Solution For My Space</span>
             </a>
@@ -200,7 +202,9 @@
             </div>
             <a class="start__card-link" href="#">
               <span class="start__card-link-icon-area">
-                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                <span class="start__card-link-icon-clip">
+                  <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
               </span>
               <span class="start__card-link-label">Specify a System</span>
             </a>
@@ -219,7 +223,9 @@
             </div>
             <a class="start__card-link" href="#">
               <span class="start__card-link-icon-area">
-                <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                <span class="start__card-link-icon-clip">
+                  <img class="start__card-link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                </span>
               </span>
               <span class="start__card-link-label">Integrate and Install</span>
             </a>
@@ -249,10 +255,12 @@
             </div>
             <!-- The link clips its pill: the intro opens it from a circle on the left -->
             <a class="why__link" href="#">
-              <span class="why__link-body">
-                <span class="why__link-label">See What Precision Means</span>
-                <span class="why__link-icon-area">
-                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              <span class="why__link-clip">
+                <span class="why__link-body">
+                  <span class="why__link-label">See What Precision Means</span>
+                  <span class="why__link-icon-area">
+                    <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                  </span>
                 </span>
               </span>
             </a>
@@ -275,10 +283,12 @@
             </div>
             <!-- The link clips its pill: the intro opens it from a circle on the left -->
             <a class="why__link" href="#">
-              <span class="why__link-body">
-                <span class="why__link-label">Explore Architectural Integrity</span>
-                <span class="why__link-icon-area">
-                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              <span class="why__link-clip">
+                <span class="why__link-body">
+                  <span class="why__link-label">Explore Architectural Integrity</span>
+                  <span class="why__link-icon-area">
+                    <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                  </span>
                 </span>
               </span>
             </a>
@@ -301,10 +311,12 @@
             </div>
             <!-- The link clips its pill: the intro opens it from a circle on the left -->
             <a class="why__link" href="#">
-              <span class="why__link-body">
-                <span class="why__link-label">Explore Lifecycle Value</span>
-                <span class="why__link-icon-area">
-                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              <span class="why__link-clip">
+                <span class="why__link-body">
+                  <span class="why__link-label">Explore Lifecycle Value</span>
+                  <span class="why__link-icon-area">
+                    <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                  </span>
                 </span>
               </span>
             </a>
@@ -327,10 +339,12 @@
             </div>
             <!-- The link clips its pill: the intro opens it from a circle on the left -->
             <a class="why__link" href="#">
-              <span class="why__link-body">
-                <span class="why__link-label">See How It Connects</span>
-                <span class="why__link-icon-area">
-                  <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+              <span class="why__link-clip">
+                <span class="why__link-body">
+                  <span class="why__link-label">See How It Connects</span>
+                  <span class="why__link-icon-area">
+                    <img class="why__link-icon" src="/src/assets/icons/arrow-right.svg" width="20" height="20" alt="" />
+                  </span>
                 </span>
               </span>
             </a>
@@ -693,6 +707,272 @@
               </a>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section class="products" aria-labelledby="products-title">
+        <h2 class="products__title" id="products-title">
+          <span class="products__title-line products__title-line--accent text-gradient">Loudspeakers and software,</span>
+          <span class="products__title-line">designed to work as one</span>
+        </h2>
+        <ul class="products__grid">
+            <li class="products__item">
+              <a class="products__card" href="#">
+                <h3 class="products__name">Passively Steered</h3>
+              </a>
+            </li>
+            <li class="products__item">
+              <a class="products__card products__card--gradient" href="#">
+                <h3 class="products__name">Beam Steerable</h3>
+              </a>
+            </li>
+            <li class="products__item">
+              <a class="products__card" href="#">
+                <h3 class="products__name">Point Source</h3>
+              </a>
+            </li>
+            <li class="products__item">
+              <a class="products__card" href="#">
+                <h3 class="products__name">Line Arrays</h3>
+              </a>
+            </li>
+            <li class="products__item">
+              <a class="products__card" href="#">
+                <h3 class="products__name">Subwoofers</h3>
+              </a>
+            </li>
+            <li class="products__item">
+              <a class="products__card" href="#">
+                <h3 class="products__name">Digital Tools</h3>
+              </a>
+            </li>
+        </ul>
+      </section>
+
+      <section class="about" aria-labelledby="about-title">
+        <img class="about__photo" src="/src/assets/images/about.webp" width="1920" height="1920" alt="" />
+        <div class="about__panel">
+          <img class="about__mark" src="/src/assets/icons/rh-mark.svg" width="64" height="64" alt="" />
+          <div class="about__body">
+            <h2 class="about__title" id="about-title">Family-owned and independent since 1979</h2>
+            <p class="about__text">Renkus-Heinz designs, builds, and supports every system. With over 60,000 installed systems globally, our premium systems are still engineered and assembled in Foothill Ranch, California. We have a passion for sound and we love our customers too.</p>
+          </div>
+          <a class="pill-link" href="#">
+            <span class="pill-link__clip">
+              <span class="pill-link__body">
+                <span class="pill-link__label">Our Heritage</span>
+                <span class="pill-link__icon-area">
+                  <img class="pill-link__icon" src="/src/assets/icons/arrow-right-brand.svg" width="20" height="20" alt="" />
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="cases" aria-labelledby="cases-title">
+        <h2 class="cases__title" id="cases-title">
+          <span class="cases__title-line cases__title-line--accent text-gradient">Where great sound</span>
+          <span class="cases__title-line">comes to life</span>
+        </h2>
+        <ul class="cases__list">
+          <li class="cases__item">
+            <a class="cases__card" href="#">
+              <span class="cases__head">
+                <span class="cases__name">Stadion Letzigrund</span>
+                <span class="cases__place">Zürich, Switzerland</span>
+              </span>
+              <span class="cases__photo">
+                <img class="cases__image" src="/src/assets/images/cases/stadion-letzigrund.webp" width="450" height="450" alt="" decoding="async" />
+              </span>
+            </a>
+          </li>
+          <li class="cases__item">
+            <a class="cases__card" href="#">
+              <span class="cases__head">
+                <span class="cases__name">Four Domes Pavilion</span>
+                <span class="cases__place">Wrocław, Poland</span>
+              </span>
+              <span class="cases__photo">
+                <img class="cases__image" src="/src/assets/images/cases/four-domes-pavilion.webp" width="450" height="450" alt="" decoding="async" />
+              </span>
+            </a>
+          </li>
+          <li class="cases__item">
+            <a class="cases__card" href="#">
+              <span class="cases__head">
+                <span class="cases__name">Washington University</span>
+                <span class="cases__place">Los Angeles, CA</span>
+              </span>
+              <span class="cases__photo">
+                <img class="cases__image" src="/src/assets/images/cases/washington-university.webp" width="450" height="450" alt="" decoding="async" />
+              </span>
+            </a>
+          </li>
+          <li class="cases__item">
+            <a class="cases__card" href="#">
+              <span class="cases__head">
+                <span class="cases__name">VILCO Convention Center</span>
+                <span class="cases__place">Bad Vilbel, Germany</span>
+              </span>
+              <span class="cases__photo">
+                <img class="cases__image" src="/src/assets/images/cases/vilco-convention-center.webp" width="450" height="450" alt="" decoding="async" />
+              </span>
+            </a>
+          </li>
+          <li class="cases__item">
+            <a class="cases__card" href="#">
+              <span class="cases__head">
+                <span class="cases__name">LA International Airport</span>
+                <span class="cases__place">Los Angeles, CA</span>
+              </span>
+              <span class="cases__photo">
+                <img class="cases__image" src="/src/assets/images/cases/la-iInternational-airport.webp" width="450" height="450" alt="" decoding="async" />
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="contact" aria-labelledby="contact-title">
+        <div class="contact__divider"></div>
+        <div class="contact__row">
+          <div class="contact__info">
+            <div class="contact__details">
+              <p class="contact__tagline">
+                <img class="contact__tagline-dot" src="/src/assets/hero/dot.svg" width="12" height="12" alt="" />
+                <span>Contact Us</span>
+              </p>
+              <div class="contact__location">
+                <address class="contact__address">
+                  <span class="contact__company text-gradient">Renkus-Heinz, Inc.</span>
+                  <span class="contact__street">19201 Cook Street Foothill Ranch,<br />CA 92610-3501, USA</span>
+                </address>
+                <p class="contact__hours">Monday - Friday: 8:30 AM – 5:00 PM PST</p>
+              </div>
+              <div class="contact__phones">
+                <p class="contact__phone">
+                  <span class="contact__phone-label">Phone:</span>
+                  <a class="contact__phone-number" href="tel:+19495889997">+1 (949) 588-9997</a>
+                </p>
+                <p class="contact__phone">
+                  <span class="contact__phone-label">Fax:</span>
+                  <span class="contact__phone-number">+1 (949) 588-9514</span>
+                </p>
+              </div>
+            </div>
+            <div class="contact__social">
+              <h3 class="contact__social-title">In Social Media</h3>
+              <ul class="contact__social-list">
+                <li>
+                  <a class="contact__social-link" href="#" aria-label="Facebook">
+                    <span class="contact__social-body">
+                      <img class="contact__social-icon" src="/src/assets/icons/facebook.svg" width="20" height="20" alt="" />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact__social-link" href="#" aria-label="Instagram">
+                    <span class="contact__social-body">
+                      <img class="contact__social-icon" src="/src/assets/icons/instagram.svg" width="20" height="20" alt="" />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact__social-link" href="#" aria-label="X">
+                    <span class="contact__social-body">
+                      <img class="contact__social-icon" src="/src/assets/icons/x.svg" width="20" height="20" alt="" />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact__social-link" href="#" aria-label="LinkedIn">
+                    <span class="contact__social-body">
+                      <img class="contact__social-icon" src="/src/assets/icons/linkedin.svg" width="20" height="20" alt="" />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact__social-link" href="#" aria-label="YouTube">
+                    <span class="contact__social-body">
+                      <img class="contact__social-icon" src="/src/assets/icons/youtube.svg" width="20" height="20" alt="" />
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <form class="contact__form">
+            <div class="contact__intro">
+              <h2 class="contact__title" id="contact-title">Get in touch</h2>
+              <p class="contact__text">Questions about a project, a product, or anything else — reach the team, or find your regional representative.</p>
+            </div>
+            <div class="contact__fields">
+              <div class="contact__fields-row">
+                  <label class="contact__field">
+                    <span class="contact__label">
+                      <span>First Name:</span>
+                    </span>
+                    <input class="contact__control" type="text" name="first-name" placeholder="John" autocomplete="given-name" />
+                  </label>
+                  <label class="contact__field">
+                    <span class="contact__label">
+                      <span>Last Name:</span>
+                    </span>
+                    <input class="contact__control" type="text" name="last-name" placeholder="Doe" autocomplete="family-name" />
+                  </label>
+              </div>
+              <div class="contact__fields-row">
+                  <label class="contact__field">
+                    <span class="contact__label">
+                      <span>Email:</span>
+                    </span>
+                    <input class="contact__control" type="email" name="email" placeholder="example@mail.com" autocomplete="email" />
+                  </label>
+                  <label class="contact__field">
+                    <span class="contact__label">
+                      <span>Phone:</span>
+                      <span class="contact__optional">(Optional)</span>
+                    </span>
+                    <input class="contact__control" type="tel" name="phone" placeholder="+1 (XXX) XXX-XXXX" autocomplete="tel" />
+                  </label>
+              </div>
+                <label class="contact__field contact__field--wide">
+                  <span class="contact__label"><span>I am:</span></span>
+                  <span class="contact__select">
+                    <select class="contact__control contact__control--select" name="role" required>
+                      <option value="" disabled selected hidden>Select your role</option>
+                    </select>
+                    <img class="contact__chevron" src="/src/assets/icons/chevron-down.svg" width="16" height="16" alt="" />
+                  </span>
+                </label>
+                <label class="contact__field contact__field--wide">
+                  <span class="contact__label"><span>What can we help with?</span></span>
+                  <span class="contact__select">
+                    <select class="contact__control contact__control--select" name="topic" required>
+                      <option value="" disabled selected hidden>Select a topic</option>
+                    </select>
+                    <img class="contact__chevron" src="/src/assets/icons/chevron-down.svg" width="16" height="16" alt="" />
+                  </span>
+                </label>
+              <label class="contact__field contact__field--message">
+                <span class="contact__label"><span>Message:</span></span>
+                <textarea class="contact__control contact__control--area" name="message" placeholder="Briefly describe your project, space, or question…"></textarea>
+              </label>
+            </div>
+            <!-- Sending comes later -->
+            <button class="pill-link" type="button">
+              <span class="pill-link__clip">
+                <span class="pill-link__body">
+                  <span class="pill-link__label">Send Request</span>
+                  <span class="pill-link__icon-area">
+                    <img class="pill-link__icon" src="/src/assets/icons/arrow-right-brand.svg" width="20" height="20" alt="" />
+                  </span>
+                </span>
+              </span>
+            </button>
+          </form>
         </div>
       </section>
     </main>

@@ -1,0 +1,100 @@
+/* Cases — Figma: Cases (43:302).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet).
+   One centred row, wider than the screen, cut off at both sides; it runs in a loop
+   (src/animations/cases.js). */
+
+.cases {
+  position: relative;
+  z-index: 5;
+  padding-block: 160px 138px;
+  overflow: clip;
+  background-color: #fafafa;
+}
+
+.cases__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.cases__title-line--accent {
+  --text-gradient: linear-gradient(316deg, #0054a6 51.4%, #003d79 100%);
+}
+
+.cases__list {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 92px;
+}
+
+/* Running: starts at the left, moved by src/animations/cases.js */
+.cases__list--marquee {
+  justify-content: flex-start;
+  width: max-content;
+}
+
+.cases__item {
+  flex-shrink: 0;
+  width: 450px;
+}
+
+.cases__card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cases__head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.cases__name {
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.cases__place {
+  font-size: 12px;
+  line-height: 16px;
+  color: #5f6480;
+  text-wrap: pretty;
+}
+
+.cases__photo {
+  height: 450px;
+  overflow: clip;
+  border-radius: 4px;
+  background-color: #101014;
+}
+
+.cases__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Intro (src/animations/cases.js): the title hidden until split into letters */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .cases__title {
+    visibility: hidden;
+  }
+}

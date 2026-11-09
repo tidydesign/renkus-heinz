@@ -1,0 +1,320 @@
+/* Contact — Figma: Contact (43:343).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet). */
+
+.contact {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 96px 24px;
+  background-color: #fafafa;
+}
+
+.contact__divider {
+  height: 1px;
+  margin-bottom: -1px;
+  background-color: #e2e2eb;
+  transform-origin: left;
+}
+
+.contact__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Left: address, phones, social links */
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: space-between;
+  width: min(921px, 100% - 687px - 48px);
+  padding-bottom: 48px;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.contact__tagline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  color: #0054a6;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.contact__tagline-dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.contact__location {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact__address {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  letter-spacing: -0.02em;
+}
+
+.contact__company {
+  --text-gradient: linear-gradient(333deg, #0054a6 51.4%, #003d79 100%);
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.contact__street {
+  font-size: 32px;
+  line-height: 36px;
+  text-wrap: pretty;
+}
+
+.contact__hours {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.contact__phones {
+  display: flex;
+  gap: 24px;
+  max-width: 920px;
+}
+
+.contact__phone {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 1px;
+}
+
+.contact__phone-label {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.contact__phone-number {
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.contact__social {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__social-title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+}
+
+.contact__social-list {
+  display: flex;
+  gap: 12px;
+}
+
+.contact__social-link {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+}
+
+.contact__social-body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: #0054a6;
+}
+
+.contact__social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Right: the form */
+
+.contact__form {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-end;
+  width: 687px;
+  height: 864px;
+  padding: 48px;
+  overflow: clip;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.contact__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.contact__text {
+  font-size: 16px;
+  line-height: 24px;
+  text-wrap: pretty;
+}
+
+.contact__fields {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-height: 1px;
+}
+
+.contact__fields-row {
+  display: flex;
+  gap: 24px;
+}
+
+.contact__field {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 1px;
+}
+
+.contact__field--wide {
+  flex: none;
+}
+
+.contact__field--message {
+  flex: 1 0 0;
+  min-height: 1px;
+}
+
+.contact__label {
+  display: flex;
+  gap: 4px;
+  justify-content: space-between;
+  padding-inline: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #5f6480;
+}
+
+.contact__optional {
+  font-weight: 400;
+  color: #9ca1bd;
+}
+
+.contact__control {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding-inline: 18px;
+  border: 0;
+  border-radius: 6px;
+  outline-offset: 0;
+  background-color: rgb(59 64 92 / 0.04);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: #101014;
+  appearance: none;
+}
+
+.contact__control::placeholder {
+  color: #9ca1bd;
+  opacity: 1;
+}
+
+.contact__control--area {
+  height: 112px;
+  padding-block: 14px;
+  resize: none;
+}
+
+.contact__select {
+  position: relative;
+}
+
+.contact__control--select {
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* No option picked yet: the placeholder colour */
+.contact__control--select:invalid {
+  color: #9ca1bd;
+}
+
+.contact__chevron {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Intro (src/animations/contact.js): hidden until the cascade is set up */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .contact__divider {
+    transform: scaleX(0);
+  }
+
+  .js .contact__tagline,
+  .js .contact__company,
+  .js .contact__street,
+  .js .contact__hours,
+  .js .contact__phone-label,
+  .js .contact__phone-number,
+  .js .contact__social-title,
+  .js .contact__social-list,
+  .js .contact__title,
+  .js .contact__text,
+  .js .contact__field,
+  .js .contact .pill-link {
+    visibility: hidden;
+  }
+}

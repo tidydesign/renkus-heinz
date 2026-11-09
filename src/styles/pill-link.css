@@ -1,0 +1,48 @@
+/* Pill link or button with a round icon on the right: About, Contact.
+   The intro opens the pill from a circle on the left */
+
+.pill-link {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 999px;
+}
+
+/* Clips the pill for the intro; the hover shadow stays outside it */
+.pill-link__clip {
+  display: block;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.pill-link__body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  border-radius: 999px;
+  background-color: #0054a6;
+}
+
+.pill-link__label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.pill-link__icon-area {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: #fff;
+}
+
+.pill-link__icon {
+  width: 20px;
+  height: 20px;
+}

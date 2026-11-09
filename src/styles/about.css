@@ -1,0 +1,93 @@
+/* About — Figma: About (43:288).
+   Concept version: Laptop and Desktop only, values inlined (no tokens yet).
+   The panel sits 30px below the screen centre (hence the uneven padding). */
+
+.about {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding-block: 84px 24px;
+  overflow: clip;
+  background-color: #101014;
+}
+
+/* Square, as wide as the section; shifts within it on scroll (src/animations/about.js) */
+.about__photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: max(100vw, 100%);
+  object-fit: cover;
+}
+
+.about__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  align-items: center;
+  width: 687px;
+  padding: 96px 64px 48px;
+  overflow: clip;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #101014;
+  text-align: center;
+}
+
+.about__mark {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  height: 216px;
+}
+
+.about__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-variation-settings: "opsz" 14;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+.about__text {
+  font-size: 16px;
+  line-height: 24px;
+  text-wrap: pretty;
+}
+
+/* Intro (src/animations/about.js): the texts hidden until split, the rest faded out */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .about__title,
+  .js .about__text {
+    visibility: hidden;
+  }
+
+  .js .about__mark,
+  .js .about .pill-link {
+    opacity: 0;
+  }
+}
+
+/* No scroll movement: the middle of the photo */
+@media (prefers-reduced-motion: reduce) {
+  .about__photo {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

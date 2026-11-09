@@ -156,6 +156,12 @@
 
 .why__link {
   display: block;
+  border-radius: 999px;
+}
+
+/* Clips the pill for the intro; the hover shadow stays outside it */
+.why__link-clip {
+  display: block;
   overflow: hidden;
   border-radius: 999px;
 }

@@ -1,0 +1,58 @@
+/* Hover of the buttons (src/components/button-hover.js), like "Find My Sound" in hero.css */
+
+.button-hover {
+  --shadow-opacity: 0;
+  position: relative;
+}
+
+.button-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 24px 64px -24px var(--button-shadow, rgb(0 84 166 / 0.8));
+  opacity: var(--shadow-opacity);
+  pointer-events: none;
+}
+
+.button-hover--white {
+  --button-fill: #f7f7fa;
+  --button-shadow: rgb(16 16 20 / 0.8);
+}
+
+.button-hover__body {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Centred on the icon, 220% of the button width across, grows from 0 */
+.button-hover__fill {
+  position: absolute;
+  top: 50%;
+  /* Icon centre, from the right */
+  right: var(--button-fill-right, 28px);
+  width: 220%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--button-fill, #006cd6);
+  pointer-events: none;
+  transform: translate(50%, -50%) scale(0);
+}
+
+.button-hover__above,
+.button-hover__area {
+  position: relative;
+}
+
+.button-hover__area {
+  overflow: hidden;
+}
+
+/* Each icon fills the circle; the copy waits one circle width to the left */
+.button-hover__slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

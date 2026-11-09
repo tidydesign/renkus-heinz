@@ -21,6 +21,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { WHY_US } from './config.js'
 import { lettersTimeline, lineHeightOf, lineRiseTimeline } from './letters.js'
+import { addLinkIntro } from './section-intro.js'
 import { createStage, preloadSequences, sequenceLength, FRAME_WIDTH_3X } from './sequences.js'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
@@ -76,9 +77,6 @@ const parallax = (section) => {
 // Lines of a split text: letters grouped by line
 const linesOf = (split) => split.lines.map((line) => split.chars.filter((char) => line.contains(char)))
 
-// Duration of a one-line WHY_US.text run with this many letters
-const lineSpan = (letters, { duration, stagger }) => duration + stagger * Math.max(0, letters - 1)
-
 // Paused intro of a section; filled once the fonts are ready (texts are measured)
 const createIntro = (section) => {
   const intro = gsap.timeline({ paused: true })
@@ -112,23 +110,16 @@ const createIntro = (section) => {
 
     const link = section.querySelector('.why__link')
     if (link) {
-      const body = link.querySelector('.why__link-body')
-      const label = link.querySelector('.why__link-label')
-      const arrow = link.querySelector('.why__link-icon')
-      const { width, height } = link.getBoundingClientRect()
-      // Collapsed: only a circle as wide as the link is tall shows on the left
-      const collapse = width - height
-      const span = lineSpan(label.textContent.replace(/\s/g, '').length, textVars)
-      const expandAt = span * button.expand.at
-      const expandVars = { duration: button.expand.duration, ease: button.ease }
-
-      intro.fromTo(link, { opacity: 0, y: button.fromY * height }, { opacity: 1, y: 0, duration: span, ease: button.ease }, 0)
-      intro.fromTo(body, { x: -collapse }, { x: 0, ...expandVars }, expandAt)
-      // The label holds still while the pill slides under it
-      intro.fromTo(label, { x: collapse }, { x: 0, ...expandVars }, expandAt)
-      intro.fromTo(arrow, { rotation: button.iconFromRotation }, { rotation: 0, ...expandVars }, expandAt)
-      const split = SplitText.create(label, { type: 'words, chars', charsClass: 'split-char' })
-      intro.add(lineRiseTimeline([{ line: label, items: split.chars }], lineHeightOf(label), { ...textVars, delay: 0 }), expandAt)
+      addLinkIntro(
+        intro,
+        {
+          link,
+          body: link.querySelector('.why__link-body'),
+          label: link.querySelector('.why__link-label'),
+          arrow: link.querySelector('.why__link-icon'),
+        },
+        { button, text: textVars },
+      )
     }
   })
 

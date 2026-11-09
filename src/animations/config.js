@@ -222,3 +222,86 @@ export const SPACES_HOVER = {
   // Name offset, in line heights
   textY: 1,
 }
+
+// Products: the title comes in like the other sections' as it rises into view (src/animations/products.js)
+export const PRODUCTS = {
+  title: HERO_TITLE,
+  // ScrollTrigger start of the title, once its top passes this point of the screen
+  titleStart: 'top 80%',
+  inertia: {
+    // Share of the distance to its place a card covers per frame at 60 fps, at the side the page moves towards
+    follow: 0.12,
+    // How much slower that is at the opposite side of the screen (0–1)
+    slowdown: 0.6,
+    // A card never lags further than this (px): less than the gap above the first card
+    maxLag: 200,
+  },
+  // Right column: extra speed over the left one, as a share of the scroll
+  parallax: 0.12,
+}
+
+// About (src/animations/about.js): the card's content comes in once the section is this far up the screen
+export const ABOUT = {
+  introStart: 'top 60%',
+  // The photo's whole travel while the section crosses the screen, in section heights
+  photoShift: 0.25,
+  // The logo rises from this far below its place, in its own heights (%)
+  logo: { fromYPercent: 20, duration: HERO_TEXT.duration },
+  text: HERO_TEXT,
+  button: HERO_BUTTON,
+}
+
+// Cases (src/animations/cases.js): the title comes in as it rises into view, the cards run in a loop
+export const CASES = {
+  title: HERO_TITLE,
+  // ScrollTrigger start of the title, once its top passes this point of the screen
+  titleStart: 'top 80%',
+  // Speed of the running cards (px per second)
+  marquee: { speed: 60 },
+}
+
+// Contact (src/animations/contact.js): one cascade once the section is this far up the screen
+export const CONTACT = {
+  introStart: 'top 60%',
+  // What stays hidden in contact.css until the cascade is set up
+  hidden:
+    '.contact__tagline, .contact__company, .contact__street, .contact__hours, .contact__phone-label, .contact__phone-number, .contact__social-title, .contact__social-list, .contact__title, .contact__text, .contact__field, .pill-link',
+  // Start of each part (s)
+  at: {
+    divider: 0,
+    tagline: 0.05,
+    company: 0.15,
+    street: 0.25,
+    hours: 0.55,
+    phones: 0.65,
+    // The second phone after the first
+    phoneStep: 0.12,
+    social: 0.95,
+    formTitle: 0.4,
+    formText: 0.5,
+    fields: 0.5,
+    send: 1.1,
+  },
+  divider: HERO_DIVIDER,
+  text: HERO_TEXT,
+  // Section-title letters, faster steps for the smaller type
+  letters: { ...HERO_TITLE, stagger: 0.012 },
+  button: HERO_BUTTON,
+  fields: {
+    // Start offset per row, in px: the rows close up as they land
+    step: 24,
+    duration: 0.9,
+    // Between rows (s)
+    stagger: 0.06,
+    ease: EASE_OUT,
+  },
+  socialLinks: {
+    duration: 0.6,
+    stagger: 0.06,
+    ease: EASE_OUT,
+    iconFromRotation: HERO_BUTTON.iconFromRotation,
+    // Icon size on hover
+    hoverIconScale: 1.2,
+  },
+  hover: { duration: SPACES_HOVER.duration, ease: SPACES_HOVER.ease },
+}
