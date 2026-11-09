@@ -12,7 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { SPACES } from './config.js'
 import { lettersTimeline, lineHeightOf, spreadGradient } from './letters.js'
-import { createStage } from './sequences.js'
+import { createStage, FRAME_WIDTH_3X } from './sequences.js'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -37,7 +37,7 @@ export function initSpaces(reducedMotion) {
   const title = section.querySelector('.spaces__title')
   const rail = section.querySelector('.spaces__rail')
   const cards = [...section.querySelectorAll('.spaces__item')]
-  const stage = canvas && createStage(canvas)
+  const stage = canvas && createStage(canvas, { frameWidth: FRAME_WIDTH_3X })
 
   // Row layout (px), measured on refresh: where the row starts (the rail's padding), the step
   // from one card to the next, and the card width. Layout offsets, so the transforms don't count

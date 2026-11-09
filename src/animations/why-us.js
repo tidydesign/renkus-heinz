@@ -21,7 +21,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { WHY_US } from './config.js'
 import { lettersTimeline, lineHeightOf, lineRiseTimeline } from './letters.js'
-import { createStage, preloadSequences, sequenceLength } from './sequences.js'
+import { createStage, preloadSequences, sequenceLength, FRAME_WIDTH_3X } from './sequences.js'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -145,7 +145,7 @@ export function initWhyUs(reducedMotion) {
   const stage = document.querySelector('.stage--speaker')
   const light = document.querySelector('.stage__rotate')
   const dark = first.querySelector('.why__rotate')
-  const lightStage = light && createStage(light)
+  const lightStage = light && createStage(light, { frameWidth: FRAME_WIDTH_3X })
   const darkStage = dark && createStage(dark)
 
   // Each section's intro, for the navigation

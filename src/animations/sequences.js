@@ -1,4 +1,4 @@
-// Image sequences on canvases (src/assets/images/<name>/, 1920×1080 frames, PNG or WebP).
+// Image sequences on canvases (src/assets/images/<name>/, PNG or WebP frames, 1920×1080 unless said otherwise).
 // A stage draws one or more layers at once, each a sequence at a 0–1 progress (or at a frame
 // index); frames load on first use, are shared between stages, and the stages redraw as they arrive.
 
@@ -17,6 +17,8 @@ const sequences = Object.entries(
 
 // The frames' own size: a canvas never gets more pixels than that, however large it is shown
 const FRAME_WIDTH = 1920
+// hero-rotate-light: three times that, it is shown at three screen widths
+export const FRAME_WIDTH_3X = FRAME_WIDTH * 3
 
 const frames = new Map()
 const redraws = new Set()
@@ -44,7 +46,7 @@ export const preloadSequences = (names) => names.forEach(framesOf)
 
 export const sequenceNames = Object.keys(sequences)
 
-export const createStage = (canvas) => {
+export const createStage = (canvas, { frameWidth = FRAME_WIDTH } = {}) => {
   const ctx = canvas.getContext('2d')
   let layers = []
 
@@ -60,7 +62,7 @@ export const createStage = (canvas) => {
 
   const resize = () => {
     const ratio = Math.min(window.devicePixelRatio || 1, SCENE_START.sequence.maxPixelRatio)
-    const scale = Math.min(1, FRAME_WIDTH / (canvas.clientWidth * ratio || 1))
+    const scale = Math.min(1, frameWidth / (canvas.clientWidth * ratio || 1))
     canvas.width = Math.round(canvas.clientWidth * ratio * scale)
     canvas.height = Math.round(canvas.clientHeight * ratio * scale)
     draw()
