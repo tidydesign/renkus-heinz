@@ -193,6 +193,8 @@ export const SPACES = {
   // The title starts once the glide into the section is this far through (0–1)
   arriveAt: SCENE_START.arriveAt,
   title: HERO_TITLE,
+  // Scroll (in screen heights) with the cards in their final place before the next section comes up
+  endHold: 1,
   // Free scrolling inside the section: each wheel turn or swipe eases the page to its new place
   scroll: {
     duration: 1,

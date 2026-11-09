@@ -55,10 +55,11 @@ export function initSpaces(reducedMotion) {
     Math.max(0, row.left + row.slot * Math.max(0, cards.length - 2) + (row.width - window.innerWidth) / 2)
   const distance = () => enter() + travel()
 
-  // Tall enough for that, on top of the screen it covers when reached
+  // Tall enough for that, on top of the screen it covers when reached, plus a stretch at the end
+  // where the cards hold still before the next section comes up
   const setHeight = () => {
     measure()
-    section.style.height = `${window.innerHeight + distance()}px`
+    section.style.height = `${window.innerHeight * (1 + SPACES.endHold) + distance()}px`
   }
   setHeight()
   ScrollTrigger.addEventListener('refreshInit', setHeight)
