@@ -19,6 +19,7 @@ import { initHeroButton } from './components/hero-button.js'
 import { initHeroPromo } from './components/hero-promo.js'
 import { initStartCards } from './components/start-cards.js'
 import { initSpacesCards } from './components/spaces-cards.js'
+import { initProductsCards } from './components/products-cards.js'
 import { initHeroIntro } from './animations/hero-intro.js'
 import { initScenes } from './animations/scenes.js'
 import { initProducts } from './animations/products.js'
@@ -34,6 +35,7 @@ initHeroButton()
 initHeroPromo()
 initStartCards()
 initSpacesCards()
+initProductsCards()
 initHeroIntro()
 initScenes()
 const reducedMotion = window.matchMedia(REDUCED_MOTION_QUERY).matches

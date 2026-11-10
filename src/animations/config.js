@@ -318,3 +318,11 @@ export const FOOTER_LINKS = {
   // The bottom line's links at rest (footer.css)
   legal: '#c1c4d2',
 }
+
+// Products card hover (src/components/products-cards.js), timed like the Spaces cards'
+export const PRODUCTS_HOVER = {
+  duration: SPACES_HOVER.duration,
+  ease: SPACES_HOVER.ease,
+  photoScale: 1.05,
+  nameColor: '#0054a6',
+}
