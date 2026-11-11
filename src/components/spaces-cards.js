@@ -56,11 +56,8 @@ const initBackgrounds = (cards) => {
       }),
   })
 
-  // Each card's background, by the name of its photo ("corporate.webp" → data-space="corporate")
-  const byCard = cards.map((card) => {
-    const name = card.querySelector('.spaces__image').getAttribute('src').split('/').pop().replace(/\.[a-z]+$/, '')
-    return images.find((img) => img.dataset.space === name) ?? null
-  })
+  // Each card's background: the same data-space (file names are hashed in the build, so not by them)
+  const byCard = cards.map((card) => images.find((img) => img.dataset.space === card.dataset.space) ?? null)
 
   const { duration, ease } = SPACES_BACKGROUND
   return (index, instant) =>
