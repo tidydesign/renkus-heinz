@@ -209,7 +209,7 @@ export const SPACES = {
   // Cards: each follows its place with inertia. Per frame (at 60 fps) it covers this share of
   // the way left; a card at the far side from where the row moves gets this much less of it (0–1),
   // so the row stretches while moving. Cards never come closer than this share of the design gap
-  inertia: { follow: 0.12, slowdown: 0.7, minGap: 0.5 },
+  inertia: { follow: 0.25, slowdown: 0.7, minGap: 0.5 },
 }
 
 
@@ -225,6 +225,13 @@ export const SPACES_HOVER = {
   textY: 1,
 }
 
+// Spaces backgrounds (src/components/spaces-cards.js): the hovered card's space fades in behind
+// the speaker, the previous one fades out
+export const SPACES_BACKGROUND = {
+  duration: 0.6,
+  ease: SPACES_HOVER.ease,
+}
+
 // Products: the title comes in like the other sections' as it rises into view (src/animations/products.js)
 export const PRODUCTS = {
   title: HERO_TITLE,
@@ -232,7 +239,7 @@ export const PRODUCTS = {
   titleStart: 'top 80%',
   inertia: {
     // Share of the distance to its place a card covers per frame at 60 fps, at the side the page moves towards
-    follow: 0.12,
+    follow: 0.25,
     // How much slower that is at the opposite side of the screen (0–1)
     slowdown: 0.6,
     // A card never lags further than this (px): less than the gap above the first card

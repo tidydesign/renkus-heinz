@@ -1,9 +1,11 @@
 // Spaces card hover (SPACES_HOVER): the photo grows inside the card, the name moves up and fades
 // out while its copy comes in from below, and the other cards turn black and white (their grey
-// photo copies fade in). Leaving plays it backwards; moving to another card hands the colour over.
+// photo copies fade in), and the card's space shows behind the speaker. Leaving plays it backwards;
+// moving to another card hands the colour and the background over.
 
 import { gsap } from 'gsap'
-import { SPACES_HOVER } from '../animations/config.js'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SPACES_BACKGROUND, SPACES_HOVER } from '../animations/config.js'
 import { lineHeightOf } from '../animations/letters.js'
 import { initCardHover } from './card-hover.js'
 
@@ -25,5 +27,45 @@ export function initSpacesCards() {
   })
   const monos = cards.map((card) => card.querySelector('.spaces__image--mono'))
 
-  initCardHover(cards, hovers, monos, SPACES_HOVER)
+  initCardHover(cards, hovers, monos, SPACES_HOVER, initBackgrounds(cards))
+}
+
+// Background picture URLs by space name (src/assets/images/spaces/<name>-bg.jpg), through Vite so
+// the build includes them
+const BACKGROUNDS = Object.fromEntries(
+  Object.entries(
+    import.meta.glob('../assets/images/spaces/*-bg.jpg', { eager: true, query: '?url', import: 'default' }),
+  ).map(([path, url]) => [path.split('/').pop().replace(/-bg\.jpg$/, ''), url]),
+)
+
+// The hovered card's space fills the background under the speaker (SPACES_BACKGROUND); no card
+// hovered, no background. The pictures load once the section is a screen away
+const initBackgrounds = (cards) => {
+  const section = document.querySelector('.spaces')
+  const images = [...document.querySelectorAll('.spaces__background')]
+  if (!section || !images.length) return null
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top bottom+=100%',
+    once: true,
+    onEnter: () =>
+      images.forEach((img) => {
+        const url = BACKGROUNDS[img.dataset.space]
+        if (url) img.src = url
+      }),
+  })
+
+  // Each card's background, by the name of its photo ("corporate.webp" → data-space="corporate")
+  const byCard = cards.map((card) => {
+    const name = card.querySelector('.spaces__image').getAttribute('src').split('/').pop().replace(/\.[a-z]+$/, '')
+    return images.find((img) => img.dataset.space === name) ?? null
+  })
+
+  const { duration, ease } = SPACES_BACKGROUND
+  return (index, instant) =>
+    images.forEach((img) => {
+      const opacity = index !== null && byCard[index] === img ? 1 : 0
+      gsap.to(img, { opacity, duration: instant ? 0 : duration, ease, overwrite: true })
+    })
 }

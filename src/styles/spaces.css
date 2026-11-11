@@ -24,6 +24,21 @@
   pointer-events: none;
 }
 
+/* The hovered card's space, under the speaker; none shown until a card is hovered */
+.spaces__backgrounds {
+  position: absolute;
+  inset: 0;
+}
+
+.spaces__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
 /* Like the Hero speaker (stage.css), centred 10% of the screen height below the screen centre.
    It keeps that size while it turns back as the section comes in */
 .spaces__speaker-wrap {
