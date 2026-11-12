@@ -252,7 +252,14 @@ export function initScenes() {
     })),
     // Scrolls freely once reached (see initNavigation)
     ...(spaces
-      ? [{ el: spaces.section, free: true, arrivals: spaces.intro ? [{ animation: spaces.intro, at: SPACES.arriveAt }] : [] }]
+      ? [
+          {
+            el: spaces.section,
+            free: true,
+            snap: spaces.snap,
+            arrivals: spaces.intro ? [{ animation: spaces.intro, at: SPACES.arriveAt }] : [],
+          },
+        ]
       : []),
   ])
 }
@@ -262,7 +269,7 @@ export function initScenes() {
 // it upwards, and departures that play backwards when leaving it downwards.
 // A free scene (the last one, taller than the screen) scrolls freely once reached: each wheel turn,
 // swipe or key press eases the page on by its distance; at its top, a step up glides back to the
-// previous scene
+// previous scene. Its snap(y) may name where the page should settle once the scroll stops
 const initNavigation = (scenes) => {
   const { duration, ease, tolerance } = SCENE_START.scroll
   const topOf = (scene) => (scene.top ? scene.top() : scene.el.getBoundingClientRect().top + window.scrollY)
@@ -376,7 +383,8 @@ const initNavigation = (scenes) => {
     step(dir, dir * distance * window.innerHeight)
   })
 
-  // A scroll that bypassed the navigation (scrollbar, focus, find in page): settle on the nearer scene
+  // Once the scroll stops: inside a free scene, settle where it says (snap); a scroll that bypassed the
+  // navigation elsewhere (scrollbar, focus, find in page): settle on the nearer scene
   ScrollTrigger.addEventListener('scrollEnd', () => {
     if (busy) return
     const y = window.scrollY
@@ -386,6 +394,16 @@ const initNavigation = (scenes) => {
       if (inside !== current) {
         current = inside
         scenes[inside].arrivals?.forEach(({ animation }) => animation.timeScale(1).play())
+      }
+      const target = scenes[inside].snap?.(y)
+      if (Number.isFinite(target) && Math.abs(target - y) > 1) {
+        freeTarget = target
+        freeTween = gsap.to(window, {
+          scrollTo: { y: target, autoKill: false },
+          duration: SPACES.snap.duration,
+          ease: SPACES.snap.ease,
+          overwrite: true,
+        })
       }
       return
     }

@@ -183,12 +183,12 @@ export const WHY_US = {
   button: HERO_BUTTON,
 }
 
-// Spaces (src/animations/spaces.js). From Why Us 04 the section covers the screen like a mask while
-// the speaker turns back (hero-rotate-light backwards) at three screen widths, scrubbed to the
-// scroll; its last frame is the Hero speaker image. Once reached, the title comes in like the second
-// screen's title, and from there the page scrolls freely (no snapping), smoothed. Scrolling on, the
-// title goes up with the page while the cards come in from the right and move on sideways, with
-// inertia
+// Spaces (src/animations/spaces.js). From Why Us 04 the section covers the screen like a mask.
+// Once reached, the title comes in like the second
+// screen's title, and from there the page scrolls freely, smoothed. Scrolling on, the title goes up
+// with the page while the cards come in from the right and move on sideways, with inertia; once the
+// scroll stops, the card nearest to the middle of the screen is drawn there (snap), and the
+// background shows that card's space
 export const SPACES = {
   // The title starts once the glide into the section is this far through (0–1)
   arriveAt: SCENE_START.arriveAt,
@@ -210,26 +210,56 @@ export const SPACES = {
   // the way left; a card at the far side from where the row moves gets this much less of it (0–1),
   // so the row stretches while moving. Cards never come closer than this share of the design gap
   inertia: { follow: 0.25, slowdown: 0.7, minGap: 0.5 },
+  // Drawing the nearest card to the middle once the scroll has stopped
+  snap: { duration: DURATION.slow, ease: EASE_OUT },
 }
 
 
-// Spaces card hover (src/components/spaces-cards.js): the photo grows inside the card, the name
-// moves up one line height and fades out while its copy comes in from one line height below;
-// the other cards turn black and white. Leaving plays it backwards
+// Spaces card hover (src/components/spaces-cards.js): the card opens up and down from its bar to
+// 3:4 and shows its space in colour, the name moves up one line height and fades out while its copy
+// comes in from one line height below, and turns from blue to white. Leaving plays it backwards
 export const SPACES_HOVER = {
   duration: 0.3,
   // CSS ease-out
   ease: CustomEase.create('ease-out', '0, 0, 0.58, 1'),
-  photoScale: 1.1,
   // Name offset, in line heights
   textY: 1,
+  nameColor: '#0054a6',
+  hoverNameColor: '#ffffff',
 }
 
-// Spaces backgrounds (src/components/spaces-cards.js): the hovered card's space fades in behind
-// the speaker, the previous one fades out
+// Spaces backgrounds (src/animations/spaces.js): the space of the card in the middle of the screen
+// (or of the hovered card) fades in, the previous one fades out
 export const SPACES_BACKGROUND = {
   duration: 0.6,
   ease: SPACES_HOVER.ease,
+}
+
+// Spaces card hover ripples (src/components/spaces-ripples.js): while a card is hovered, waves of
+// particles in the card's shape spread out from under it like rings on water, every `interval`
+// seconds, each over `life` seconds (longer, so the next wave starts while the last still fades).
+// A wave is a few rows of evenly spaced particles: most in the middle row, fewer towards the edges
+export const SPACES_RIPPLES = {
+  color: '0, 84, 166',
+  interval: 0.9,
+  life: 3.6,
+  // How far a wave goes from the card (px), and how its spreading slows down
+  distance: 280,
+  ease: 'sine.out',
+  rows: 7,
+  // Space between neighbouring rows (px), when a wave starts and when it ends
+  rowGap: [4, 24],
+  // How fast the rows thin out from the middle one (a bell curve's width, in rows)
+  falloff: 1.6,
+  // Space between particles in the middle row (px) halfway out; they part as the wave grows
+  spacing: 10,
+  // Particle radius (px) in the middle row; it shrinks by `shrink` (share) by the end
+  size: 1.3,
+  shrink: 0.3,
+  // Particle opacity at its brightest; a wave reaches it after this share of its life, then fades
+  // out smoothly to the end
+  opacity: 0.9,
+  fadeIn: 0.15,
 }
 
 // Products: the title comes in like the other sections' as it rises into view (src/animations/products.js)

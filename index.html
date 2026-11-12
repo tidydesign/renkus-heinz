@@ -355,7 +355,7 @@
            section, so it covers Why Us like a mask and then scrolls freely (src/animations/spaces.js) -->
       <section class="spaces" aria-labelledby="spaces-title">
         <div class="spaces__backdrop" aria-hidden="true">
-          <!-- Each card's space, shown while the card is hovered (src/components/spaces-cards.js) -->
+          <!-- The space of the card in the middle of the screen (src/animations/spaces.js) -->
           <div class="spaces__backgrounds">
             <img class="spaces__background" data-space="houses-of-worship" width="1920" height="1080" alt="" decoding="async" />
             <img class="spaces__background" data-space="transportation-and-airports" width="1920" height="1080" alt="" decoding="async" />
@@ -369,19 +369,9 @@
             <img class="spaces__background" data-space="hospitality" width="1920" height="1080" alt="" decoding="async" />
             <img class="spaces__background" data-space="museums-and-culture" width="1920" height="1080" alt="" decoding="async" />
           </div>
-          <div class="spaces__speaker-wrap">
-            <img
-              class="spaces__speaker"
-              src="/src/assets/hero/speaker-hero.webp"
-              width="7680"
-              height="4320"
-              alt=""
-              decoding="async"
-            />
-            <!-- The speaker turning back (light), until the section is reached -->
-            <canvas class="spaces__rotate"></canvas>
-          </div>
         </div>
+        <!-- Waves of particles from the hovered card (src/components/spaces-ripples.js) -->
+        <canvas class="spaces__ripples" aria-hidden="true"></canvas>
         <div class="spaces__heading">
           <h2 class="spaces__title" id="spaces-title">
             <span class="spaces__title-line spaces__title-line--accent text-gradient">Every room asks something</span>
@@ -392,27 +382,8 @@
           <ul class="spaces__track">
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="houses-of-worship">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/houses-of-worship.webp"
-                    srcset="/src/assets/images/spaces/houses-of-worship.webp 1x, /src/assets/images/spaces/houses-of-worship@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/houses-of-worship.webp"
-                    srcset="/src/assets/images/spaces/houses-of-worship.webp 1x, /src/assets/images/spaces/houses-of-worship@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="houses-of-worship" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Houses of Worship</span>
@@ -422,27 +393,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="transportation-and-airports">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/transportation-and-airports.webp"
-                    srcset="/src/assets/images/spaces/transportation-and-airports.webp 1x, /src/assets/images/spaces/transportation-and-airports@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/transportation-and-airports.webp"
-                    srcset="/src/assets/images/spaces/transportation-and-airports.webp 1x, /src/assets/images/spaces/transportation-and-airports@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="transportation-and-airports" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Transportation &amp;&nbsp;Airports</span>
@@ -452,27 +404,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="mobile-and-touring">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/mobile-and-touring.webp"
-                    srcset="/src/assets/images/spaces/mobile-and-touring.webp 1x, /src/assets/images/spaces/mobile-and-touring@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/mobile-and-touring.webp"
-                    srcset="/src/assets/images/spaces/mobile-and-touring.webp 1x, /src/assets/images/spaces/mobile-and-touring@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="mobile-and-touring" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Mobile &amp; Touring</span>
@@ -482,27 +415,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="education">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/education.webp"
-                    srcset="/src/assets/images/spaces/education.webp 1x, /src/assets/images/spaces/education@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/education.webp"
-                    srcset="/src/assets/images/spaces/education.webp 1x, /src/assets/images/spaces/education@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="education" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Education</span>
@@ -512,27 +426,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="performing-arts">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/performing-arts.webp"
-                    srcset="/src/assets/images/spaces/performing-arts.webp 1x, /src/assets/images/spaces/performing-arts@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/performing-arts.webp"
-                    srcset="/src/assets/images/spaces/performing-arts.webp 1x, /src/assets/images/spaces/performing-arts@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="performing-arts" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Performing Arts</span>
@@ -542,27 +437,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="lifestyle-and-entertainment">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/lifestyle-and-entertainment.webp"
-                    srcset="/src/assets/images/spaces/lifestyle-and-entertainment.webp 1x, /src/assets/images/spaces/lifestyle-and-entertainment@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/lifestyle-and-entertainment.webp"
-                    srcset="/src/assets/images/spaces/lifestyle-and-entertainment.webp 1x, /src/assets/images/spaces/lifestyle-and-entertainment@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="lifestyle-and-entertainment" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Lifestyle &amp;&nbsp;Entertainment</span>
@@ -572,27 +448,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="corporate">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/corporate.webp"
-                    srcset="/src/assets/images/spaces/corporate.webp 1x, /src/assets/images/spaces/corporate@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/corporate.webp"
-                    srcset="/src/assets/images/spaces/corporate.webp 1x, /src/assets/images/spaces/corporate@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="corporate" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Corporate</span>
@@ -602,27 +459,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="government">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/government.webp"
-                    srcset="/src/assets/images/spaces/government.webp 1x, /src/assets/images/spaces/government@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/government.webp"
-                    srcset="/src/assets/images/spaces/government.webp 1x, /src/assets/images/spaces/government@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="government" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Government</span>
@@ -632,27 +470,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="sports-and-arenas">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/sports-and-arenas.webp"
-                    srcset="/src/assets/images/spaces/sports-and-arenas.webp 1x, /src/assets/images/spaces/sports-and-arenas@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/sports-and-arenas.webp"
-                    srcset="/src/assets/images/spaces/sports-and-arenas.webp 1x, /src/assets/images/spaces/sports-and-arenas@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="sports-and-arenas" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Sports &amp; Arenas</span>
@@ -662,27 +481,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="hospitality">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/hospitality.webp"
-                    srcset="/src/assets/images/spaces/hospitality.webp 1x, /src/assets/images/spaces/hospitality@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/hospitality.webp"
-                    srcset="/src/assets/images/spaces/hospitality.webp 1x, /src/assets/images/spaces/hospitality@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="hospitality" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Hospitality</span>
@@ -692,27 +492,8 @@
             </li>
             <li class="spaces__item">
               <a class="spaces__card" href="#" data-space="museums-and-culture">
-                <!-- The photo grows on hover; its black-and-white copy fades in while another card is hovered -->
-                <span class="spaces__photo">
-                  <img
-                    class="spaces__image"
-                    src="/src/assets/images/spaces/museums-and-culture.webp"
-                    srcset="/src/assets/images/spaces/museums-and-culture.webp 1x, /src/assets/images/spaces/museums-and-culture@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                  <img
-                    class="spaces__image spaces__image--mono"
-                    src="/src/assets/images/spaces/museums-and-culture.webp"
-                    srcset="/src/assets/images/spaces/museums-and-culture.webp 1x, /src/assets/images/spaces/museums-and-culture@2x.webp 2x"
-                    width="331"
-                    height="441"
-                    alt=""
-                    decoding="async"
-                  />
-                </span>
+                <!-- On hover: the space in colour, lined up with the background behind it -->
+                <img class="spaces__reveal" data-space="museums-and-culture" width="1920" height="1080" alt="" decoding="async" />
                 <!-- On hover the name moves up and fades out while its copy comes in from below -->
                 <span class="spaces__label">
                   <span class="spaces__name">Museums &amp; Culture</span>
