@@ -1,4 +1,4 @@
-// Spaces card hover (SPACES_HOVER): the card opens up and down from its bar to 3:4 and shows its
+// Spaces card hover (SPACES_HOVER): the card opens out from a square to a larger 3:4 and shows its
 // space in colour (lined up with the background by src/animations/spaces.js), the name moves up and
 // fades out while its copy comes in from below, and the name turns from blue to white. Leaving
 // plays it backwards; moving to another card hands it over. The background follows the hovered

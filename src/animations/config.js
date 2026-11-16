@@ -215,7 +215,7 @@ export const SPACES = {
 }
 
 
-// Spaces card hover (src/components/spaces-cards.js): the card opens up and down from its bar to
+// Spaces card hover (src/components/spaces-cards.js): the card opens out from a square to a larger
 // 3:4 and shows its space in colour, the name moves up one line height and fades out while its copy
 // comes in from one line height below, and turns from blue to white. Leaving plays it backwards
 export const SPACES_HOVER = {

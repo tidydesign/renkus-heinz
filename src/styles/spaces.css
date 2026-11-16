@@ -104,23 +104,34 @@
   pointer-events: auto;
 }
 
-/* A white bar 96px high; on hover (src/components/spaces-cards.js) it opens up and down to the
-   whole card, 3:4, as --open goes from 0 to 1. The card keeps its size, so the row stays put */
+/* A white square as wide as the row's step allows (--card-width); on hover
+   (src/components/spaces-cards.js) it opens out on all sides to the whole card, 3:4 and
+   --card-grow times as wide, as --open goes from 0 to 1. The card is that large all the time and
+   reaches over its place in the row by the same amount on both sides, so the row stays put */
 .spaces__card {
   --open: 0;
+  --card-width: 331px;
+  --card-grow: 1.4;
+  --card-over: calc(var(--card-width) * (var(--card-grow) - 1) / 2);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 331px;
+  width: calc(var(--card-width) * var(--card-grow));
+  margin-inline: calc(var(--card-over) * -1);
   aspect-ratio: 3 / 4;
-  padding: 20px;
+  padding: 20px calc(var(--card-over) + 20px);
   overflow: clip;
   border-radius: 4px;
   background-color: #fff;
   text-decoration: none;
-  clip-path: inset(calc((1 - var(--open)) * (100% - 96px) / 2) 0 round 4px);
+  /* Each side in by its own share of what lies outside the square */
+  clip-path: inset(
+    calc((1 - var(--open)) * (100% - var(--card-width)) / 2)
+    calc((1 - var(--open)) * (100% - var(--card-width)) / 2)
+    round 4px
+  );
 }
 
 /* The space in colour, as large as the background and lined up with it (moved by

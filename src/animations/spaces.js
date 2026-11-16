@@ -72,12 +72,14 @@ export function initSpaces(reducedMotion) {
 
   // Row layout (px), measured on refresh: each card's left and top on the screen (the rail is fixed
   // at the screen's top left; layout offsets, so the transforms don't count) and the card width
-  const row = { lefts: [], tops: [], width: 0, slot: 0 }
+  const row = { lefts: [], tops: [], width: 0, slot: 0, overs: [] }
   const measure = () => {
     if (!cards.length) return
     row.lefts = items.map((item) => item.offsetLeft)
     // The cards only move sideways, so their screen top is their layout top
     row.tops = cards.map((card) => card.getBoundingClientRect().top)
+    // How far each card reaches left of its place in the row (it grows on hover, spaces.css)
+    row.overs = cards.map((card, i) => items[i].getBoundingClientRect().left - card.getBoundingClientRect().left)
     row.width = items[0].offsetWidth
     row.slot = cards.length > 1 ? row.lefts[1] - row.lefts[0] : row.width
     // The colour pictures in the cards are as large as the background
@@ -169,7 +171,7 @@ export function initSpaces(reducedMotion) {
       placed[i] = x
       setters[i](x)
       const left = row.lefts[i] + x
-      revealSetters[i]?.(-left)
+      revealSetters[i]?.(row.overs[i] - left)
       // The card in the middle: within half a step of it
       const off = Math.abs(left + row.width / 2 - middle)
       if (off < nearestOff) {
